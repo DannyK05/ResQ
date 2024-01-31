@@ -2,8 +2,8 @@
 
 const FormHeader = () =>{
     return(
-        <header>
-            <h1>Res<span className="text-blue">Q</span></h1>
+        <header className="flex align-center justify-center">
+            <h1 className="text-xl">Res<span className="text-blue">Q</span></h1>
         </header>
     )
 }

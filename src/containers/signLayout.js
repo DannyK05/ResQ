@@ -1,4 +1,4 @@
-import FormHeader from "../components/homeheader"
+import FormHeader from "../components/formheader"
 
 const SignLayout = (props) =>{
     return(
