@@ -1,6 +1,6 @@
 import HomeLayout from "../containers/homeLayout"
 
-const Settings =() =>{
+const Map =() =>{
     return(
         <HomeLayout>
 
@@ -8,4 +8,4 @@ const Settings =() =>{
     )
 }
 
-export default Settings;
+export default Map;

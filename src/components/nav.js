@@ -4,14 +4,15 @@ import Close from "../assets/icons/Close.svg";
 import Profile from "../assets/icons/MaleUser.svg";
 import ActiveProfile from "../assets/icons/MaleUser.svg";
 import Bluebtn from "../assets/icons/Group6.svg";
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return(
         <nav className="fixed w-[100%] bottom-0">
             <ul className="flex w-[100%] justify-between align-center p-[5px]">
-                <li><img className="" src={ActiveHome}/></li>
+               <Link to="/home"> <li><img className="" src={ActiveHome}/></li></Link>
                 <li><img className="" src={Bluebtn}/></li>
-                <li><img className="" src={Profile}/></li>
+               <Link to="/profile"><li><img className="" src={Profile}/></li></Link>
             </ul>
         </nav>
     )

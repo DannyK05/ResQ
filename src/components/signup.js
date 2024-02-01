@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { Link, useNavigate } from 'react-router-dom';
 
 const SignupForm = () =>{
     //This for storing the data inputted
@@ -10,6 +11,7 @@ const SignupForm = () =>{
         phonenumber: "",
         password: ""
     })
+    const history = useNavigate()
     const handleChange = (e) => {
         //setting assigning the data inputted to the object
         setUser({ ...userData, [e.target.name]: e.target.value });
@@ -21,6 +23,7 @@ const SignupForm = () =>{
         try {
             const response = await axios.post("endpoint", userData);
             console.log('Form submitted successfully:', response.data);
+            history.push("/medical")
             // Handle success, show message, reset form, etc.
             } catch (error) {
             console.error('Error submitting form:', error);
@@ -43,7 +46,7 @@ const SignupForm = () =>{
                 <br/>
                 <input className=" form__button border-neutral-400 rounded bg-blue mx-[5px] my-[15px] px-[50px] py-[5px] w-[95%] text-white" type="submit" value="Continue"/>
             </form>
-            <p>Already have an account? Login</p>
+            <Link to="/"><p>Already have an account?<span className="text-blue">Login</span></p></Link>
         </section>
     )
 }
