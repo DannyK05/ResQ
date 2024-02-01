@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 
 const ActionBtn = () =>{
     return(
-        <section className="px-[8px] m-auto w-[100%] flex justify-between align-center">
-            <Link to="/settings"><button className="rounded-[100%] shadow shadow-black p-[2px]"><img src={Settings}/></button></Link>
-            <Link to="/map"><button className="rounded-[100%] shadow shadow-black p-[2px]"><img src={Map}/></button></Link>
-            <Link to="/bot"><button className="rounded-[100%] shadow shadow-black p-[2px]"><img src={Bot}/></button></Link>
+        <section className="px-[8px] mt-[30px] w-[100%] flex justify-between align-center">
+            <Link to="/settings"><button className="rounded-[100%] shadow shadow-black p-[4px]"><img src={Settings}/></button></Link>
+            <Link to="/map"><button className="rounded-[100%] shadow shadow-black p-[4px]"><img src={Map}/></button></Link>
+            <Link to="/bot"><button className="rounded-[100%] shadow shadow-black p-[4px]"><img src={Bot}/></button></Link>
         </section>
     )
 }

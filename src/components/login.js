@@ -25,12 +25,13 @@ const LoginForm = () =>{
         }
     }
     return(
-        <section>
+        <section className="mt-[10px]">
+            <h1><span className="text-blue">Welcome</span> Back</h1>
             <p>Login to your account</p>
             <form onSubmit={handleSubmit}>
-                <input className="border-2 border-[#E7DDDD] p-[5px] hover:border-[#2592F6] m-[10px] w-[80%] " onChange={handleChange} name="email" value={logData.email} type="email" placeholder="example@gmail.com" required/> 
-                <input className="border-2 border-[#E7DDDD] p-[5px] hover:border-[#2592F6] m-[10px] w-[80%] " onChange={handleChange} name="password" value={logData.password} type="password" placeholder="Password"  required/>
-                <input className="form__button  border-neutral-400 rounded bg-blue mx-[5px] my-[15px] px-[50px] py-[5px] w-[95%] text-white"  type="submit" value="LOGIN"/>
+                <input className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6] m-[10px] w-[80%] " onChange={handleChange} name="email" value={logData.email} type="email" placeholder="example@gmail.com" required/> 
+                <input className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6] m-[10px] w-[80%] " onChange={handleChange} name="password" value={logData.password} type="password" placeholder="Password"  required/>
+                <submit className="form__button  border-neutral-400 rounded-xl bg-blue mx-[5px] my-[15px] px-[40%] py-[5px] w-[95%] text-white"  type="submit"><h1>Login</h1></submit>
             </form>
             <Link to="/signup"><p>Don't have an account? <span className="text-blue">SignUp</span></p></Link>
         </section>
