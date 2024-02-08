@@ -7,6 +7,7 @@ import MedicalPage from './pages/medical';
 import Profile from './pages/profile';
 import Settings from './pages/settings';
 import Bot from './pages/bot';
+import Notification from "./components/notification"
 import { createBrowserRouter, RouterProvider, Route, createRoutesFromElements} from "react-router-dom";
 import Map from './pages/map';
 
@@ -23,6 +24,7 @@ function App() {
       <Route path = "/settings" element = {<Settings/>} />
       <Route path = "/bot" element = {<Bot/>} />
       <Route path = "/map" element = {<Map/>} />
+      <Route path = "/notification" element = {<Notification/>} />
       </>
     )
   );

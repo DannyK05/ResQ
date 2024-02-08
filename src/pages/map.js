@@ -1,15 +1,45 @@
-import HomeLayout from "../containers/homeLayout"
-import { Link } from "react-router-dom";
+import ActionLayout from "../containers/actionLayout"
+import React, { useEffect, useState } from 'react';
+import GoogleMapReact from 'google-map-react';
+import axios from "axios";
 const Map =() =>{
-    return(
-        <main>
-            <header className="flex justify-between align-center py-[5px] px-[5px]">
-            <Link to="/home"><ion-icon name="arrow-back-outline"></ion-icon></Link><h1>Map</h1>  
-            </header>
-        </main>
+    const [hospitals, setHospitals] = useState([]);
 
-        
-    )
-}
+    useEffect(() => {
+        // Fetch nearby hospitals using Google Places API
+        fetchNearbyHospitals();
+    }, []);
+
+    const fetchNearbyHospitals = async () => {
+        // Make API request to fetch nearby hospitals
+        // Parse the response and update the hospitals state
+        try {
+            const response = await axios.get('YOUR_PLACES_API_ENDPOINT');
+            setHospitals(response.data.results);
+        } catch (error) {
+            console.error('Error fetching nearby hospitals:', error);
+        }
+    };
+
+    return (
+        <ActionLayout>
+            <GoogleMapReact
+                bootstrapURLKeys={{ key: 'YOUR_GOOGLE_MAPS_API_KEY' }}
+                defaultCenter={{ lat: 40.7128, lng: -74.0060 }} // New York City coordinates
+                defaultZoom={12}
+            >
+                {hospitals.map((hospital) => (
+                    <Marker
+                        key={hospital.id}
+                        lat={hospital.geometry.location.lat}
+                        lng={hospital.geometry.location.lng}
+                    />
+                ))}
+            </GoogleMapReact>
+        </ActionLayout>
+    );
+};
+
+const Marker = () => <div className="marker">H</div>;
 
 export default Map;

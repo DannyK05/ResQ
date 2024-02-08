@@ -21,7 +21,7 @@ const SignupForm = () =>{
         e.preventDefault();
     
         try {
-            const response = await axios.post("endpoint", userData);
+            const response = await axios.post(" https://resq-api-5j6r.onrender.com/api/v1/resQ/users/auth/signup", userData);
             console.log('Form submitted successfully:', response.data);
             history.push("/medical")
             // Handle success, show message, reset form, etc.

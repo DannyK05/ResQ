@@ -17,7 +17,7 @@ const LoginForm = () =>{
     const handleSubmit = async (e) =>{
         e.preventDefault();
         try {
-            const response = await axios.post("endpoint", logData);
+            const response = await axios.post("https://resq-api-5j6r.onrender.com/api/v1/resQ/users/auth/login", logData);
             console.log("Logged in successfully: ", response.data);
             history.push('/home')
         } catch (error) {

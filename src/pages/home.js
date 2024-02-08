@@ -4,6 +4,7 @@ import  HomeLayout from "../containers/homeLayout";
 const Home = () => {
     return(
        <HomeLayout>
+        <h1>Hey <span className="text-blue">User</span></h1>
         <Advice/>
         <ActionBtn/>
        </HomeLayout>
