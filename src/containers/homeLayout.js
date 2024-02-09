@@ -13,7 +13,7 @@ const HomeLayout = (props) =>{
         <main className="h-[100vh] px-[5px]">
             <HomeHeader/>
             {props.children}
-            <Navbar toggleEmergencyTab={toggleEmergencyTab} />
+            <Navbar toggleEmergencyTab={toggleEmergencyTab} visibility ={isEmergencyTabVisible} />
             <EmergencyTab isVisible={isEmergencyTabVisible} />
 
         </main>
