@@ -2,7 +2,7 @@ import {useState} from "react";
 
 const ModCentres = ({visibility, Close}) => {
  const[centreFormVisibility, setFormVisibility] = useState(false)
-    const toggleFormVisibility = () =>{
+    const toggleFormVisibility = () => {
         setFormVisibility(!centreFormVisibility)
     }
     return(
@@ -12,7 +12,7 @@ const ModCentres = ({visibility, Close}) => {
              <button onClick={toggleFormVisibilty} className=" fixed bottom-[10px] right-[10px]]border-neutral-400 rounded-[100%]  text-white">
                     <ion-icon size="large" name="add-circle"></ion-icon>
                 </button>
-            <form className ={`${centreFormVisibility ? hidden : block}`}>
+            <form className ={`${centreFormVisibility ? 'hidden' : 'relative'}`}>
                 <input className="m-[8px] p-[4px] w-[80%]  border-[1px] border-[#E7DDDD] rounded-[6px]" type="text" placeholder="Hospital name"/>
                 <input className="m-[8px] p-[4px] w-[80%]  border-[1px] border-[#E7DDDD] rounded-[6px]" type="number" placeholder="Contact number"/>
                 <input className="m-[8px] p-[4px] w-[80%]  border-[1px] border-[#E7DDDD] rounded-[6px]" type="email" placeholder="Contact mail"/>
