@@ -12,7 +12,7 @@ const ModSpecial = ({visibility, Close}) => {
              <button onClick={toggleFormVisibilty} className=" fixed bottom-[10px] right-[10px]]border-neutral-400 rounded-[100%]  text-white">
                     <ion-icon size="large" name="add-circle"></ion-icon>
                 </button>
-            <form className ={`${specialFormVisibility ? hidden : block}`}>
+            <form className ={`${specialFormVisibility ? 'hidden' : 'block'}`}>
                 <input className="m-[8px] p-[4px] w-[80%]  border-[1px] border-[#E7DDDD] rounded-[6px]" type="text" placeholder="Person's name"/>
                 <input className="m-[8px] p-[4px] w-[80%]  border-[1px] border-[#E7DDDD] rounded-[6px]" type="number" placeholder="Person's number"/>
                 <input className="m-[8px] p-[4px] w-[80%]  border-[1px] border-[#E7DDDD] rounded-[6px]" type="email" placeholder="Person's mail"/>
