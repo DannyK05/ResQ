@@ -11,6 +11,8 @@ const SignupForm = () =>{
         phonenumber: "",
         password: ""
     })
+    const[formError, setError] = useState('')
+
     const history = useNavigate()
     const handleChange = (e) => {
         //setting assigning the data inputted to the object
@@ -27,12 +29,16 @@ const SignupForm = () =>{
             // Handle success, show message, reset form, etc.
             } catch (error) {
             console.error('Error submitting form:', error);
+            setError(error.message)
             // Handle error, show error message, etc.
             }
       };
 
     return(
         <section>
+            <header className="bg-blue">
+                <span className="text-white">{formError}</span>
+            </header>
             <h1><span className="text-blue">Get</span> Started</h1>
             <p className="w-[100%]">Input your details to create an account</p>
             <form onSubmit={handleSubmit}>

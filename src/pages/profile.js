@@ -3,6 +3,7 @@ import HomeLayout from "../containers/homeLayout";
 import {useEffect} from "react";
 
 const Profile =() =>{
+    
 // To fetch the current user data
     const fetchUserData = async () =>{
         try{

@@ -1,5 +1,5 @@
-import Home from "../assets/icons/Home.svg";
-import ActiveHome from "../assets/icons/Home-1.svg";
+import Home from "../assets/icons/Home-1.svg";
+import ActiveHome from "../assets/icons/Home.svg";
 import Close from "../assets/icons/Close.svg";
 import Profile from "../assets/icons/MaleUser.svg";
 import ActiveProfile from "../assets/icons/MaleUser.svg";

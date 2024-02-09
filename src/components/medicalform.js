@@ -55,15 +55,15 @@ const MedicalForm = () =>{
                 </select>
                 <br/>
                 <label for="disability">Do you have any disability</label>
-                <input name="disability" className="ml-[8px]" type ="radio" onChange={handleChange} checked={medData.disability == 'Yes'} value="true"/> <label>Yes</label>
-                <input name = "disability" className="ml-[8px]" type ="radio" onChange={handleChange} checked={medData.disability == 'No'} value="false"/><label>No</label>
+                <input name="disability" className="ml-[8px]" type ="radio" onChange={handleChange} checked={medData.disability === 'Yes'} value="true"/> <label>Yes</label>
+                <input name = "disability" className="ml-[8px]" type ="radio" onChange={handleChange} checked={medData.disability === 'No'} value="false"/><label>No</label>
                 </div>
                    
                 <div>
                 <h1><span className="text-blue">Medical</span> History</h1>
                     <label>Do you have any allergy</label>
-                <input name="allergy" className="ml-[8px]" type ="radio" value="Yes"  onChange={handleChange} checked={medData.allergy == 'Yes'}/> <label>Yes</label>
-                <input name = "allergy" className="ml-[8px]" type ="radio" value="No" onChange={handleChange} checked={medData.allergy == 'No'}/><label>No</label>
+                <input name="allergy" className="ml-[8px]" type ="radio" value="Yes"  onChange={handleChange} checked={medData.allergy === 'Yes'}/> <label>Yes</label>
+                <input name = "allergy" className="ml-[8px]" type ="radio" value="No" onChange={handleChange} checked={medData.allergy === 'No'}/><label>No</label>
                 <br/>
                 <label>If yes please specify</label><input className="border-2 border-[#E7DDDD] p-[5px] hover:border-[#2592F6] m-[10px] w-[80%]" name='allergen' onChange={handleChange} value={medData.allergen} type= "text"/>
                 <br/>
