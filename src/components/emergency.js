@@ -1,6 +1,6 @@
-import Circle from "../assets/icons/Group6.svg"
-import Circle2 from "../assets/icons/Eclipse3.svg"
-import Circle3 from "../assets/icons/Eclipse4.svg"
+import Circle from "../assets/icons/Group6.svg";
+import Circle2 from "../assets/icons/Ellipse3.svg";
+import Circle3 from "../assets/icons/Ellipse4.svg";
 const EmergencyTab = ({isVisible}) => {
     return(
         <section className={`bg-[#FAFAFA] z-0 fixed w-[100%]  py-[5px]  flex flex-col align-center justify-between h-[40vh] bottom-[60px] ${isVisible ? 'block' : 'hidden'}`}>
