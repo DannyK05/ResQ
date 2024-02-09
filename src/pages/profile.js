@@ -1,6 +1,6 @@
 import axios from "axios"
 import HomeLayout from "../containers/homeLayout";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 
 const Profile =() =>{
     const [userData, setUserData] = useState({
