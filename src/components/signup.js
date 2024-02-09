@@ -21,18 +21,33 @@ const SignupForm = () =>{
 
       const handleSubmit = async (e) => {
         e.preventDefault();
-    
+
         try {
-            const response = await axios.post("https://resq-api-5j6r.onrender.com/api/v1/resQ/users/auth/signup", userData);
-            console.log('Form submitted successfully:', response.data);
-            history.push("/medical")
-            // Handle success, show message, reset form, etc.
-            } catch (error) {
-            console.error('Error submitting form:', error);
-            setError(error.message)
-            // Handle error, show error message, etc.
+            const response = await fetch("https://resq-api-5j6r.onrender.com/api/v1/resQ/users/auth/signup", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(userData),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log('Form submitted successfully:', data);
+                history.push("/medical");
+                // Handle success, show message, reset form, etc.
+            } else {
+                const errorData = await response.json();
+                console.error('Error submitting form:', errorData);
+                setError(errorData.message);
+                // Handle error, show error message, etc.
             }
-      };
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            setError(error.message);
+            // Handle other errors, if any.
+        }
+    };
 
     return(
         <section>
