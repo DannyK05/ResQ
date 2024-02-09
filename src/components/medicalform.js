@@ -84,7 +84,7 @@ const MedicalForm = () =>{
                     <input className="border-2 border-[#E7DDDD] p-[5px] hover:border-[#2592F6] m-[10px] w-[80%]" name="healthinsurance" onChange={handleChange}value={medData.healthinsurance}type ="text" placeholder="Health Insurance Provider"/>
                     <input className="border-2 border-[#E7DDDD] p-[5px] hover:border-[#2592F6] m-[10px] w-[80%]" name="policynumber" onChange={handleChange} value={medData.policynumber}type ="text" placeholder="Policy Number"/>
                 </div>
-                <button className=" form__button border-neutral-400 rounded bg-blue mx-[5px] my-[15px] px-[50px] py-[5px] w-[95%] text-white" type ="submit"><h1>Finish</h1></button>
+                <button className=" active:bg-white active:text-blue border-neutral-400 rounded bg-blue mx-[5px] my-[15px] px-[50px] py-[5px] w-[95%] text-white" type ="submit"><h1>Finish</h1></button>
             </form>
         </section>
     )

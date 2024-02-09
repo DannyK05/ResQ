@@ -41,7 +41,7 @@ const LoginForm = () =>{
             <form onSubmit={handleSubmit}>
                 <input className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6] m-[10px] w-[80%] " onChange={handleChange} name="email" value={logData.email} type="email" placeholder="example@gmail.com" required/> 
                 <input className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6] m-[10px] w-[80%] " onChange={handleChange} name="password" value={logData.password} type="password" placeholder="Password"  required/>
-                <button className="form__button  border-neutral-400 rounded-xl bg-blue mx-[5px] my-[15px] px-[40%] py-[5px] w-[95%] text-white"  type="submit"><h1>Login</h1></button>
+                <button className="active:bg-white active:text-blue  border-neutral-400 rounded-xl bg-blue mx-[5px] my-[15px] px-[40%] py-[5px] w-[95%] text-white"  type="submit"><h1>Login</h1></button>
             </form>
             <Link to="/signup"><p>Don't have an account? <span className="text-blue">SignUp</span></p></Link>
             <p onClick ={toggleResetForm} className="text-blue">Forget Password?</p>
@@ -49,7 +49,7 @@ const LoginForm = () =>{
                 <h1>Manage your password <ion-icon onClick={toggleResetForm} size = "large" name="close-circle"></ion-icon></h1>
                     <form>
                         <input className="m-[8px] p-[4px] w-[80%]  border-[1px] border-[#E7DDDD] rounded-[6px]" type="email" placeholder="Input your email"/>
-                        <button className=" form__button border-neutral-400 rounded-xl bg-blue mx-[5px] my-[15px] px-[50px] py-[5px] w-[95%] text-white" type="submit">
+                        <button className=" active:bg-white active:text-blue border-neutral-400 rounded-xl bg-blue mx-[5px] my-[15px] px-[50px] py-[5px] w-[95%] text-white" type="submit">
                             <h1>Reset Password</h1>
                         </button>
                     </form> 

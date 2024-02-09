@@ -22,7 +22,7 @@ const Bot = () => {
     return (
         <main>
             <header className="flex justify-between align-center py-[5px] px-[5px]">
-                <Link to="/home"><ion-icon name="arrow-back-outline"></ion-icon></Link>
+                <Link to="/home"><ion-icon size="large" name="arrow-back-outline"></ion-icon></Link>
                 <h1>Res<span className="text-blue">Q</span> Bot</h1>
             </header>
             <div className="dialogue">

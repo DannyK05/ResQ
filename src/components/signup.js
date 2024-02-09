@@ -51,7 +51,7 @@ const SignupForm = () =>{
                 <br/>
                 <input className="border-neutral-400 border-2 border-[#E7DDDD] p-[5px] " type="checkbox" required/> <label>I have read and accepted the terms and conditions.</label>
                 <br/>
-                <button className=" form__button border-neutral-400 rounded-xl bg-blue mx-[5px] my-[15px] px-[50px] py-[5px] w-[95%] text-white" type="submit"><h1>Continue</h1></button>
+                <button className=" active:bg-white active:text-blue border-neutral-400 rounded-xl bg-blue mx-[5px] my-[15px] px-[50px] py-[5px] w-[95%] text-white" type="submit"><h1>Continue</h1></button>
             </form>
             <Link to="/"><p>Already have an account?<span className="text-blue">Login</span></p></Link>
         </section>

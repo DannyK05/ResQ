@@ -31,7 +31,7 @@ const Profile =() =>{
                 <input className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6] rounded-[8px]  m-[10px] w-[80%] " type="email" name="email"  placeholder="response.data.email" required/>
                 <input className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6] rounded-[8px]  m-[10px] w-[80%] " type="number" name="phonenumber"  placeholder="response.data.phonenumber" required/> 
                 <br/>
-                <button className=" form__button border-neutral-400 rounded-xl bg-blue mx-[5px] my-[15px] px-[50px] py-[5px] w-[95%] text-white" type="submit"><h1>Update Info</h1></button>
+                <button className=" form__button border-neutral-400 active:bg-white active:text-blue rounded-xl bg-blue mx-[5px] my-[15px] px-[50px] py-[5px] w-[95%] text-white" type="submit"><h1>Update Info</h1></button>
             </form>
            
         </section>
