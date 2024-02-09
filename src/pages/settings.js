@@ -30,7 +30,7 @@ const Settings =() =>{
             <p onClick = {toggleCentreVisibility} className="border-b-[1px] border-b-[#D9D9D9] p-[10px] text-black"><ion-icon className="mx-[3px]" size= "large" name="people"></ion-icon>Manage Special Ones Contact Info </p>
             <p onClick = {toggleSpecialVisibility} className="border-b-[1px] border-b-[#D9D9D9] p-[10px] text-black"><ion-icon className="px-[3px]" size="large" name="lock-closed"></ion-icon>Manage Password </p>
             <ModPassword visibility = {isPasswordVisible} Close ={togglePasswordVisibility}/>
-            <ModCentre visibility = {isCentreVisible} Close ={toggleCentreVisibility}/>
+            <ModCentres visibility = {isCentreVisible} Close ={toggleCentreVisibility}/>
             <ModMedical visibility = {isMedicalVisible} Close ={toggleMedicalVisibility}/>
             <ModSpecial visibility = {isSpecialVisible} Close ={toggleSpecialVisibility}/>
         </ActionLayout>
