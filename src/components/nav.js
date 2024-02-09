@@ -11,7 +11,7 @@ const Navbar = ({ toggleEmergencyTab, visibility}) => {
         <nav className="fixed w-[100%] bottom-0">
             <ul className="flex w-[100%] justify-between align-center p-[5px]">
                <Link to="/home"> <li><img className="" alt="home" src={ActiveHome}/></li></Link>
-                <li><img className="" alt="Emergency button" onClick={toggleEmergencyTab} src={visibility ? Bluebtn : Close}/></li>
+                <li><img className="" alt="Emergency button" onClick={toggleEmergencyTab} src={visibility ? Close : Bluebtn}/></li>
                <Link to="/profile"><li><img className="" alt="profile" src={Profile}/></li></Link>
             </ul>
         </nav>
