@@ -7,12 +7,12 @@ const ModCentres = ({visibility, Close}) => {
     }
     return(
         <section className={`${visibility ? 'absolute' : 'hidden'} w-[90vw] bg-white py-[10px] px-[15px] rounded-[20px] z-10 shadow shadow-black top-[30%] left-[5vw]`}>           
-           <h1>Manage your personal health centres <ion-icon onClick={Close} size = "large" name="close-circle"></ion-icon></h1>
+           <h2>Manage your health centres <ion-icon onClick={Close} size = "large" name="close-circle"></ion-icon></h2>
             <p>No health centres was added</p>
-             <button onClick={toggleFormVisibility} className=" fixed bottom-[10px] right-[10px]]border-neutral-400 rounded-[100%]  text-white">
+             <button onClick={toggleFormVisibility} className=" relative bottom-[10px] right-[10px]]border-neutral-400 rounded-[100%]  text-white">
                     <ion-icon size="large" name="add-circle"></ion-icon>
                 </button>
-            <form className ={`${centreFormVisibility ? 'hidden' : 'relative'}`}>
+            <form className ={`${centreFormVisibility ? 'relative' : 'hidden'}`}>
                 <input className="m-[8px] p-[4px] w-[80%]  border-[1px] border-[#E7DDDD] rounded-[6px]" type="text" placeholder="Hospital name"/>
                 <input className="m-[8px] p-[4px] w-[80%]  border-[1px] border-[#E7DDDD] rounded-[6px]" type="number" placeholder="Contact number"/>
                 <input className="m-[8px] p-[4px] w-[80%]  border-[1px] border-[#E7DDDD] rounded-[6px]" type="email" placeholder="Contact mail"/>
