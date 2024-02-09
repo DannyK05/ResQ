@@ -14,19 +14,32 @@ const LoginForm = () =>{
     const handleChange = (e) =>{
         setData({...logData,[e.target.name]: e.target.value })
     }
-    const handleSubmit = async (e) =>{
+    const handleSubmit = async (e) => {
         e.preventDefault();
+
         try {
-            const response = await axios.post("https://resq-api-5j6r.onrender.com/api/v1/resQ/users/auth/login", logData);
-            console.log("Logged in successfully: ", response.data);
-            history.push('/home')
+            const response = await fetch("https://resq-api-5j6r.onrender.com/api/v1/resQ/users/auth/login", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(logData),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log("Logged in successfully: ", data);
+                history.push('/home');
+            } else {
+                const errorData = await response.json();
+                console.error("Incorrect email or password: ", errorData);
+                setError(errorData.code);
+            }
         } catch (error) {
-            console.log("Incorrect email or password: ", error)
-            setError(error.code)
-            
+            console.error("Error submitting form:", error);
+            setError(error.message);
         }
-    
-    }
+    };
     const[resetFormVisibility, setReset] = useState(false)
     const toggleResetForm = () =>{
         setReset(!resetFormVisibility)
