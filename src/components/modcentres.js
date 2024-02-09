@@ -1,5 +1,5 @@
 
-const ModCentres = () => {
+const ModCentres = ({visibility, Close}) => {
     return(
         <section className={`${visibility ? 'absolute' : 'hidden'} w-[90vw] bg-white py-[10px] px-[15px] rounded-[20px] z-10 shadow shadow-black top-[30%] left-[5vw]`}>           
            <h1>Manage your password <ion-icon onClick={Close} size = "large" name="close-circle"></ion-icon></h1>
