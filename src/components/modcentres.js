@@ -9,7 +9,7 @@ const ModCentres = ({visibility, Close}) => {
         <section className={`${visibility ? 'absolute' : 'hidden'} w-[90vw] bg-white py-[10px] px-[15px] rounded-[20px] z-10 shadow shadow-black top-[30%] left-[5vw]`}>           
            <h1>Manage your personal health centres <ion-icon onClick={Close} size = "large" name="close-circle"></ion-icon></h1>
             <p>No health centres was added</p>
-             <button onClick={toggleFormVisibilty} className=" fixed bottom-[10px] right-[10px]]border-neutral-400 rounded-[100%]  text-white">
+             <button onClick={toggleFormVisibility} className=" fixed bottom-[10px] right-[10px]]border-neutral-400 rounded-[100%]  text-white">
                     <ion-icon size="large" name="add-circle"></ion-icon>
                 </button>
             <form className ={`${centreFormVisibility ? 'hidden' : 'relative'}`}>
