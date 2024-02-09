@@ -60,3 +60,5 @@ const ModMedical = ({visibility, Close}) => {
         </section>
     )
 }
+
+export default ModMedical;
