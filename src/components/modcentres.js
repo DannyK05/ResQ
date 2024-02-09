@@ -12,7 +12,7 @@ const ModCentres = ({visibility, Close}) => {
              <button onClick={toggleFormVisibility} className=" relative bottom-[5px] left-[10px]]border-neutral-400 rounded-[100%]  text-white">
                     <ion-icon size="large" name="add-circle"></ion-icon>
                 </button>
-            <form className ={`${centreFormVisibility ? 'hidden' : 'relative'}`}>
+            <form className ={`${centreFormVisibility ? 'relative' : 'hidden'}`}>
                 <h1> Add health centres </h1>
                 <input className="m-[8px] p-[4px] w-[80%]  border-[1px] border-[#E7DDDD] rounded-[6px]" type="text" placeholder="Hospital name"/>
                 <input className="m-[8px] p-[4px] w-[80%]  border-[1px] border-[#E7DDDD] rounded-[6px]" type="number" placeholder="Contact number"/>
