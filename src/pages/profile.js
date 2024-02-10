@@ -1,4 +1,4 @@
-import axios from "axios"
+
 import HomeLayout from "../containers/homeLayout";
 import {useEffect, useState} from "react";
 

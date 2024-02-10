@@ -7,13 +7,14 @@ const ModSpecial = ({visibility, Close}) => {
     }
     return(
         <section className={`${visibility ? 'absolute' : 'hidden'} w-[90vw] bg-white py-[10px] px-[15px] rounded-[20px] z-10 shadow shadow-black top-[30%] left-[5vw]`}>           
-           <h1>Manage your special personnel info <ion-icon onClick={Close} size = "large" name="close-circle"></ion-icon></h1>
+           <h1>Manage your special person info <ion-icon onClick={Close} size = "large" name="close-circle"></ion-icon></h1>
             <p>No special person was added</p>
              <button onClick={toggleFormVisibility} className=" relative bottom-[5px] left-[10px]]border-neutral-400 rounded-[100%]  text-white">
-                    <ion-icon size="large" name="add-circle"></ion-icon>
+                    <ion-icon size="large" name={`${specialFormVisibility ? 'close-circle' : 'add-circle'}`}></ion-icon>
                 </button>
             <form className ={`${specialFormVisibility ? 'block' : 'hidden'}`}>
                 <h1> Add your special personnel</h1>
+                <p className="bg-blue p-[2px] text-white">You can add only two special person</p>
                 <input className="m-[8px] p-[4px] w-[80%]  border-[1px] border-[#E7DDDD] rounded-[6px]" type="text" placeholder="Person's name"/>
                 <input className="m-[8px] p-[4px] w-[80%]  border-[1px] border-[#E7DDDD] rounded-[6px]" type="tel" placeholder="Person's number"/>
                 <input className="m-[8px] p-[4px] w-[80%]  border-[1px] border-[#E7DDDD] rounded-[6px]" type="email" placeholder="Person's mail"/>

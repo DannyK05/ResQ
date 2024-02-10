@@ -5,9 +5,12 @@ h1,h2,h3{
   font-family: 'Bruno Ace SC', sans-serif;
 }
 p{
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 ion-icon {
   color: #2592F6;
+}
+ion-icon.notification{
+  font-size: 64px;
 }

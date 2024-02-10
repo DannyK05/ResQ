@@ -25,10 +25,25 @@ const Settings =() =>{
 
     return(
         <ActionLayout name ="Settings">
-            <p onClick = {toggleMedicalVisibility} className="border-b-[1px] border-b-[#D9D9D9] p-[10px] text-black"><ion-icon className="mx-[3px]" size= "large" name="heart"></ion-icon>Manage your Medical Info</p>
-            <p onClick = {toggleCentreVisibility} className="border-b-[1px] border-b-[#D9D9D9] p-[10px] text-black"><ion-icon className="mx-[3px]" size= "large" name="medkit"></ion-icon>Manage your Personal Health Centre Info</p>
-            <p onClick = {toggleSpecialVisibility} className="border-b-[1px] border-b-[#D9D9D9] p-[10px] text-black"><ion-icon className="mx-[3px]" size= "large" name="people"></ion-icon>Manage Special Ones Contact Info </p>
-            <p onClick = {togglePasswordVisibility} className="border-b-[1px] border-b-[#D9D9D9] p-[10px] text-black"><ion-icon className="px-[3px]" size="large" name="lock-closed"></ion-icon>Manage Password </p>
+            <div onClick = {toggleMedicalVisibility} className="border-b-[1px] border-b-[#D9D9D9] p-[10px] text-black">
+            <span className="mr-[3px] text-center"><ion-icon size= "large" name="heart"></ion-icon></span>
+            <p>Manage your Medical Info</p>
+            </div>
+            
+            <div onClick = {toggleCentreVisibility} className="border-b-[1px] border-b-[#D9D9D9] p-[10px] text-black">
+            <span className="mr-[3px] text-center"><ion-icon  size= "large" name="medkit"></ion-icon></span>
+            <p>Manage your Custom Health Centre </p>
+            </div>
+
+            <div onClick = {toggleSpecialVisibility} className="border-b-[1px] border-b-[#D9D9D9] p-[10px] text-black">
+            <span className="mr-[3px] text-center"><ion-icon  size= "large" name="people"></ion-icon></span>
+            <p>Manage Special Ones Contact Info </p>
+            </div>
+
+            <div onClick = {togglePasswordVisibility} className="border-b-[1px] border-b-[#D9D9D9] p-[10px] text-black">
+            <span className="mr-[3px] text-center"><ion-icon  size="large" name="lock-closed"></ion-icon></span>
+            <p>Manage Password </p>
+            </div>
             <ModPassword visibility = {isPasswordVisible} Close ={togglePasswordVisibility}/>
             <ModCentres visibility = {isCentreVisible} Close ={toggleCentreVisibility}/>
             <ModMedical visibility = {isMedicalVisible} Close ={toggleMedicalVisibility}/>
