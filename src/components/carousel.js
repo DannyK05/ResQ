@@ -7,7 +7,9 @@ const Carousel = () => {
     infinite: true,
     speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    autoplay: true, // Enable autoplay
+    autoplaySpeed: 5000, // changes every 5 seconds
   };
 
   return (
