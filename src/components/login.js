@@ -100,7 +100,7 @@ const LoginForm = () =>{
     return(
         <section className="mt-[10px]">
             <header className="bg-blue">
-                <span className="text-white p-[5px]">{formError}</span>
+                <span className="text-white">{formError}</span>
             </header>
             <h1><span className="text-blue">Welcome</span> Back</h1>
             <p>Login to your account</p>
