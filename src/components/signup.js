@@ -18,11 +18,13 @@ const SignupForm = () =>{
         //setting assigning the data inputted to the object
         setUser({ ...userData, [e.target.name]: e.target.value });
       };
-
+      //loading status
+      const[formLoading, setLoading] = useState(false)
       const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
+            setLoading(true)
             const response = await fetch("https://resq-api-5j6r.onrender.com/api/v1/resQ/users/auth/signup", {
                 method: 'POST',
                 headers: {
@@ -41,12 +43,24 @@ const SignupForm = () =>{
                 console.error('Error submitting form:', errorData);
                 setError(errorData.message);
                 // Handle error, show error message, etc.
+                // clears error message after 3 seconds
+                setTimeout(() =>{
+                    setError('')
+                }, 3000)
+                setLoading(false)
             }
         } catch (error) {
             console.error('Error submitting form:', error);
             setError(error.message);
             // Handle other errors, if any.
+            setLoading(false)
+             // clears error message after 3 seconds
+            setTimeout(() =>{
+                setError('')
+            }, 3000)
+           
         }
+        
     };
 
     return(
@@ -66,7 +80,7 @@ const SignupForm = () =>{
                 <br/>
                 <input className="border-neutral-400 border-2 border-[#E7DDDD] p-[5px] " type="checkbox" required/> <label>I have read and accepted the terms and conditions.</label>
                 <br/>
-                <button className=" active:bg-white active:text-blue border-neutral-400 rounded-xl bg-blue mx-[5px] my-[15px] px-[50px] py-[5px] w-[95%] text-white" type="submit"><h1>Continue</h1></button>
+                <button className=" active:bg-white active:text-blue border-neutral-400 rounded-xl bg-blue mx-[5px] my-[15px] px-[50px] py-[5px] w-[95%] text-white" disabled={formLoading ? true : false} type="submit"><h1>{formLoading ? 'Loading...' : 'continue'}</h1></button>
             </form>
             <Link to="/"><p>Already have an account?<span className="text-blue">Login</span></p></Link>
         </section>

@@ -107,16 +107,16 @@ const EmergencyTab = ({isVisible}) => {
             <div onClick={emergencySpecial} className="flex align-center justify-between pl-[45%] " >
             <img className="" src={Circle3} alt="Emergency"/><p className="text-[12px] w-[40%]">Alert special ones</p>
             </div>
-            <div className="flex align-center justify-between pl-[45%]">
+            <div onClick={emergencyCustomCentres} className="flex align-center justify-between pl-[45%]">
             <img className="" src={Circle2} alt="Emergency"/><p className="text-[12px] w-[40%]">Alert your custom health centre</p>
             </div>
             <div onClick={toggleConfirmStatus} className="flex align-center justify-between pl-[45%]">
                 <img className="" src={Circle} alt="Emergency"/><p className="text-[12px] w-[40%]">Alert nearby health centres</p>
             </div>
-            <div className={`bg-white ${confirmStatus ? 'absolute' : 'hidden'} top-[30%]`}>
-                <h1>Alert nearby health centres</h1>
+            <div className={`bg-white ${confirmStatus ? 'absolute' : 'hidden'} top-[20%] left-[40%] p-[40px] rounded-[20px]`}>
+                <h1>Alert nearby health centres?</h1>
                 <div className="flex flex-row align-center justify-between">
-                <button onClick={toggleConfirmStatus}><p className=" active:bg-blue active:text-white border-neutral-400 rounded-xl bg-white mx-[5px] my-[15px] px-[50px] py-[5px] w-[40%] text-blue">No</p></button>
+                <button className=" active:bg-blue active:text-white border-blue rounded-xl bg-white mx-[5px] my-[15px] px-[50px] py-[5px] w-[40%] text-blue" onClick={toggleConfirmStatus}><p>No</p></button>
                 <button className=" active:bg-white active:text-blue border-neutral-400 rounded-xl bg-blue mx-[5px] my-[15px] px-[50px] py-[5px] w-[40%] text-white"><p>Yes</p></button>
                 </div>
             </div>
