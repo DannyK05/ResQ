@@ -16,3 +16,7 @@ ion-icon {
 ion-icon.notification{
   font-size: 64px;
 }
+.carousel{
+  max-width: 100%;
+  
+}

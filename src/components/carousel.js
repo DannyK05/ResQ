@@ -13,7 +13,7 @@ const Carousel = () => {
   };
 
   return (
-    <div className="w-[90%] right-[5%] absolute top-[50%] lg:hidden">
+    <div className=" carousel w-[90%] mt-[20px] mb-[0] mx-[auto] lg:hidden">
       <Slider {...settings}>
         <div className='w-[100%] flex flex-col justify-center align-center'>
           <img src="https://via.placeholder.com/800x400" alt="Slide 1" />

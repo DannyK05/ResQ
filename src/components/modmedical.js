@@ -1,5 +1,7 @@
 import {useState} from "react";
 const ModMedical = ({visibility, Close}) => {
+
+    
     return(
         <section className={`${visibility ? 'absolute' : 'hidden'} w-[100%] bg-white py-[10px] px-[15px] rounded-[20px] z-10 shadow shadow-black top-[2px]`}>           
            <h1>Manage your medical info <ion-icon onClick={Close} size = "large" name="close-circle"></ion-icon></h1>

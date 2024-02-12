@@ -1,23 +1,153 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
 const ModCentres = ({visibility, Close}) => {
  const[centreFormVisibility, setFormVisibility] = useState(false)
     const toggleFormVisibility = () => {
         setFormVisibility(!centreFormVisibility)
+        
     }
+     // To store the dat of the centre person
+     const [centreData, setCentre] = useState({
+        centrename : '',
+        centreemail: '',
+        centrenumber:''
+    })
+    // To store input
+    const handleChange = (e) =>{
+        e.preventDefault()
+        setCentre({...centreData, [e.target.name]: e.target.value})
+    }
+    // To store the error message
+    const[formError, setError] = useState({
+        name: '',
+        email: '',
+        number: '',
+        form: ''
+    })
+
+    //Form validation
+    const formValidation = (centreData) => {
+        const error ={}
+        let valid = true
+        if (centreData.centrename === ''){
+            error.name = 'Please input health center name'
+            valid = false
+        }
+        if (centreData.centrenumber === ''){
+            error.number = 'Please input contact number'
+            valid = false
+        }
+        if (centreData.centreemail === ''){
+            error.email = 'Please input contact email'
+            valid = false
+        }
+        setError(error)
+        return valid
+    }
+    // Form submission
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        if (formValidation(centreData)){
+            try {
+                const response = await fetch('',{
+                    method: 'POST',
+                    headers:{
+                        'Content-Type': "application/json",
+                    },
+                    body: JSON.stringify(centreData)
+                })
+                if(response.ok){
+                    const data = await response.json();
+                    console.log("Form submitted", data)
+                    setError({...formError, form:"Form submitted successfully"})
+                }
+                else{
+                    const errorData = await response.json();
+                    console.log("Error submitting form", errorData) 
+                    setError({...formError, form:"Couldn't add"})
+                }
+
+            } catch (error) {
+                console.error("Error submitting form:", error);
+                setError({...formError, form: error.message });
+                setTimeout( () =>{
+                    setError({...formError, form: ''})
+                }, 2000
+                )
+            }
+        }
+        else{
+            console.log("Form validation failed")
+            // clears error message after 2 seconds
+            setTimeout( () =>{
+                setError({...formError, name: ''})
+            }, 2000
+            )
+            setTimeout( () =>{
+                setError({...formError, email: ''})
+            }, 2000
+            )
+            setTimeout( () =>{
+                setError({...formError, number: ''})
+            }, 2000
+            )
+        }
+    }
+    // Fetch already present centre ones
+    let available = false
+    const[availableCentre, setAvailable]= useState({
+        name: '',
+        number:'',
+        email: ''
+    })
+    useEffect(()=>{
+        async function fetchData () {
+        try {
+            const response = await fetch('')
+            if (response.ok) {
+                const data = await response.json;
+                setAvailable({...availableCentre, ...data})
+                console.log("Fetch centre successful", data)
+                available = true
+                
+            } else {
+                const errorData = await response.json;
+                console.log("Fetch centre failed", errorData)
+            }
+        } catch (error) {
+            console.log(error.message)
+        }
+        }
+        fetchData()
+    }    
+    ,[])
+
     return(
         <section className={`${visibility ? 'absolute' : 'hidden'} w-[90vw] bg-white py-[10px] px-[15px] rounded-[20px] z-10 shadow shadow-black top-[30%] left-[5vw]`}>           
+           <header className="bg-blue">
+                <span className="text-white text-center"><p>{formError.form}</p></span>
+            </header>
            <h2>Manage your health centres <ion-icon onClick={Close} size = "large" name="close-circle"></ion-icon></h2>
-            <p>No health centres was added</p>
+            { available ? 
+            <div>
+                <h1>{availableCentre.name}</h1>
+                <p>{availableCentre.number}</p>
+            </div>
+            :
+                <p>No health centres was added</p>
+                }
              <button onClick={toggleFormVisibility} className=" relative bottom-[5px] left-[10px]]border-neutral-400 rounded-[100%]  text-white">
                     <ion-icon size="large" name={`${centreFormVisibility ? 'close-circle' : 'add-circle'}`}></ion-icon>
                 </button>
-            <form className ={`${centreFormVisibility ? 'relative' : 'hidden'}`}>
+            <form onSubmit={handleSubmit} className ={`${centreFormVisibility ? 'relative' : 'hidden'}`}>
                 <h1> Add health centres </h1>
                 <p className="bg-blue p-[2px] text-white">You can add only two health centres</p>
-                <input className="m-[8px] p-[4px] w-[80%]  border-[1px] border-[#E7DDDD] rounded-[6px]" type="text" placeholder="Hospital name"/>
-                <input className="m-[8px] p-[4px] w-[80%]  border-[1px] border-[#E7DDDD] rounded-[6px]" type="tel" placeholder="Contact number"/>
-                <input className="m-[8px] p-[4px] w-[80%]  border-[1px] border-[#E7DDDD] rounded-[6px]" type="email" placeholder="Contact mail"/>
+                <input className="m-[8px] p-[4px] w-[80%]  border-[1px] border-[#E7DDDD] rounded-[6px]" onChange={handleChange} name="centrename" value={centreData.centrename} type="text" placeholder="Hospital name"/>
+                <div className={`${formError.name ? 'bg-blue p-[2px]' :''} text-center  text-white`}><p>{formError.name}</p></div>
+                <input className="m-[8px] p-[4px] w-[80%]  border-[1px] border-[#E7DDDD] rounded-[6px]" onChange={handleChange} name="centrenumber" value={centreData.centrenumber} type="tel" placeholder="Contact number"/>
+                <div className={`${formError.email ? 'bg-blue p-[2px]' :''} text-center  text-white`}><p>{formError.number}</p></div>
+                <input className="m-[8px] p-[4px] w-[80%]  border-[1px] border-[#E7DDDD] rounded-[6px]" onChange={handleChange} name="centreemail" value={centreData.centreemail} type="email" placeholder="Contact mail"/>
+                <div className={`${formError.number ? 'bg-blue p-[2px]' :''} text-center  text-white`}><p>{formError.email}</p></div>
                 <button className=" active:bg-white active:text-blue border-neutral-400 rounded-xl bg-blue mx-[5px] my-[15px] px-[50px] py-[5px] w-[95%] text-white" type="submit">
                     <h1>Update</h1>
                 </button>
