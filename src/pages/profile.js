@@ -9,7 +9,10 @@ const Profile =() =>{
     email: "",
     phonenumber: "",
   });
-    
+ // update the userData 
+  const handleChange = (e) =>{
+    setUserData({...userData, [e.target.name]: e.target.value})
+  }  
 // To fetch the current user data
   const fetchUserData = async () => {
     try {
@@ -31,17 +34,17 @@ const Profile =() =>{
   }, []);
     
     return(
-        <HomeLayout>
+        <HomeLayout isHome>
             <header className="flex justify-center align-center py-[5px] px-[5px]">
             <h1>Profile</h1>  
             </header>
             <section className="mt-[10px]">
             <h1>Update your Info</h1>
             <form>
-            <input className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6] rounded-[8px]  m-[10px] w-[40%] "  type="text" name="firstname"  placeholder="First name" value={userData.firstame} required/>
-                <input className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6] rounded-[8px]  m-[10px] w-[40%] " type="text" name="lastname"  placeholder="Last name" value={userData.lastname} required/>
-                <input className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6] rounded-[8px]  m-[10px] w-[80%] " type="email" name="email"  placeholder="Email" value={userData.email} required/>
-                <input className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6] rounded-[8px]  m-[10px] w-[80%] " type="tel" name="phonenumber"  placeholder="Phone number" value={userData.phonenumber} required/> 
+            <input className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6] rounded-[8px]  m-[10px] w-[40%] "  type="text" name="firstname"  onChange={handleChange} placeholder="First name" value={userData.firstname} required/>
+                <input className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6] rounded-[8px]  m-[10px] w-[40%] " type="text" name="lastname"  onChange={handleChange} placeholder="Last name" value={userData.lastname} required/>
+                <input className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6] rounded-[8px]  m-[10px] w-[80%] " type="email" name="email"  onChange={handleChange} placeholder="Email" value={userData.email} required/>
+                <input className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6] rounded-[8px]  m-[10px] w-[80%] " type="tel" name="phonenumber"  onChange={handleChange} placeholder="Phone number" value={userData.phonenumber} required/> 
                 <br/>
                 <button className=" form__button border-neutral-400 active:bg-white active:text-blue rounded-xl bg-blue mx-[5px] my-[15px] px-[50px] py-[5px] w-[95%] text-white" type="submit"><h1>Update Info</h1></button>
             </form>

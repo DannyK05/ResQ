@@ -113,7 +113,7 @@ const EmergencyTab = ({isVisible}) => {
             <div onClick={toggleConfirmStatus} className="flex align-center justify-between pl-[45%]">
                 <img className="" src={Circle} alt="Emergency"/><p className="text-[12px] w-[40%]">Alert nearby health centres</p>
             </div>
-            <div className={`bg-white ${confirmStatus ? 'absolute' : 'hidden'} top-[20%] left-[40%] p-[40px] rounded-[20px]`}>
+            <div className={`bg-white ${confirmStatus ? 'absolute' : 'hidden'} top-[20%] left-[0] p-[40px] rounded-[20px]`}>
                 <h1>Alert nearby health centres?</h1>
                 <div className="flex flex-row align-center justify-between">
                 <button className=" active:bg-blue active:text-white border-blue rounded-xl bg-white mx-[5px] my-[15px] px-[50px] py-[5px] w-[40%] text-blue" onClick={toggleConfirmStatus}><p>No</p></button>
