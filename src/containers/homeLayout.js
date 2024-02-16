@@ -5,6 +5,7 @@ import { useState } from "react";
 const HomeLayout = (props) =>{
     //to open and close the emergency tab
     const [isEmergencyTabVisible, setEmergencyTabVisible] = useState(false);
+    
 
     const toggleEmergencyTab = () => {
         setEmergencyTabVisible(!isEmergencyTabVisible);
@@ -13,7 +14,7 @@ const HomeLayout = (props) =>{
         <main className="h-[100vh] w-[100vw] px-[5px]">
             <HomeHeader/>
             {props.children}
-            <Navbar toggleEmergencyTab={toggleEmergencyTab} visibility ={isEmergencyTabVisible} />
+            <Navbar toggleEmergencyTab={toggleEmergencyTab} visibility ={isEmergencyTabVisible} activeNav={true}  />
             <EmergencyTab isVisible={isEmergencyTabVisible} />
 
         </main>

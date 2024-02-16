@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import axios from 'axios';
 
 const MedicalForm = () =>{
     const[medData, setData]= useState({
@@ -23,25 +23,11 @@ const MedicalForm = () =>{
         e.preventDefault();
 
         try {
-            const response = await fetch("https://resq-api-5j6r.onrender.com/api/v1/resQ/users/auth/signup", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(medData),
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                console.log('Form submitted successfully:', data);
-                history.push("/home");
-                // Handle success, show message, reset form, etc.
-            } else {
-                const errorData = await response.json();
-                console.error('Error submitting form:', errorData);
-                // setError(errorData.message);
-                // Handle error, show error message, etc.
-            }
+            const response = await axios.post("https://resq-api-5j6r.onrender.com/api/v1/resQ/users/auth/signup", medData);
+            console.log('Form submitted successfully:', response);
+            history.push("/home");
+            // Handle success, show message, reset form, etc.
+            
         } catch (error) {
             console.error('Error submitting form:', error);
             // setError(error.message);

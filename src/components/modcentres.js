@@ -1,3 +1,4 @@
+import axios from "axios";
 import {useState, useEffect} from "react";
 
 const ModCentres = ({visibility, Close}) => {
@@ -49,24 +50,10 @@ const ModCentres = ({visibility, Close}) => {
         e.preventDefault()
         if (formValidation(centreData)){
             try {
-                const response = await fetch('',{
-                    method: 'POST',
-                    headers:{
-                        'Content-Type': "application/json",
-                    },
-                    body: JSON.stringify(centreData)
-                })
-                if(response.ok){
-                    const data = await response.json();
-                    console.log("Form submitted", data)
-                    setError({...formError, form:"Form submitted successfully"})
-                }
-                else{
-                    const errorData = await response.json();
-                    console.log("Error submitting form", errorData) 
-                    setError({...formError, form:"Couldn't add"})
-                }
-
+                const response = await axios.post('',centreData)
+                console.log("Form submitted", response)
+                setError({...formError, form:"Form submitted successfully"})
+               
             } catch (error) {
                 console.error("Error submitting form:", error);
                 setError({...formError, form: error.message });
@@ -103,17 +90,13 @@ const ModCentres = ({visibility, Close}) => {
     useEffect(()=>{
         async function fetchData () {
         try {
-            const response = await fetch('')
-            if (response.ok) {
+            const response = await axios.get('')
                 const data = await response.json;
                 setAvailable({...availableCentre, ...data})
                 console.log("Fetch centre successful", data)
                 available = true
                 
-            } else {
-                const errorData = await response.json;
-                console.log("Fetch centre failed", errorData)
-            }
+            
         } catch (error) {
             console.log(error.message)
         }

@@ -1,10 +1,10 @@
 import SignLayout from "../containers/signLayout";
 import LoginForm from "../components/login";
 
-const LoginPage = () =>{
+const LoginPage = ({setAuthenticated}) =>{
     return(
         <SignLayout>
-            <LoginForm/>
+            <LoginForm setAuthenticated={setAuthenticated}/>
         </SignLayout>
     )
 }

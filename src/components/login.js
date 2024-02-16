@@ -1,8 +1,8 @@
-
+import axios from "axios"
 import { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 
-const LoginForm = () =>{
+const LoginForm = ({setAuthenticated}) =>{
     
     const [logData, setData ] = useState(
         {
@@ -28,29 +28,12 @@ const LoginForm = () =>{
 
             try {
                 setLoading(true)
-                const response = await fetch("https://resq-api-5j6r.onrender.com/api/v1/resQ/users/auth/login", {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(logData),
-                });
-
-                if (response.ok) {
-                    const data = await response.json();
-                    console.log("Logged in successfully: ", data);
-                    history.push('/home');
-                } else {
-                    const errorData = await response.json();
-                    console.error("Incorrect email or password: ", errorData);
-                    setError({...formError, form: errorData.message });
-                    setLoading(false)
-                    // clears error message after 3 seconds
-                    setTimeout(() =>{
-                        setError({...formError, form: "" })
-                    }, 3000)
-                    
-                }
+                const response = await axios.post("https://resq-api-5j6r.onrender.com/api/v1/resQ/users/auth/login", logData)
+                const {token} = response.data
+                history("/home")
+                localStorage.setItem('token', token)
+                setAuthenticated(true)
+           
             } catch (error) {
                 console.error("Error submitting form:", error);
                 setError({...formError, form: error.message });

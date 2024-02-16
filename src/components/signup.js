@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import axios from "axios"
 import { Link, useNavigate } from 'react-router-dom';
 
 const SignupForm = () =>{
@@ -65,30 +65,9 @@ const SignupForm = () =>{
         if (formValidation(userData)){
             try {
                 setLoading(true)
-                const response = await fetch("https://resq-api-5j6r.onrender.com/api/v1/resQ/users/auth/signup", {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(userData),
-                });
-
-                if (response.ok) {
-                    const data = await response.json();
-                    console.log('Form submitted successfully:', data);
-                    history.push("/medical");
-                    // Handle success, show message, reset form, etc.
-                } else {
-                    const errorData = await response.json();
-                    console.error('Error submitting form:', errorData);
-                    setError({...formError, form: errorData.message});
-                    // Handle error, show error message, etc.
-                    // clears error message after 3 seconds
-                    setTimeout(() =>{
-                        setError('')
-                    }, 3000)
-                    setLoading(false)
-                }
+                const response = await axios.post("https://resq-api-5j6r.onrender.com/api/v1/resQ/users/auth/signup",userData)
+                history.push("/medical");
+                console.log("Signup submitted: ", response)
             } catch (error) {
                 console.error('Error submitting form:', error);
                 setError({...formError, form: error.message});
@@ -120,7 +99,7 @@ const SignupForm = () =>{
 
     return(
         <section>
-            <header className="bg-blue">
+            <header className={`${formError.form ? "bg-blue text-center px-2 py-1" : "" }`}>
                 <span className="text-white">{formError.form}</span>
             </header>
             <h1><span className="text-blue">Get</span> Started</h1>

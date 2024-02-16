@@ -44,6 +44,10 @@ const Settings =() =>{
             <span className="mr-[3px] text-center"><ion-icon  size="large" name="lock-closed"></ion-icon></span>
             <p>Manage Password </p>
             </div>
+            <div  className="border-b-[1px] border-b-[#D9D9D9] p-[10px] text-black">
+            <span className="mr-[3px] text-center"><ion-icon  size="large" name="lock-closed"></ion-icon></span>
+            <p>Logout </p>
+            </div>
             <ModPassword visibility = {isPasswordVisible} Close ={togglePasswordVisibility}/>
             <ModCentres visibility = {isCentreVisible} Close ={toggleCentreVisibility}/>
             <ModMedical visibility = {isMedicalVisible} Close ={toggleMedicalVisibility}/>

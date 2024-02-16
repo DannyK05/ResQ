@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-
+import axios from "axios";
 const ModSpecial = ({visibility, Close}) => {
     const[specialFormVisibility, setFormVisibility] = useState(false)
     const toggleFormVisibility = () =>{
@@ -48,23 +48,10 @@ const ModSpecial = ({visibility, Close}) => {
         e.preventDefault()
         if (formValidation(specialData)){
             try {
-                const response = await fetch('',{
-                    method: 'POST',
-                    headers:{
-                        'Content-Type': "application/json",
-                    },
-                    body: JSON.stringify(specialData)
-                })
-                if(response.ok){
-                    const data = await response.json();
-                    console.log("Form submitted", data)
-                    setError({...formError, form:"Form submitted successfully"})
-                }
-                else{
-                    const errorData = await response.json();
-                    console.log("Error submitting form", errorData) 
-                    setError({...formError, form:"Couldn't add"})
-                }
+                const response = await axios.post('',specialData)
+                console.log("Form submitted", response)
+                setError({...formError, form:"Form submitted successfully"})
+                
 
             } catch (error) {
                 console.error("Error submitting form:", error);
@@ -102,17 +89,12 @@ const ModSpecial = ({visibility, Close}) => {
     useEffect(()=>{
         async function fetchData () {
         try {
-            const response = await fetch('api')
-            if (response.ok) {
-                const data = await response.json;
+            const response = await axios.get('api')
+            const data = await response.json;
                 setPerson({...availablePerson, ...data})
                 console.log("Fetch special successful", data)
                 available = true
-                
-            } else {
-                const errorData = await response.json;
-                console.log("Fetch special failed", errorData)
-            }
+           
         } catch (error) {
             console.log(error.message)
         }
