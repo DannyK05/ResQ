@@ -1,4 +1,3 @@
-import axios from "axios"
 import { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -16,7 +15,7 @@ const LoginForm = ({setAuthenticated}) =>{
         password:'',
         form : ''
     })
-    const history = useNavigate()
+    const navigate = useNavigate()
     const handleChange = (e) =>{
         setData({...logData,[e.target.name]: e.target.value.trim() })
     }
@@ -27,21 +26,33 @@ const LoginForm = ({setAuthenticated}) =>{
         if (formValidation(logData)){
 
             try {
-                setLoading(true)
-                const response = await axios.post("https://resq-api-vl3u.onrender.com/api/v1/resQ/users/auth/login", logData)
-                const {token} = response.data
-                history("/home")
-                localStorage.setItem('token', token)
-                setAuthenticated(true)
-           
+                setLoading(true);
+                const response = await fetch("https://resq-api-vl3u.onrender.com/api/v1/resQ/users/auth/login", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(logData)
+                });
+        
+                if (response.ok) {
+                    const { token } = await response.json();
+                    localStorage.setItem('token', token);
+                    setAuthenticated(true);
+                    navigate('/home'); // assuming 'navigate' is the name of your useNavigate hook
+        
+                } else {
+                    console.log("Error: ", response)
+                    throw new Error('Login failed'); // Or handle different status codes as per your API's response
+                }
             } catch (error) {
-                console.error("Error submitting form:", error);
-                setError({...formError, form: error.message });
-                setLoading(false)
+                console.error('Error submitting form:', error);
+                setError({ ...formError, form: error.message });
+                setLoading(false);
                 // clears error message after 3 seconds
-                setTimeout(() =>{
-                    setError({...formError, form: "" })
-                }, 3000)
+                setTimeout(() => {
+                    setError({ ...formError, form: "" });
+                }, 3000);
             }
         }  
         else{

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import axios from "axios"
 import { Link, useNavigate } from 'react-router-dom';
 
 const SignupForm = () =>{
@@ -53,7 +52,7 @@ const SignupForm = () =>{
         return valid
 
     }
-    const history = useNavigate()
+    const navigate = useNavigate()
     const handleChange = (e) => {
         //setting assigning the data inputted to the object
         setUser({ ...userData, [e.target.name]: e.target.value.trim() });
@@ -64,21 +63,32 @@ const SignupForm = () =>{
         e.preventDefault();
         if (formValidation(userData)){
             try {
-                setLoading(true)
-                const response = await axios.post("https://resq-api-vl3u.onrender.com/api/v1/resQ/users/auth/signup",userData)
-                console.log("Signup submitted: ", response.data)
-                history.push("/medical");
+                setLoading(true);
+                const response = await fetch("https://resq-api-vl3u.onrender.com/api/v1/resQ/users/auth/signup", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(userData),
+                });
+            
+                if (!response.ok) {
+                    console.log("Error submitting form: ", response)
+                }
+            
+                const data = await response.json();
+                console.log("Signup submitted: ", data);
+                navigate("/medical");
             } catch (error) {
                 console.error('Error submitting form:', error);
                 setError({...formError, form: error.message});
-                // Handle other errors, if any.
-                setLoading(false)
-                // clears error message after 3 seconds
+                setLoading(false);
+            
                 setTimeout(() =>{
                     setError('')
-                }, 3000)
-            
+                }, 3000);
             }
+            
         }
         else{
             console.log("Form validation failed")
