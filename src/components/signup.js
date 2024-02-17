@@ -66,8 +66,8 @@ const SignupForm = () =>{
             try {
                 setLoading(true)
                 const response = await axios.post("https://resq-api-vl3u.onrender.com/api/v1/resQ/users/auth/signup",userData)
+                console.log("Signup submitted: ", response.data)
                 history.push("/medical");
-                console.log("Signup submitted: ", response)
             } catch (error) {
                 console.error('Error submitting form:', error);
                 setError({...formError, form: error.message});
