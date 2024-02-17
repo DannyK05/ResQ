@@ -28,7 +28,7 @@ const LoginForm = ({setAuthenticated}) =>{
 
             try {
                 setLoading(true)
-                const response = await axios.post("https://resq-api-5j6r.onrender.com/api/v1/resQ/users/auth/login", logData)
+                const response = await axios.post("https://resq-api-vl3u.onrender.com/api/v1/resQ/users/auth/login", logData)
                 const {token} = response.data
                 history("/home")
                 localStorage.setItem('token', token)

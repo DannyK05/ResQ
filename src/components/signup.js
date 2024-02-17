@@ -65,7 +65,7 @@ const SignupForm = () =>{
         if (formValidation(userData)){
             try {
                 setLoading(true)
-                const response = await axios.post("https://resq-api-5j6r.onrender.com/api/v1/resQ/users/auth/signup",userData)
+                const response = await axios.post("https://resq-api-vl3u.onrender.com/api/v1/resQ/users/auth/signup",userData)
                 history.push("/medical");
                 console.log("Signup submitted: ", response)
             } catch (error) {
