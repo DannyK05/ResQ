@@ -5,19 +5,19 @@ import { Link, useNavigate } from 'react-router-dom';
 const SignupForm = () =>{
     //This for storing the data inputted
     const [userData, setUser] =useState({
-        firstname: "",
-        lastname: "",
+        firstName: "",
+        lastName: "",
         email: "" ,
-        phonenumber: "",
+        phoneNumber: "",
         password: "",
-        confirm: ""
+        passwordConfirm: ""
     })
     const[formError, setError] = useState({
         name: "",
         email: "" ,
-        phonenumber: "",
+        phoneNumber: "",
         password: "",
-        confirm: "",
+        passwordConfirm: "",
         form: ""
     })
     //Form validation
@@ -25,7 +25,7 @@ const SignupForm = () =>{
     const formValidation = (userData) => {
         const error = {}
         let valid = true 
-        if (userData.firstname.trim() === "" || userData.lastname.trim() === ""){
+        if (userData.firstName.trim() === "" || userData.lastName.trim() === ""){
             error.name = "Input your name"
             valid = false;
         }
@@ -36,14 +36,14 @@ const SignupForm = () =>{
             error.email = 'Email is invalid';
             valid = false;
         }
-        if (userData.phonenumber.trim() === ""){
-            error.phonenumber = "Input your phone number"
+        if (userData.phoneNumber.trim() === ""){
+            error.phoneNumber = "Input your phone number"
             valid = false;
         }
         if (userData.password.trim() === "") {
             error.password = "Input password"
             valid = false;
-        }else if (userData.password.trim() !== userData.confirm.trim()){
+        }else if (userData.password.trim() !== userData.passwordConfirm.trim()){
             error.password = "Password do not match"
             valid = false;
         }
@@ -89,7 +89,7 @@ const SignupForm = () =>{
                 setError({...formError, email: ''})
             }, 2000)
             setTimeout(() =>{
-                setError({...formError, phonenumber: ''})
+                setError({...formError, phoneNumber: ''})
             }, 2000)
             setTimeout(() =>{
                 setError({...formError, password: ''})
@@ -105,15 +105,15 @@ const SignupForm = () =>{
             <h1><span className="text-blue">Get</span> Started</h1>
             <p className="w-[100%]">Input your details to create an account</p>
             <form onSubmit={handleSubmit}>
-                <input className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6]  m-[10px] w-[40%] " onChange={handleChange} type="text" name="firstname" value={userData.firstname} placeholder="First name" />
-                <input className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6]  m-[10px] w-[40%] " onChange={handleChange} type="text" name="lastname" value={userData.lastname} placeholder="Last name" />
+                <input className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6]  m-[10px] w-[40%] " onChange={handleChange} type="text" name="firstName" value={userData.firstName} placeholder="First name" />
+                <input className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6]  m-[10px] w-[40%] " onChange={handleChange} type="text" name="lastName" value={userData.lastName} placeholder="Last name" />
                 <div className={`${formError.name ? 'bg-blue p-[2px]' :''} text-center  text-white`}><p>{formError.name}</p></div>
                 <input className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6]  m-[10px] w-[80%] " onChange={handleChange} type="email" name="email" value={userData.email} placeholder="example@gmail.com" />
                 <div className={`${formError.email ? 'bg-blue p-[2px]' :''} text-center  text-white`}><p>{formError.email}</p></div>
-                <input className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6]  m-[10px] w-[80%] " onChange={handleChange} type="tel" name="phonenumber" value={userData.phonenumber} placeholder="Phone number" />
-                <div className={`${formError.phonenumber ? 'bg-blue p-[2px]' :''} text-center  text-white`}><p>{formError.phonenumber}</p></div> 
+                <input className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6]  m-[10px] w-[80%] " onChange={handleChange} type="tel" name="phoneNumber" value={userData.phoneNumber} placeholder="Phone number" />
+                <div className={`${formError.phoneNumber ? 'bg-blue p-[2px]' :''} text-center  text-white`}><p>{formError.phoneNumber}</p></div> 
                 <input className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6]  m-[10px] w-[80%] " onChange={handleChange} type="password" name="password" value={userData.password} placeholder="Password" />
-                <input className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6]  m-[10px] w-[80%] " onChange={handleChange} type="password" name="confirm" placeholder="Confirm Password"  />
+                <input className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6]  m-[10px] w-[80%] " onChange={handleChange} type="password" name="passwordConfirm" placeholder="Confirm Password"  />
                 <div className={`${formError.password ? 'bg-blue p-[2px]' :''} text-center  text-white`}><p>{formError.password}</p></div>
                 <br/>
                 <input className="border-neutral-400 border-2 border-[#E7DDDD] p-[5px] " type="checkbox" required/> <label>I have read and accepted the terms and conditions.</label>
