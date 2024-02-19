@@ -72,34 +72,7 @@ const LoginForm = ({setAuthenticated}) =>{
         setReset(!resetFormVisibility)
     }
 
-    // To get user location 
-    const[userLocation, setLocation] = useState({
-        userLatitude : '',
-        userLongitude: ''
-    })
-    const getUserLocation = () => {
-        if ("geolocation" in navigator) {
-            // If supported, ask for the user's location
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    // If the user allows the location request, you can access the latitude and longitude
-                    const { latitude, longitude } = position.coords;
-                    setLocation({ 
-                        userLatitude: latitude,
-                        userLongitude: longitude
-                    })
-                },
-                (error) => {
-                    // If the user denies the location request 
-                    console.error("Error getting user location:", error);
-                }
-            );
-        } else {
-            // If Geolocation is not supported by the browser
-            console.error("Geolocation is not supported by this browser.");
-        }
-        
-    }
+   
     // form validation
     const formValidation = (logData) => {
         const errors = {};
@@ -126,7 +99,6 @@ const LoginForm = ({setAuthenticated}) =>{
     const handleLocationAndSubmit = (e) =>{
         e.preventDefault();
         handleSubmit(e);
-        getUserLocation();
     }
     return(
         <section className="mt-[10px]">

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
+import axios from "axios";
 
 const SignupForm = () =>{
     //This for storing the data inputted
@@ -64,21 +65,10 @@ const SignupForm = () =>{
         if (formValidation(userData)){
             try {
                 setLoading(true);
-                const response = await fetch("https://resq-api-vl3u.onrender.com/api/v1/resQ/users/auth/signup", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(userData),
-                });
-            
-                if (!response.ok) {
-                    console.log("Error submitting form: ", response)
-                }
-            
-                const data = await response.json();
-                console.log("Signup submitted: ", data);
+                const response = await axios.post("https://resq-api-vl3u.onrender.com/api/v1/resQ/users/auth/signup", userData );
+                console.log("Signup submitted: ", response);
                 navigate("/medical");
+                      
             } catch (error) {
                 console.error('Error submitting form:', error);
                 setError({...formError, form: error.message});
