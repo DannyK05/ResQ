@@ -57,8 +57,8 @@ const MedicalForm = () =>{
                 </select>
                 <br/>
                 <label for="disability">Do you have any disability</label>
-                <input name="disability" className="ml-[8px]" type ="radio" onChange={handleChange} checked={medData.disability === 'Yes'} value="true"/> <label>Yes</label>
-                <input name = "disability" className="ml-[8px]" type ="radio" onChange={handleChange} checked={medData.disability === 'No'} value="false"/><label>No</label>
+                <input name="disability" className="ml-[8px]" type ="radio" onChange={handleChange} checked={medData.disability === 'Yes'} value="Yes"/> <label>Yes</label>
+                <input name = "disability" className="ml-[8px]" type ="radio" onChange={handleChange} checked={medData.disability === 'No'} value="No"/><label>No</label>
                 </div>
                    
                 <div>

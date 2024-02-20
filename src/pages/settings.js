@@ -12,6 +12,7 @@ const Settings =() =>{
 
     const logOut = () =>{
         localStorage.removeItem('token')
+        
     }
 
     const togglePasswordVisibility = () => {
