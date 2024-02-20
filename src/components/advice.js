@@ -23,7 +23,7 @@ const Advice = () => {
     return (
         <div className="home__advicebubble rounded-[20px] shadow shadow-black w-[90vw] p-[5px] my-[10px]">
             <h1>Res<span className="text-blue">Q</span> says</h1>
-            <div className="w-[100%] h-[100px] advicebubble">
+            <div className="w-[100%] h-[120px] advicebubble">
                 <p className="w-[100%] text-blue">{currentAdvice}</p>
             </div>
         </div>

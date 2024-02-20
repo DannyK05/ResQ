@@ -1,84 +1,64 @@
-import React, { useState, useEffect } from 'react';
+import ActionLayout from "../containers/actionLayout";
+import React, { useEffect, useState, useCallback } from 'react';
 import GoogleMapReact from 'google-map-react';
-import axios from 'axios';
-import ActionLayout from '../containers/actionLayout';
+import axios from "axios";
 
-const Map = ({ apiKey }) => {
-  const [hospitals, setHospitals] = useState([]);
-  
-  // To get user location 
-  const [userLocation, setUserLocation] = useState({
-    userLatitude: null,
-    userLongitude: null
-  });
+const Map = () => {
+    const [userLocation, setUserLocation] = useState({ lat: 40.7128, lng: -74.0060 }); // Default to New York City coordinates
+    const [nearestHospital, setNearestHospital] = useState(null);
 
-  useEffect(() => {
-    getUserLocation();
-  }, []);
-
-  const getUserLocation = () => {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-          setUserLocation({ 
-            userLatitude: latitude,
-            userLongitude: longitude
-          });
-        },
-        (error) => {
-          console.error("Error getting user location:", error);
+    // Define fetchNearbyHospitals as a useCallback to memoize it
+    const fetchNearbyHospitals = useCallback(async (lat, lng) => {
+        try {
+            // Make API request to fetch nearby hospitals
+            const response = await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=1500&type=hospital&key=AIzaSyA-eimkkqp9OSHxHlKuScXbyz9Cr-dgqf0`);
+            if (response.data.results && response.data.results.length > 0) {
+                setNearestHospital(response.data.results[0]);
+            }
+        } catch (error) {
+            console.error('Error fetching nearby hospitals:', error);
         }
-      );
-    } else {
-      console.error("Geolocation is not supported by this browser.");
-    }
-  };
+    }, []);
 
-  useEffect(() => {
-    if (userLocation.userLatitude !== null && userLocation.userLongitude !== null) {
-      fetchNearbyHospitals();
-    }
-  }, [userLocation]);
+    useEffect(() => {
+        // Fetch user's location
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                position => {
+                    setUserLocation({
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    });
+                    fetchNearbyHospitals(position.coords.latitude, position.coords.longitude);
+                },
+                error => {
+                    console.error('Error getting user location:', error);
+                }
+            );
+        } else {
+            console.error('Geolocation is not supported by this browser.');
+        }
+    }, [fetchNearbyHospitals]); // Include fetchNearbyHospitals in the dependency array
 
-  const fetchNearbyHospitals = async () => {
-    try {
-      const response = await axios.get(
-        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${userLocation.userLatitude},${userLocation.userLongitude}&radius=5000&type=hospital&key=${apiKey}`
-      );
-      setHospitals(response.data.results);
-    } catch (error) {
-      console.error('Error fetching nearby hospitals:', error);
-    }
-  };
-
-  if (userLocation.userLatitude === null || userLocation.userLongitude === null) {
-    // If user location is not available yet, you can return a loading indicator or handle it accordingly.
-    return <div>Loading...</div>;
-  }
-
-  return (
-    <ActionLayout>
-      <GoogleMapReact
-        bootstrapURLKeys={{ key: "AIzaSyA-eimkkqp9OSHxHlKuScXbyz9Cr-dgqf0" }}
-        defaultCenter={{
-          lat: parseFloat(userLocation.userLatitude),
-          lng: parseFloat(userLocation.userLongitude)
-        }}
-        defaultZoom={12}
-      >
-        {hospitals.map((hospital) => (
-          <Marker
-            key={hospital.id}
-            lat={hospital.geometry.location.lat}
-            lng={hospital.geometry.location.lng}
-          />
-        ))}
-      </GoogleMapReact>
-    </ActionLayout>
-  );
+    return (
+        <ActionLayout name="Map">
+            <GoogleMapReact
+                bootstrapURLKeys={{ key: 'AIzaSyA-eimkkqp9OSHxHlKuScXbyz9Cr-dgqf0' }}
+                defaultCenter={userLocation}
+                defaultZoom={12}
+            >
+                {nearestHospital && (
+                    <Marker
+                        lat={nearestHospital.geometry.location.lat}
+                        lng={nearestHospital.geometry.location.lng}
+                        text="H"
+                    />
+                )}
+            </GoogleMapReact>
+        </ActionLayout>
+    );
 };
 
-const Marker = () => <div style={{ color: 'red' }}>H</div>;
+const Marker = ({ text }) => <div className="marker">{text}</div>;
 
 export default Map;
