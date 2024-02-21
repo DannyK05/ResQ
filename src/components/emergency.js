@@ -72,9 +72,14 @@ const EmergencyTab = ({ isVisible }) => {
 
     const fetchNearbyHospitals = async () => {
         try {
-            const response = await axios.get(
-                `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${userLocation.latitude},${userLocation.longitude}&radius=1500&type=hospital&key=AIzaSyA-eimkkqp9OSHxHlKuScXbyz9Cr-dgqf0`
-            );
+            const response = await axios.get('https://res-q-google-api-proxy-server.vercel.app/maps/api/place/nearbysearch/json', {
+                params: {
+                    location: `${userLocation.latitude},${userLocation.longitude}`,
+                    radius: 1500,
+                    type: 'hospital',
+                    key: 'AIzaSyA-eimkkqp9OSHxHlKuScXbyz9Cr-dgqf0' // Replace with your backend API key
+                }
+            });
             const hospitalData = response.data.results;
             if (hospitalData.length > 0) {
                 let closestHospital = hospitalData[0];
@@ -93,6 +98,7 @@ const EmergencyTab = ({ isVisible }) => {
             console.error('Error fetching nearby hospitals:', error);
         }
     };
+    
 
     const callClosestHospital = async () => {
         await fetchNearbyHospitals();

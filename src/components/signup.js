@@ -46,6 +46,9 @@ const SignupForm = () =>{
         }else if (userData.password.trim() !== userData.passwordConfirm.trim()){
             error.password = "Password do not match"
             valid = false;
+        }else if(userData.password.length > 8){
+            error.password = "Password must be at least 8 characters"
+            valid = false;
         }
         
         setError({...formError, ...error})
