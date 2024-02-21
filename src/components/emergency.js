@@ -90,7 +90,7 @@ const EmergencyTab = ({ isVisible }) => {
 
     const fetchNearbyHospitals = async () => {
         try {
-            const response = await axios.get('https://res-q-google-api-proxy-server.vercel.app/maps/api/place/nearbysearch/json', {
+            const response = await axios.get('https://www.res-q-google-api-proxy-server.vercel.app/maps/api/place/nearbysearch/json', {
             params: {
                 location: `${userLocation.latitude},${userLocation.longitude}`,
                 radius: 1500,
@@ -125,7 +125,7 @@ const EmergencyTab = ({ isVisible }) => {
         await fetchNearbyHospitals();
         if (closestHospital) {
             try {
-                const response = await axios.get('https://res-q-google-api-proxy-server.vercel.app/call-closest-hospital', {
+                const response = await axios.get('https://www.res-q-google-api-proxy-server.vercel.app/call-closest-hospital', {
                     params: {
                         userLocation: `${userLocation.latitude},${userLocation.longitude}`
                     }

@@ -18,7 +18,7 @@ function App() {
 
   const handleLogin = () =>{
     let token = localStorage.getItem('token')
-    token ? setAuthenticated(true) : setAuthenticated(false)
+    token ? setAuthenticated(true) : setAuthenticated(true)
   }
   // This checks for token when component mounts
   useEffect(() =>{

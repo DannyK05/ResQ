@@ -11,7 +11,7 @@ const Map = () => {
     const fetchNearbyHospitals = useCallback(async (lat, lng) => {
         try {
             // Make API request to fetch nearby hospitals
-            const response = await axios.get('https://res-q-google-api-proxy-server.vercel.app/fetch-nearby-hospitals', {
+            const response = await axios.get('https://www.res-q-google-api-proxy-server.vercel.app/fetch-nearby-hospitals', {
                 params: {
                     lat: lat,
                     lng: lng
