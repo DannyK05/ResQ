@@ -61,26 +61,46 @@ const EmergencyTab = ({ isVisible }) => {
     }
 
     const calculateDistance = (location1, location2) => {
-        let changeLat = location1.latitude - location2.latitude 
-        let changeLong = location1.longitude - location2.longitude 
-        const a = (Math.sin(changeLat/2))**2 + Math.cos(location1.latitude) * Math.cos(location2.latitude) * (Math.sin(changeLong/2))**2
-        const c = 2 * a*Math.tan(2( (a)**0.5, (1-a)**0.5 ))
-        const d =  6371  * c
-        console.log("This is the value of d:", d)
-        return d
+        const lat1 = location1.latitude;
+        const lon1 = location1.longitude;
+        const lat2 = location2.lat;
+        const lon2 = location2.lng;
+    
+        const R = 6371; // Radius of the Earth in kilometers
+        const dLat = deg2rad(lat2 - lat1);
+        const dLon = deg2rad(lon2 - lon1);
+    
+        const a =
+            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        const distance = R * c; // Distance in kilometers
+    
+        console.log("Distance:", distance);
+        return distance;
     }
+    
+    // Helper function to convert degrees to radians
+    function deg2rad(deg) {
+        return deg * (Math.PI / 180);
+    }
+    
 
     const fetchNearbyHospitals = async () => {
         try {
             const response = await axios.get('https://res-q-google-api-proxy-server.vercel.app/maps/api/place/nearbysearch/json', {
-                params: {
-                    location: `${userLocation.latitude},${userLocation.longitude}`,
-                    radius: 1500,
-                    type: 'hospital',
-                    key: 'AIzaSyA-eimkkqp9OSHxHlKuScXbyz9Cr-dgqf0' // Replace with your backend API key
-                }
+            params: {
+                location: `${userLocation.latitude},${userLocation.longitude}`,
+                radius: 1500,
+                type: 'hospital',
+                key: 'AIzaSyA-eimkkqp9OSHxHlKuScXbyz9Cr-dgqf0' 
+            }
             });
             const hospitalData = response.data.results;
+            console.log("Response: ", response)
+            console.log("Hospital fetched: ", hospitalData)
             if (hospitalData.length > 0) {
                 let closestHospital = hospitalData[0];
                 let closestDistance = calculateDistance(userLocation, closestHospital.geometry.location);
@@ -93,6 +113,7 @@ const EmergencyTab = ({ isVisible }) => {
                     }
                 }
                 setClosestHospital(closestHospital);
+                console.log("Closest Hospital: ", closestHospital)
             }
         } catch (error) {
             console.error('Error fetching nearby hospitals:', error);
@@ -104,11 +125,14 @@ const EmergencyTab = ({ isVisible }) => {
         await fetchNearbyHospitals();
         if (closestHospital) {
             try {
-                const response = await axios.post(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${userLocation.userLatitude},${userLocation.userLongitude}&radius=1500&type=hospital&key=AIzaSyA-eimkkqp9OSHxHlKuScXbyz9Cr-dgqf0`, {
-                    fields: `place-id=${closestHospital}`,
-                    key: "AIzaSyA-eimkkqp9OSHxHlKuScXbyz9Cr-dgqf0"
+                const response = await axios.get('https://res-q-google-api-proxy-server.vercel.app/call-closest-hospital', {
+                    params: {
+                        userLocation: `${userLocation.latitude},${userLocation.longitude}`
+                    }
                 });
-                const hospitalNumber = response.result.formatted_phone_number;
+                console.log(response.data)
+                const hospitalNumber = response.data.hospitalNumber;
+                console.log("hospital number",hospitalNumber)
                 window.location.href = 'tel:' + hospitalNumber;
             } catch (error) {
                 console.log("Error calling the closest hospital", error);
@@ -120,6 +144,7 @@ const EmergencyTab = ({ isVisible }) => {
             }, 3000);
         }
     }
+    
 
     return (
         <section className={`bg-[#FAFAFA] z-0 fixed w-[100%]  py-[5px]  flex flex-col align-center justify-between h-[40vh] bottom-[60px] ${isVisible ? 'block' : 'hidden'}`}>
