@@ -92,12 +92,12 @@ const EmergencyTab = ({ isVisible }) => {
 
     const fetchNearbyHospitals = async () => {
         try {
-            const response = await fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${userLocation.latitude},${userLocation.longitude}&radius=1500&type=hospital&key=AIzaSyA-eimkkqp9OSHxHlKuScXbyz9Cr-dgqf0`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
+            const response = await fetch(`https://resq-google-api-proxy-server-1.onrender.com/maps/api/place/nearbysearch/json?location=${userLocation.latitude},${userLocation.longitude}&radius=1500&type=hospital&key=AIzaSyA-eimkkqp9OSHxHlKuScXbyz9Cr-dgqf0`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
             const responseData = await response.json();
             console.log("Response: ", responseData);
             const hospitalData = responseData.results;
@@ -126,16 +126,16 @@ const EmergencyTab = ({ isVisible }) => {
         await fetchNearbyHospitals();
         if (closestHospital) {
             try {
-                const response = await fetch(`https://maps.googleapis.com/maps/api/place/details/json?place_id=${closestHospital.place_id}&key=AIzaSyA-eimkkqp9OSHxHlKuScXbyz9Cr-dgqf0`, {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
-    
+                const response = await fetch(`https://resq-google-api-proxy-server-1.onrender.com/call-closest-hospital?userLocation=${userLocation.latitude},${userLocation.longitude}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
                 console.log("Response ", response);
                 const responseData = await response.json();
-                const hospitalNumber = responseData.result.formatted_phone_number;
+                const hospitalNumber = responseData.hospitalNumber;
                 console.log("hospital number", hospitalNumber);
                 window.location.href = 'tel:' + hospitalNumber;
             } catch (error) {
@@ -148,7 +148,6 @@ const EmergencyTab = ({ isVisible }) => {
             }, 3000);
         }
     };
-    
 
     
     

@@ -45,7 +45,7 @@ const Map = ({ apiKey }) => {
   const fetchNearbyHospitals = async (lat,lng) => {
     try {
         // Make API request to fetch nearby hospitals
-        const response = await axios.get('https://res-q-google-api-proxy-server.vercel.app/fetch-nearby-hospitals', {
+        const response = await axios.get('https://resq-google-api-proxy-server-1.onrender.com/fetch-nearby-hospitals', {
             params: {
                 lat: lat,
                 lng: lng
