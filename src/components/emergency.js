@@ -43,6 +43,7 @@ const EmergencyTab = ({ isVisible }) => {
             }
         } catch (error) {
             console.log('Failed to retrieve special ones info', error);
+            setMessage("Failed to retrieve info")
         }
     }
 
@@ -57,6 +58,7 @@ const EmergencyTab = ({ isVisible }) => {
             }
         } catch (error) {
             console.log(error);
+            setMessage("Failed to retrieve info")
         }
     }
 
@@ -90,14 +92,16 @@ const EmergencyTab = ({ isVisible }) => {
 
     const fetchNearbyHospitals = async () => {
         try {
-            const response = await axios.get('https://www.res-q-google-api-proxy-server.vercel.app/maps/api/place/nearbysearch/json', {
+            const response = await axios.get('https://res-q-google-api-proxy-server.vercel.app/maps/api/place/nearbysearch/json', {
             params: {
                 location: `${userLocation.latitude},${userLocation.longitude}`,
                 radius: 1500,
                 type: 'hospital',
                 key: 'AIzaSyA-eimkkqp9OSHxHlKuScXbyz9Cr-dgqf0' 
             }
+            
             });
+
             const hospitalData = response.data.results;
             console.log("Response: ", response)
             console.log("Hospital fetched: ", hospitalData)
@@ -122,15 +126,16 @@ const EmergencyTab = ({ isVisible }) => {
     
 
     const callClosestHospital = async () => {
+        setConfirmStatus(!confirmStatus)
         await fetchNearbyHospitals();
         if (closestHospital) {
             try {
-                const response = await axios.get('https://www.res-q-google-api-proxy-server.vercel.app/call-closest-hospital', {
+                const response = await axios.get('https://res-q-google-api-proxy-server.vercel.app/call-closest-hospital', {
                     params: {
                         userLocation: `${userLocation.latitude},${userLocation.longitude}`
                     }
                 });
-                console.log(response.data)
+                console.log("Response ", response)
                 const hospitalNumber = response.data.hospitalNumber;
                 console.log("hospital number",hospitalNumber)
                 window.location.href = 'tel:' + hospitalNumber;

@@ -1,70 +1,93 @@
-import ActionLayout from "../containers/actionLayout";
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import GoogleMapReact from 'google-map-react';
-import axios from "axios";
+import axios from 'axios';
+import ActionLayout from '../containers/actionLayout';
 
-const Map = () => {
-    const [userLocation, setUserLocation] = useState({ lat: "", lng: "" }); // Default to New York City coordinates
-    const [nearestHospital, setNearestHospital] = useState(null);
+const Map = ({ apiKey }) => {
+  const [hospitals, setHospitals] = useState([]);
+  const [nearestHospital, setNearestHospital] = useState(null);
 
-    // Define fetchNearbyHospitals as a useCallback to memoize it
-    const fetchNearbyHospitals = useCallback(async (lat, lng) => {
-        try {
-            // Make API request to fetch nearby hospitals
-            const response = await axios.get('https://www.res-q-google-api-proxy-server.vercel.app/fetch-nearby-hospitals', {
-                params: {
-                    lat: lat,
-                    lng: lng
-                }
-            });
+  // To get user location 
+  const [userLocation, setUserLocation] = useState({
+    userLatitude: null,
+    userLongitude: null
+  });
 
-            if (response.data.results && response.data.results.length > 0) {
-                setNearestHospital(response.data.results[0]);
+  useEffect(() => {
+    getUserLocation();
+  }, []);
+
+  const getUserLocation = () => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setUserLocation({ 
+            userLatitude: latitude,
+            userLongitude: longitude
+          });
+        },
+        (error) => {
+          console.error("Error getting user location:", error);
+        }
+      );
+    } else {
+      console.error("Geolocation is not supported by this browser.");
+    }
+  };
+
+  useEffect(() => {
+    if (userLocation.userLatitude !== null && userLocation.userLongitude !== null) {
+      fetchNearbyHospitals(userLocation.userLatitude, userLocation.userLongitude);
+    }
+  }, [userLocation]);
+
+  const fetchNearbyHospitals = async (lat,lng) => {
+    try {
+        // Make API request to fetch nearby hospitals
+        const response = await axios.get('https://res-q-google-api-proxy-server.vercel.app/fetch-nearby-hospitals', {
+            params: {
+                lat: lat,
+                lng: lng
             }
-        } catch (error) {
-            console.error('Error fetching nearby hospitals:', error);
-        }
-    }, []);
+        });
+        console.log(response)
 
-    useEffect(() => {
-        // Fetch user's location
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                position => {
-                    setUserLocation({
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude
-                    });
-                    fetchNearbyHospitals(position.coords.latitude, position.coords.longitude);
-                },
-                error => {
-                    console.error('Error getting user location:', error);
-                }
-            );
-        } else {
-            console.error('Geolocation is not supported by this browser.');
+        if (response.data.results && response.data.results.length > 0) {
+            setNearestHospital(response.data.results[0]);
         }
-    }, [fetchNearbyHospitals]); // Include fetchNearbyHospitals in the dependency array
+    } catch (error) {
+        console.error('Error fetching nearby hospitals:', error);
+    }
+  };
 
-    return (
-        <ActionLayout name="Map">
-            <GoogleMapReact
-                bootstrapURLKeys={{ key: 'AIzaSyA-eimkkqp9OSHxHlKuScXbyz9Cr-dgqf0' }}
-                defaultCenter={userLocation}
-                defaultZoom={12}
-            >
-                {nearestHospital && (
+  if (userLocation.userLatitude === null || userLocation.userLongitude === null) {
+    // If user location is not available yet, you can return a loading indicator or handle it accordingly.
+    return <div className='flex flex-col justify-center items-center color-blue'><h1>Loading...</h1></div>;
+  }
+
+  return (
+    <ActionLayout name= "Map">
+      <GoogleMapReact
+        bootstrapURLKeys={{ key: "AIzaSyA-eimkkqp9OSHxHlKuScXbyz9Cr-dgqf0" }}
+        defaultCenter={{
+          lat: parseFloat(userLocation.userLatitude),
+          lng: parseFloat(userLocation.userLongitude)
+        }}
+        defaultZoom={12}
+      >
+          {nearestHospital && (
                     <Marker
                         lat={nearestHospital.geometry.location.lat}
                         lng={nearestHospital.geometry.location.lng}
                         text="H"
                     />
                 )}
-            </GoogleMapReact>
-        </ActionLayout>
-    );
+      </GoogleMapReact>
+    </ActionLayout>
+  );
 };
 
-const Marker = ({ text }) => <div className="marker">{text}</div>;
+const Marker = () => <div style={{ color: 'red' }}>H</div>;
 
 export default Map;

@@ -46,7 +46,7 @@ const LoginForm = ({setAuthenticated}) =>{
                     throw new Error('Login failed'); // Or handle different status codes as per your API's response
                 }
             } catch (error) {
-                console.error('Error submitting form:', error);
+                console.error('Error submitting form:', error.response.data.message);
                 setError({ ...formError, form: error.message });
                 setLoading(false);
                 // clears error message after 3 seconds
