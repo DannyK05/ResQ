@@ -1,5 +1,9 @@
 import React from 'react';
 import Slider from 'react-slick';
+import Hospital from "../assets/imgs/Hospital.png";
+import Bot from "../assets/imgs/Robot.png";
+import Family from "../assets/imgs/Family.png";
+import { Link } from 'react-router-dom';
 
 const Carousel = () => {
   const settings = {
@@ -15,17 +19,14 @@ const Carousel = () => {
   return (
     <div className=" carousel w-[90%] mt-[20px] mb-[0] mx-[auto] lg:hidden">
       <Slider {...settings}>
-        <div className='w-[100%] flex flex-col justify-center align-center'>
-          <img src="https://via.placeholder.com/800x400" alt="Slide 1" />
-          {/* <p>Ask ResQbot </p> */}
+        <div className='w-[100%] '>
+          <Link to="/settings"><img src={Hospital} alt="Slide 1" /></Link>
         </div>
-        <div className='w-[100%] flex flex-col justify-center align-center'>
-          <img src="https://via.placeholder.com/800x400" alt="Slide 2" />
-          {/* <p>Giving us permisson to use your location helps us alert health centres where to find you </p> */}
+        <div className='w-[100%] '>
+        <Link to="/settings"> <img src={Bot} alt="Slide 2" /></Link>
         </div>
-        <div className='w-[100%] flex flex-col justify-center align-center'>
-          <img src="https://via.placeholder.com/800x400" alt="Slide 3" />
-          {/* <p>Set up your health centres and special ones contact</p> */}
+        <div className='w-[100%] '>
+        <Link to="/settings"><img src={Family} alt="Slide 3" /></Link>
         </div>
       </Slider>
     </div>

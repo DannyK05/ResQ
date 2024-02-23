@@ -92,7 +92,8 @@ const EmergencyTab = ({ isVisible }) => {
 
     const fetchNearbyHospitals = async () => {
         try {
-            const response = await fetch(`https://resq-google-api-proxy-server-1.onrender.com/maps/api/place/nearbysearch/json?location=${userLocation.latitude},${userLocation.longitude}&radius=1500&type=hospital&key=AIzaSyA-eimkkqp9OSHxHlKuScXbyz9Cr-dgqf0`, {
+            setMessage("Fetching Nearby Hospital")
+            const response = await fetch(`https://resq-google-api-proxy-server-1.onrender.com/maps/api/place/nearbysearch/json?location=${userLocation.latitude},${userLocation.longitude}&radius=3000&type=hospital&key=AIzaSyA-eimkkqp9OSHxHlKuScXbyz9Cr-dgqf0`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -102,19 +103,27 @@ const EmergencyTab = ({ isVisible }) => {
             console.log("Response: ", responseData);
             const hospitalData = responseData.results;
     
-            if (hospitalData.length > 0) {
-                let closestHospital = hospitalData[0];
-                let closestDistance = calculateDistance(userLocation, closestHospital.geometry.location);
-                for (let i = 1; i < hospitalData.length; i++) {
-                    const hospital = hospitalData[i];
-                    const distance = calculateDistance(userLocation, hospital.geometry.location);
-                    if (distance < closestDistance) {
-                        closestHospital = hospital;
-                        closestDistance = distance;
+            if (hospitalData) {
+                if (hospitalData.length > 0) {
+                    let closestHospital = hospitalData[0];
+                    let closestDistance = calculateDistance(userLocation, closestHospital.geometry.location);
+                    for (let i = 1; i < hospitalData.length; i++) {
+                        const hospital = hospitalData[i];
+                        const distance = calculateDistance(userLocation, hospital.geometry.location);
+                        if (distance < closestDistance) {
+                            closestHospital = hospital;
+                            closestDistance = distance;
+                        }
                     }
+                    setTimeout(() => {
+                        setMessage("");
+                    }, 3000);
+                    setClosestHospital(closestHospital);
+                    console.log("Closest Hospital: ", closestHospital);
                 }
-                setClosestHospital(closestHospital);
-                console.log("Closest Hospital: ", closestHospital);
+            }
+            else{
+                fetchNearbyHospitals()
             }
         } catch (error) {
             console.error('Error fetching nearby hospitals:', error);
@@ -126,23 +135,32 @@ const EmergencyTab = ({ isVisible }) => {
         await fetchNearbyHospitals();
         if (closestHospital) {
             try {
+                setMessage("Getting closest hospital to you")
                 const response = await fetch(`https://resq-google-api-proxy-server-1.onrender.com/call-closest-hospital?userLocation=${userLocation.latitude},${userLocation.longitude}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
                 }
             });
-
                 console.log("Response ", response);
                 const responseData = await response.json();
                 const hospitalNumber = responseData.hospitalNumber;
                 console.log("hospital number", hospitalNumber);
-                window.location.href = 'tel:' + hospitalNumber;
+                setTimeout(() => {
+                    setMessage("");
+                }, 3000);
+                if (hospitalNumber){
+                    window.location.href = 'tel:' + hospitalNumber;
+                }
+                else{
+                    callClosestHospital()
+                }
+                
             } catch (error) {
                 console.log("Error calling the closest hospital", error);
             }
         } else {
-            setMessage("Couldn't get nearby hospital");
+            setMessage("Couldn't get nearby hospital, Try again");
             setTimeout(() => {
                 setMessage("");
             }, 3000);

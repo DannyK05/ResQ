@@ -76,6 +76,11 @@ const Map = ({ apiKey }) => {
         }}
         defaultZoom={12}
       >
+         <Marker
+                        lat={parseFloat(userLocation.userLatitude)}
+                        lng={parseFloat(userLocation.userLongitude)}
+                        text="O"
+                    />
           {nearestHospital && (
                     <Marker
                         lat={nearestHospital.geometry.location.lat}
@@ -88,6 +93,6 @@ const Map = ({ apiKey }) => {
   );
 };
 
-const Marker = () => <div style={{ color: 'red' }}>H</div>;
+const Marker = () => <div className='font-bold' style={{ color: 'red' }}>H</div>;
 
 export default Map;
