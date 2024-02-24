@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import GoogleMapReact from 'google-map-react';
 import axios from 'axios';
 import ActionLayout from '../containers/actionLayout';
+import Hospital from "../assets/icons/HospitalMarker.jpg";
+import User from "../assets/icons/UserMarker.jpg";
 
 const Map = ({ apiKey }) => {
   const [nearestHospital, setNearestHospital] = useState(null);
@@ -81,13 +83,15 @@ const Map = ({ apiKey }) => {
          <Marker
                         lat={parseFloat(userLocation.userLatitude)}
                         lng={parseFloat(userLocation.userLongitude)}
-                        text="O(you)"
+                        type = "user"
+                        
                     />
           {nearestHospital && (
                     <Marker
                         lat={nearestHospital.geometry.location.lat}
                         lng={nearestHospital.geometry.location.lng}
-                        text="H"
+                        type="hospital"
+                       
                     />
                 )}
       </GoogleMapReact>
@@ -95,6 +99,16 @@ const Map = ({ apiKey }) => {
   );
 };
 
-const Marker = ({text}) => <div className='font-bold text-lg' style={{ color: 'red' }}>{text}</div>;
+const Marker = ({type}) =>( 
+<div  style={{ color: 'red' }}>
+  {type === "user" && (
+    <img className='w-4' src={User} alt="User Marker"/>
+  )}
+  {type === "hospital" && (
+    <img className='w-4' src={Hospital} alt="Hospital Marker"/>
+  )}
+  </div>
+
+)
 
 export default Map;
