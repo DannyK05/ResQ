@@ -4,7 +4,6 @@ import axios from 'axios';
 import ActionLayout from '../containers/actionLayout';
 
 const Map = ({ apiKey }) => {
-  const [hospitals, setHospitals] = useState([]);
   const [nearestHospital, setNearestHospital] = useState(null);
 
   // To get user location 
@@ -12,14 +11,9 @@ const Map = ({ apiKey }) => {
     userLatitude: null,
     userLongitude: null
   });
-
   useEffect(() => {
-    getUserLocation();
-  }, []);
-
-  const getUserLocation = () => {
     if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(
+      const watchId = navigator.geolocation.watchPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
           setUserLocation({ 
@@ -31,10 +25,18 @@ const Map = ({ apiKey }) => {
           console.error("Error getting user location:", error);
         }
       );
+
+      return () => {
+        // Clean up the watcher when the component unmounts
+        navigator.geolocation.clearWatch(watchId);
+      };
     } else {
       console.error("Geolocation is not supported by this browser.");
     }
-  };
+  }, []);
+
+  
+
 
   useEffect(() => {
     if (userLocation.userLatitude !== null && userLocation.userLongitude !== null) {
@@ -79,7 +81,7 @@ const Map = ({ apiKey }) => {
          <Marker
                         lat={parseFloat(userLocation.userLatitude)}
                         lng={parseFloat(userLocation.userLongitude)}
-                        text="O"
+                        text="O(you)"
                     />
           {nearestHospital && (
                     <Marker
@@ -93,6 +95,6 @@ const Map = ({ apiKey }) => {
   );
 };
 
-const Marker = () => <div className='font-bold' style={{ color: 'red' }}>H</div>;
+const Marker = ({text}) => <div className='font-bold text-lg' style={{ color: 'red' }}>{text}</div>;
 
 export default Map;

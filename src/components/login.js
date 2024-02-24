@@ -39,7 +39,7 @@ const LoginForm = ({setAuthenticated}) =>{
                     const { token } = await response.json();
                     localStorage.setItem('token', token);
                     setAuthenticated(true);
-                    navigate('/home'); // assuming 'navigate' is the name of your useNavigate hook
+                    navigate('/home'); 
         
                 } else {
                     console.log("Error: ", response)

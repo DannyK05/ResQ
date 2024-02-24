@@ -5,7 +5,6 @@ import Profile from "../assets/icons/MaleUser.svg";
 import ActiveProfile from "../assets/icons/MaleUser-1.svg";
 import Bluebtn from "../assets/icons/Group6.svg";
 import { Link } from 'react-router-dom';
-import { useState } from "react";
 
 const Navbar = ({ toggleEmergencyTab, visibility, activeNav}) => {
     return(

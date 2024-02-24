@@ -172,13 +172,13 @@ const EmergencyTab = ({ isVisible }) => {
 
     return (
         <section className={`bg-[#FAFAFA] z-0 fixed w-[100%]  py-[5px]  flex flex-col align-center justify-between h-[40vh] bottom-[60px] ${isVisible ? 'block' : 'hidden'}`}>
-            <div onClick={emergencySpecial} className="flex align-center justify-between pl-[45%] " >
+            <div onClick={emergencySpecial} className="flex align-center justify-between pl-[45%] active:bg-white " >
                 <img className="" src={Circle3} alt="Emergency" /><p className="text-[12px] w-[40%]">Alert special ones</p>
             </div>
-            <div onClick={emergencyCustomCentres} className="flex align-center justify-between pl-[45%]">
+            <div onClick={emergencyCustomCentres} className="flex align-center justify-between pl-[45%] active:bg-white">
                 <img className="" src={Circle2} alt="Emergency" /><p className="text-[12px] w-[40%]">Alert your custom health centre</p>
             </div>
-            <div onClick={() => setConfirmStatus(!confirmStatus)} className="flex align-center justify-between pl-[45%]">
+            <div onClick={() => setConfirmStatus(!confirmStatus)} className="flex align-center justify-between pl-[45%] active:bg-white">
                 <img className="" src={Circle} alt="Emergency" /><p className="text-[12px] w-[40%]">Alert nearby health centres</p>
             </div>
             <div className={`bg-white ${confirmStatus ? 'absolute' : 'hidden'} top-[20%] left-[0] p-[40px] rounded-[20px]`}>
