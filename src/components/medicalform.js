@@ -13,7 +13,7 @@ const MedicalForm = () =>{
         healthinsurance:"",
         policynumber:""
     })
-    const history = useNavigate();
+    const navigate = useNavigate();
 
     const handleChange =(e)=>{
         setData({...medData,[e.target.name]: e.target.value});
@@ -25,7 +25,7 @@ const MedicalForm = () =>{
         try {
             const response = await axios.post("https://resq-api-5j6r.onrender.com/api/v1/resQ/users/auth/signup", medData);
             console.log('Form submitted successfully:', response);
-            history.push("/home");
+            navigate("/home");
             // Handle success, show message, reset form, etc.
             
         } catch (error) {

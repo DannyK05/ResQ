@@ -4,6 +4,7 @@ import ModMedical from "../components/modmedical"
 import ModCentres from "../components/modcentres"
 import ModSpecial from "../components/modspecial"
 import { useState } from "react";
+import { Link } from 'react-router-dom';
 const Settings =() =>{
     const [isPasswordVisible, setPasswordVisibility] = useState(false);
     const [isMedicalVisible, setMedicalVisibility] = useState(false);
@@ -30,29 +31,29 @@ const Settings =() =>{
 
     return(
         <ActionLayout name ="Settings">
-            <div onClick = {toggleMedicalVisibility} className="border-b-[1px] border-b-[#D9D9D9] p-[10px] text-black">
+            <div onClick = {toggleMedicalVisibility} className="border-b-[1px] active:bg-[#FAFAFA] flex items-center border-b-[#D9D9D9] p-[10px] text-black">
             <span className="mr-[3px] text-center"><ion-icon size= "large" name="heart"></ion-icon></span>
             <p>Manage your Medical Info</p>
             </div>
             
-            <div onClick = {toggleCentreVisibility} className="border-b-[1px] border-b-[#D9D9D9] p-[10px] text-black">
+            <div onClick = {toggleCentreVisibility} className="border-b-[1px] active:bg-[#FAFAFA] flex items-center border-b-[#D9D9D9] p-[10px] text-black">
             <span className="mr-[3px] text-center"><ion-icon  size= "large" name="medkit"></ion-icon></span>
             <p>Manage your Custom Health Centre </p>
             </div>
 
-            <div onClick = {toggleSpecialVisibility} className="border-b-[1px] border-b-[#D9D9D9] p-[10px] text-black">
+            <div onClick = {toggleSpecialVisibility} className="border-b-[1px] active:bg-[#FAFAFA] flex items-center border-b-[#D9D9D9] p-[10px] text-black">
             <span className="mr-[3px] text-center"><ion-icon  size= "large" name="people"></ion-icon></span>
             <p>Manage Special Ones Contact Info </p>
             </div>
 
-            <div onClick = {togglePasswordVisibility} className="border-b-[1px] border-b-[#D9D9D9] p-[10px] text-black">
+            <div onClick = {togglePasswordVisibility} className="border-b-[1px] active:bg-[#FAFAFA] flex items-center border-b-[#D9D9D9] p-[10px] text-black">
             <span className="mr-[3px] text-center"><ion-icon  size="large" name="lock-closed"></ion-icon></span>
             <p>Manage Password </p>
             </div>
-            <div onClick = {logOut}  className="border-b-[1px] border-b-[#D9D9D9] p-[10px] text-black">
-            <span className="mr-[3px] text-center"><ion-icon  size="large" name="lock-closed"></ion-icon></span>
+            <Link to="/"><div onClick = {logOut}  className="border-b-[1px] active:bg-[#FAFAFA] flex items-center border-b-[#D9D9D9] p-[10px] text-black">
+            <span className="mr-[3px] text-center"><ion-icon size="large" name="log-out-outline"></ion-icon></span>
             <p>Logout </p>
-            </div>
+            </div></Link>
             <ModPassword visibility = {isPasswordVisible} Close ={togglePasswordVisibility}/>
             <ModCentres visibility = {isCentreVisible} Close ={toggleCentreVisibility}/>
             <ModMedical visibility = {isMedicalVisible} Close ={toggleMedicalVisibility}/>

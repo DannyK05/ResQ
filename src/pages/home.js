@@ -6,7 +6,7 @@ const Home = () => {
     
     return(
        <HomeLayout>
-        <h1>Hey <span className="text-blue">User</span></h1>
+        <h1>Welcome</h1>
         <Advice/>
         <ActionBtn/>
         <Carousel/>
