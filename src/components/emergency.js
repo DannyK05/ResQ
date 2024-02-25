@@ -122,9 +122,7 @@ const EmergencyTab = ({ isVisible }) => {
                     console.log("Closest Hospital: ", closestHospital);
                 }
             }
-            else{
-                fetchNearbyHospitals()
-            }
+            
         } catch (error) {
             console.error('Error fetching nearby hospitals:', error);
         }
@@ -151,9 +149,6 @@ const EmergencyTab = ({ isVisible }) => {
                 }, 3000);
                 if (hospitalNumber){
                     window.location.href = 'tel:' + hospitalNumber;
-                }
-                else{
-                    callClosestHospital()
                 }
                 
             } catch (error) {
