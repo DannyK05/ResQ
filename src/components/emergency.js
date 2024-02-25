@@ -93,7 +93,7 @@ const EmergencyTab = ({ isVisible }) => {
     const fetchNearbyHospitals = async () => {
         try {
             setMessage("Fetching Nearby Hospital")
-            const response = await fetch(`https://resq-google-api-proxy-server-1.onrender.com/maps/api/place/nearbysearch/json?location=${userLocation.latitude},${userLocation.longitude}&radius=3000&type=hospital&key=AIzaSyA-eimkkqp9OSHxHlKuScXbyz9Cr-dgqf0`, {
+            const response = await fetch(`https://resq-google-api-proxy-server-1.onrender.com/maps/api/place/nearbysearch/json?location=${userLocation.latitude},${userLocation.longitude}&radius=10000&type=hospital&key=AIzaSyA-eimkkqp9OSHxHlKuScXbyz9Cr-dgqf0`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
