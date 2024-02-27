@@ -147,15 +147,13 @@ const EmergencyTab = ({ isVisible }) => {
                 setTimeout(() => {
                     setMessage("");
                 }, 3000);
-                if (hospitalNumber){
-                    window.location.href = 'tel:' + hospitalNumber;
-                }
+                window.location.href = 'tel:' + hospitalNumber;
                 
             } catch (error) {
                 console.log("Error calling the closest hospital", error);
             }
         } else {
-            setMessage("Couldn't get nearby hospital, Try again");
+            setMessage("Couldn't get nearby hospital, Please Try again");
             setTimeout(() => {
                 setMessage("");
             }, 3000);
@@ -178,6 +176,7 @@ const EmergencyTab = ({ isVisible }) => {
             </div>
             <div className={`bg-white ${confirmStatus ? 'absolute' : 'hidden'} top-[20%] left-[0] p-[40px] rounded-[20px]`}>
                 <h1>Alert nearby health centres?</h1>
+                <p className='text-blue text-xs'>Give permission to use your location</p>
                 <div className="flex flex-row align-center justify-between">
                     <button className="active:bg-blue active:text-white border-blue rounded-xl bg-white mx-[5px] my-[15px] px-[50px] py-[5px] w-[40%] text-blue" onClick={() => setConfirmStatus(false)}><p>No</p></button>
                     <button onClick={callClosestHospital} className="active:bg-white active:text-blue border-neutral-400 rounded-xl bg-blue mx-[5px] my-[15px] px-[50px] py-[5px] w-[40%] text-white"><p>Yes</p></button>
