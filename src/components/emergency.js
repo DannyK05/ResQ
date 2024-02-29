@@ -131,7 +131,6 @@ const EmergencyTab = ({ isVisible }) => {
     const callClosestHospital = async () => {
         setConfirmStatus(!confirmStatus);
         await fetchNearbyHospitals();
-        if (closestHospital) {
             try {
                 setMessage("Getting closest hospital to you")
                 const response = await fetch(`https://resq-google-api-proxy-server-1.onrender.com/call-closest-hospital?userLocation=${userLocation.latitude},${userLocation.longitude}`, {
@@ -151,17 +150,15 @@ const EmergencyTab = ({ isVisible }) => {
                 
             } catch (error) {
                 console.log("Error calling the closest hospital", error);
-            }
-        } else {
-            setMessage("Couldn't get nearby hospital, Please Try again");
-            setTimeout(() => {
+                setMessage("Couldn't get nearby hospital, Please Try again");
+                setTimeout(() => {
                 setMessage("");
             }, 3000);
+            }
+        
+            
         }
-    };
 
-    
-    
 
     return (
         <section className={`bg-[#FAFAFA] z-0 fixed w-[100%]  py-[5px]  flex flex-col align-center justify-between h-[40vh] bottom-[60px] ${isVisible ? 'block' : 'hidden'}`}>
