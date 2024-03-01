@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import Circle from "../assets/icons/Group6.svg";
 import Circle2 from "../assets/icons/Ellipse3.svg";
 import Circle3 from "../assets/icons/Ellipse4.svg";
@@ -25,6 +24,9 @@ const EmergencyTab = ({ isVisible }) => {
                 },
                 error => {
                     setMessage("Error getting user location: " + error.message);
+                    setTimeout(() => {
+                        setMessage("");
+                    }, 3000);
                 }
             );
         } else {
