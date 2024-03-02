@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 const Navbar = ({ toggleEmergencyTab, visibility, activeNav}) => {
     return(
-        <nav className="fixed w-[100%] bottom-0">
+        <nav className="fixed w-[100%] bg-white bottom-0 px-2">
             <ul className="flex w-[100%] justify-between align-center p-[5px]">
                <Link to="/home" > <li><img  alt="home" src={activeNav ? ActiveHome : Home}/></li></Link>
                 <li><img className="" alt="Emergency button" onClick={toggleEmergencyTab} src={visibility ? Close : Bluebtn}/></li>
