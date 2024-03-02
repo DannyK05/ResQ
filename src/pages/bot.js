@@ -37,13 +37,13 @@ const Bot = () => {
             </div>
             <form onSubmit={handleSubmit} className="fixed flex align-center space-between w-[100%] bottom-0">
                 <textarea
-                    className="border-[1px] rounded-l border-[#E7DDDD] p-[5px] hover:border-[#2592F6] h-[40px]  mx-[5px] w-[70%] "
+                    className="border-[1px] rounded-l border-[#E7DDDD] p-[5px] hover:border-[#2592F6] h-[40px]  mx-[5px] w-5/6 "
                     onChange={handleChange}
                     value={userReply}
                     placeholder="Ask ResQ bot">
                 </textarea>
                 <button
-                    className="active:bg-white active:text-blue border-neutral-400 rounded-xl bg-blue m-[5px] px-[5px] py-[5px] h-[40px] w-[20%] text-white"
+                    className="active:bg-white active:text-blue border-neutral-400 rounded-xl bg-blue m-[5px] px-[5px] py-[5px] h-[40px] w-1/6 text-white"
                     type="submit">
                     Send
                 </button>

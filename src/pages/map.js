@@ -72,6 +72,14 @@ const Map = ({ apiKey }) => {
 
   return (
     <ActionLayout name= "Map">
+      <aside className='fixed z-10 bg-white p-2 top-0 w-1/3 lg:w-1/6 right-0 lg:p-4 '>
+        <div className='flex items-center justify-between pb-2'>
+          <img className='w-[30%] lg:w-[10%]' src={User}/><p>Your location</p>
+        </div>
+        <div className='flex items-center justify-between pb-2'>
+          <img className='w-[30%] lg:w-[10%]' src={Hospital}/><p>Hospital location</p>
+        </div>
+      </aside>
       <GoogleMapReact
         bootstrapURLKeys={{ key: "AIzaSyA-eimkkqp9OSHxHlKuScXbyz9Cr-dgqf0" }}
         defaultCenter={{

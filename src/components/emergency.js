@@ -134,7 +134,7 @@ const EmergencyTab = ({ isVisible }) => {
         setConfirmStatus(!confirmStatus);
         await fetchNearbyHospitals();
             try {
-                setMessage("Getting closest hospital to you")
+                setMessage("Getting the contact number of closest hospital to you")
                 const response = await fetch(`https://resq-google-api-proxy-server-1.onrender.com/call-closest-hospital?userLocation=${userLocation.latitude},${userLocation.longitude}`, {
                 method: 'GET',
                 headers: {
