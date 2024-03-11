@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Circle from "../assets/icons/Group6.svg";
-import Circle2 from "../assets/icons/Ellipse3.svg";
-import Circle3 from "../assets/icons/Ellipse4.svg";
 
 const EmergencyTab = ({ isVisible }) => {
     const [confirmStatus, setConfirmStatus] = useState(false);
@@ -42,10 +39,14 @@ const EmergencyTab = ({ isVisible }) => {
                 window.location.href = 'tel:' + data.phonenumber;
             } else {
                 console.error("Error fetching data:", response.statusText);
+                
             }
         } catch (error) {
             console.log('Failed to retrieve special ones info', error);
-            setMessage("Failed to retrieve info")
+            setMessage("Failed to retrieve info, check if you filled your info")
+                setTimeout(() => {
+                    setMessage("");
+                }, 3000);
         }
     }
 
@@ -60,7 +61,10 @@ const EmergencyTab = ({ isVisible }) => {
             }
         } catch (error) {
             console.log(error);
-            setMessage("Failed to retrieve info")
+            setMessage("Failed to retrieve info, check if you filled your info")
+            setTimeout(() => {
+                setMessage("");
+            }, 3000);
         }
     }
 
@@ -163,7 +167,7 @@ const EmergencyTab = ({ isVisible }) => {
 
 
     return (
-        <section className={`bg-[#FAFAFA] z-0 fixed w-[100%]  py-[5px]  flex flex-col align-center justify-between h-[40vh] bottom-[60px] ${isVisible ? 'block' : 'hidden'}`}>
+        <section className={`bg-[#FAFAFA] z-0 fixed w-[100%]  py-2  flex flex-col align-center justify-between h-[40vh] bottom-[60px] ${isVisible ? 'block' : 'hidden'}`}>
             <div onClick={emergencySpecial} className="flex align-center justify-between pl-[45%] active:bg-white " >
                 <div className=" rounded-full border-[1px] border-blue active:border-[#6db6fa] p-4">
                         
@@ -175,7 +179,7 @@ const EmergencyTab = ({ isVisible }) => {
                 <div className=" rounded-full bg-blue active:bg-[#6db6fa] p-4">
 
                 </div>
-                <p className="text-[12px] w-[40%]">Alert your custom health centre</p>
+                <p className="text-[12px] w-[40%]">Alert custom health centre</p>
             </div>
 
             <div onClick={() => setConfirmStatus(!confirmStatus)} className="flex align-center justify-between pl-[45%] active:bg-white">

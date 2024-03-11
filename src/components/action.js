@@ -1,5 +1,3 @@
-import Settings from "../assets/icons/Settings.svg";
-import Map from "../assets/icons/MapMarker.svg";
 import Bot from "../assets/icons/MessageBot.svg";
 import { Link } from 'react-router-dom';
 

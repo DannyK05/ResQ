@@ -1,9 +1,3 @@
-import Home from "../assets/icons/Home-1.svg";
-import ActiveHome from "../assets/icons/Home.svg";
-import Close from "../assets/icons/Close.svg";
-import Profile from "../assets/icons/MaleUser.svg";
-import ActiveProfile from "../assets/icons/MaleUser-1.svg";
-import Bluebtn from "../assets/icons/Group6.svg";
 import { Link } from 'react-router-dom';
 
 const Navbar = ({ toggleEmergencyTab, visibility, activeNav}) => {

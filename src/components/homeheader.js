@@ -1,4 +1,3 @@
-import Notification from "../assets/icons/Notification.svg";
 import { Link } from 'react-router-dom';
 
 const HomeHeader = () =>{

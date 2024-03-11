@@ -28,6 +28,9 @@ header ion-icon{
 .action ion-icon{
   font-size: 48px;
 }
+.dialogue ion-icon{
+  font-size: 36px;
+}
 .carousel{
   max-width: 100%;
   
