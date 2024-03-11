@@ -13,10 +13,23 @@ p{
 ion-icon {
   color: #2592F6;
 }
+ion-icon:active, ion-icon:hover{
+  color: #6db6fa;
+}
 ion-icon.notification{
   font-size: 64px;
+}
+nav ion-icon{
+  font-size: 48px;
+}
+header ion-icon{
+  font-size: 36px;
+}
+.action ion-icon{
+  font-size: 48px;
 }
 .carousel{
   max-width: 100%;
   
 }
+

@@ -165,14 +165,28 @@ const EmergencyTab = ({ isVisible }) => {
     return (
         <section className={`bg-[#FAFAFA] z-0 fixed w-[100%]  py-[5px]  flex flex-col align-center justify-between h-[40vh] bottom-[60px] ${isVisible ? 'block' : 'hidden'}`}>
             <div onClick={emergencySpecial} className="flex align-center justify-between pl-[45%] active:bg-white " >
-                <img className="" src={Circle3} alt="Emergency" /><p className="text-[12px] w-[40%]">Alert special ones</p>
+                <div className=" rounded-full border-[1px] border-blue active:border-[#6db6fa] p-4">
+                        
+                </div>
+                <p className="text-[12px] w-[40%]">Alert special ones</p>
             </div>
+
             <div onClick={emergencyCustomCentres} className="flex align-center justify-between pl-[45%] active:bg-white">
-                <img className="" src={Circle2} alt="Emergency" /><p className="text-[12px] w-[40%]">Alert your custom health centre</p>
+                <div className=" rounded-full bg-blue active:bg-[#6db6fa] p-4">
+
+                </div>
+                <p className="text-[12px] w-[40%]">Alert your custom health centre</p>
             </div>
+
             <div onClick={() => setConfirmStatus(!confirmStatus)} className="flex align-center justify-between pl-[45%] active:bg-white">
-                <img className="" src={Circle} alt="Emergency" /><p className="text-[12px] w-[40%]">Alert nearby health centres</p>
+                <div className=" rounded-full border-[1px] border-blue p-1">
+                    <div className=" rounded-full active:bg-[#6db6fa] bg-blue p-4">
+
+                    </div>
+                </div>
+                <p className="text-[12px] w-[40%]">Alert nearby health centres</p>
             </div>
+            
             <div className={`bg-white ${confirmStatus ? 'absolute' : 'hidden'} top-[20%] left-[0] p-[40px] rounded-[20px]`}>
                 <h1>Alert nearby health centres?</h1>
                 <p className='text-blue text-xs'>Give permission to use your location</p>
