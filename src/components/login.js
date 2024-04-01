@@ -10,11 +10,7 @@ const LoginForm = ({setAuthenticated}) =>{
         }
     )
     // set Error
-    const[formError, setError] = useState({
-        email : '',
-        password:'',
-        form : ''
-    })
+    const[formError, setError] = useState("")
     const navigate = useNavigate()
     const handleChange = (e) =>{
         setData({...logData,[e.target.name]: e.target.value.trim() })
@@ -46,22 +42,22 @@ const LoginForm = ({setAuthenticated}) =>{
                     throw new Error('Login failed'); // Or handle different status codes as per your API's response
                 }
             } catch (error) {
-                console.error('Error submitting form:', error.response.data.message);
-                setError({ ...formError, form: error.message });
+                console.error('Error submitting form:', error.message);
+                setError(error.message );
                 setLoading(false);
                 // clears error message after 3 seconds
                 setTimeout(() => {
-                    setError({ ...formError, form: "" });
+                    setError("");
                 }, 3000);
             }
         }  
         else{
             console.log("Form validation failed")
             setTimeout(() =>{
-                setError({...formError, password: ''})
+                setError('')
             }, 2000)
             setTimeout(() =>{
-                setError({...formError, email: ''})
+                setError('')
             }, 2000)
         }     
     };
@@ -75,23 +71,23 @@ const LoginForm = ({setAuthenticated}) =>{
    
     // form validation
     const formValidation = (logData) => {
-        const errors = {};
+        let error = ""
         let valid = true
 
         if (logData.password.trim() === '') {
-            errors.password = "Input your password";
+            error= "Input your password";
             valid = false
         }
 
         if (logData.email.trim() === '') {
-            errors.email = "Input your email";
+            error = "Input your email";
             valid = false
         }else if (!/\S+@\S+\.\S+/.test(logData.email)) {
-            errors.email = 'Email is invalid';
+            error = 'Email is invalid';
             valid = false;
         }
 
-        setError({...formError, ...errors });
+        setError(error);
         return valid;
 
     }
@@ -103,16 +99,14 @@ const LoginForm = ({setAuthenticated}) =>{
     return(
         <section className="mt-[10px]">
             <header className="bg-blue">
-                <span className="text-white text-center"><p>{formError.form}</p></span>
+                <span className="text-white text-center"><p>{formError}</p></span>
             </header>
             <h1><span className="text-blue">Welcome</span> Back</h1>
             <p>Login to your account</p>
             <form onSubmit={handleLocationAndSubmit}>
-                <input className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6] m-[10px] w-[80%] " onChange={handleChange} name="email" value={logData.email} type="email" placeholder="example@gmail.com" /> 
-                <div className={`${formError.email ? 'bg-blue p-[2px]' :''} text-center  text-white`}><p>{formError.email}</p></div>
-                <input className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6] m-[10px] w-[80%] " onChange={handleChange} name="password" value={logData.password} type="password" placeholder="Password" />
-                <div className={`${formError.password ? 'bg-blue p-[2px]' :''}  text-white text-center`}><p>{formError.password}</p></div>
-                <button className="active:bg-white active:text-blue  border-neutral-400 rounded-xl bg-blue mx-[5px] my-[15px] px-[40%] py-[5px] w-[95%] text-white" disabled={formLoading ? true : false} type="submit"><h1>{formLoading ? 'Loading...' : 'Login'}</h1></button>
+                <input className="border-[1px] border-[#E7DDDD] p-[5px] rounded-lg hover:border-[#2592F6] active:border-[#2592F6] m-[10px] w-[80%] " onChange={handleChange} name="email" value={logData.email} type="email" placeholder="example@gmail.com" /> 
+                <input className="border-[1px] border-[#E7DDDD] p-[5px] rounded-lg hover:border-[#2592F6] active:border-[#2592F6] m-[10px] w-[80%] " onChange={handleChange} name="password" value={logData.password} type="password" placeholder="Password" />
+                <button className={`active:bg-white active:text-blue${formError !== "" ? "" :"active:bg-blue active:text-white"}  border-neutral-400 rounded-xl bg-blue mx-[5px] my-[15px] px-[40%] py-[5px] w-[95%] text-white`} disabled={formError !== ""} type="submit"><h1>{formLoading ? 'Loading...' : 'Login'}</h1></button>
             </form>
             <Link to="/signup"><p>Don't have an account? <span className="text-blue">SignUp</span></p></Link>
             <p onClick ={toggleResetForm} className="text-blue">Forget Password?</p>
