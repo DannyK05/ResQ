@@ -40,12 +40,12 @@ const MedicalForm = () =>{
                 <div>
                     <h1><span className="text-blue">Personal</span> Medical Info</h1>
                 <label>Gender</label>    
-                <select className="border-2 border-[#E7DDDD] p-[5px] hover:border-[#2592F6] m-[10px] w-[40%]" onChange={handleChange} name="gender" value={medData.gender}>
+                <select className="border-2 border-[#E7DDDD] p-2 hover:border-[#2592F6] m-[10px] w-[40%]" onChange={handleChange} name="gender" value={medData.gender}>
                     <option value ="Male">Male</option>
                     <option value ="Female"> Female</option>
                 </select>
                 <label>Blood Type</label>
-                <select className="border-2 border-[#E7DDDD] p-[5px] hover:border-[#2592F6] m-[10px] w-[20%]" onChange={handleChange} name="bloodtype" value={medData.bloodtype}>
+                <select className="border-2 border-[#E7DDDD] p-1 hover:border-[#2592F6] m-[10px] w-[20%]" onChange={handleChange} name="bloodtype" value={medData.bloodtype}>
                     <option value="A+"> A+</option>
                     <option value="A-">A-</option>
                     <option value="B+"> B+</option>
@@ -67,7 +67,7 @@ const MedicalForm = () =>{
                 <input name="allergy" className="ml-[8px]" type ="radio" value="Yes"  onChange={handleChange} checked={medData.allergy === 'Yes'}/> <label>Yes</label>
                 <input name = "allergy" className="ml-[8px]" type ="radio" value="No" onChange={handleChange} checked={medData.allergy === 'No'}/><label>No</label>
                 <br/>
-                <label>If yes please specify</label><input className="border-2 border-[#E7DDDD] p-[5px] hover:border-[#2592F6] m-[10px] w-[80%]" name='allergen' onChange={handleChange} value={medData.allergen} type= "text"/>
+                <label>If yes please specify</label><input className="border-2 border-[#E7DDDD] p-[5px] rounded-lg hover:border-[#2592F6] m-[10px] w-[80%]" name='allergen' onChange={handleChange} value={medData.allergen} type= "text"/>
                 <br/>
                 <label>Chronic medical history or conditions</label>
                 <select className="border-2 border-[#E7DDDD] p-[5px] hover:border-[#2592F6] m-[10px] w-[80%]" name="condition" onChange={handleChange} value={medData.condition}>
@@ -86,7 +86,7 @@ const MedicalForm = () =>{
                     <input className="border-2 border-[#E7DDDD] p-[5px] hover:border-[#2592F6] m-[10px] w-[80%]" name="healthinsurance" onChange={handleChange}value={medData.healthinsurance}type ="text" placeholder="Health Insurance Provider"/>
                     <input className="border-2 border-[#E7DDDD] p-[5px] hover:border-[#2592F6] m-[10px] w-[80%]" name="policynumber" onChange={handleChange} value={medData.policynumber}type ="text" placeholder="Policy Number"/>
                 </div>
-                <button className=" active:bg-white active:text-blue border-neutral-400 rounded bg-blue mx-[5px] my-[15px] px-[50px] py-[5px] w-[95%] text-white" type ="submit"><h1>Finish</h1></button>
+                <button className=" active:bg-white active:text-blue border-neutral-400 rounded-lg bg-blue mx-[5px] my-[15px] px-[50px] py-[5px] w-[95%] text-white" type ="submit"><h1>Finish</h1></button>
             </form>
         </section>
     )

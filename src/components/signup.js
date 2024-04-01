@@ -12,47 +12,45 @@ const SignupForm = () =>{
         password: "",
         passwordConfirm: ""
     })
-    const[formError, setError] = useState({
-        name: "",
-        email: "" ,
-        phoneNumber: "",
-        password: "",
-        passwordConfirm: "",
-        form: ""
-    })
+    const[formError, setError] = useState("") //storing error messages
     //Form validation
 
     const formValidation = (userData) => {
-        const error = {}
+        let error = ""
         let valid = true 
-        if (userData.firstName.trim() === "" || userData.lastName.trim() === ""){
-            error.name = "Input your name"
-            valid = false;
-        }
-        if (userData.email.trim() === ""){
-            error.email = "Input your email"
-            valid = false;
-        }else if (!/\S+@\S+\.\S+/.test(userData.email)) {
-            error.email = 'Email is invalid';
-            valid = false;
-        }
+        
         if (userData.phoneNumber.trim() === ""){
-            error.phoneNumber = "Input your phone number"
+            error = "Input your phone number"
             valid = false;
         }
+
         if (userData.password.trim() === "") {
-            error.password = "Input password"
+            error = "Input password"
             valid = false;
         }else if (userData.password.trim() !== userData.passwordConfirm.trim()){
-            error.password = "Password do not match"
+            error = "Password do not match"
             valid = false;
         }
         if(userData.password.length > 8){
-            error.password = "Password must be at least 8 characters"
+            error = "Password must be at least 8 characters"
+            valid = false;
+        }
+
+        if (userData.email.trim() === ""){
+            error = "Input your email"
+            valid = false;
+        }else if (!/\S+@\S+\.\S+/.test(userData.email)) {
+            error = 'Email is invalid';
+            valid = false;
+        }
+
+        if (userData.firstName.trim() === "" || userData.lastName.trim() === ""){
+            error = "Input your name"
             valid = false;
         }
         
-        setError({...formError, ...error})
+        
+        setError(error) //set the error message to the error given after validation
         
         return valid
 
@@ -75,7 +73,7 @@ const SignupForm = () =>{
                       
             } catch (error) {
                 console.error('Error submitting form:', error);
-                setError({...formError, form: error});
+                setError(formError);
                 setLoading(false);
             
                 setTimeout(() =>{
@@ -87,42 +85,38 @@ const SignupForm = () =>{
         else{
             console.log("Form validation failed")
             setTimeout(() =>{
-                setError({...formError, name: ''})
+                setError(formError)
             }, 2000)
             setTimeout(() =>{
-                setError({...formError, email: ''})
+                setError(formError)
             }, 2000)
             setTimeout(() =>{
-                setError({...formError, phoneNumber: ''})
+                setError(formError)
             }, 2000)
             setTimeout(() =>{
-                setError({...formError, password: ''})
+                setError(formError)
             }, 2000)
         }
     };
 
     return(
         <section>
-            <header className={`${formError.form ? "bg-blue text-center px-2 py-1" : "" }`}>
-                <span className="text-white">{formError.form}</span>
+            <header className={`${formError ? "bg-blue text-center px-2 py-1" : "" }`}>
+                <span className="text-white">{formError}</span>
             </header>
             <h1><span className="text-blue">Get</span> Started</h1>
             <p className="w-[100%]">Input your details to create an account</p>
             <form onSubmit={handleSubmit}>
-                <input className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6]  m-[10px] w-[40%] " onChange={handleChange} type="text" name="firstName" value={userData.firstName} placeholder="First name" />
-                <input className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6]  m-[10px] w-[40%] " onChange={handleChange} type="text" name="lastName" value={userData.lastName} placeholder="Last name" />
-                <div className={`${formError.name ? 'bg-blue p-[2px]' :''} text-center  text-white`}><p>{formError.name}</p></div>
-                <input className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6]  m-[10px] w-[80%] " onChange={handleChange} type="email" name="email" value={userData.email} placeholder="example@gmail.com" />
-                <div className={`${formError.email ? 'bg-blue p-[2px]' :''} text-center  text-white`}><p>{formError.email}</p></div>
-                <input className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6]  m-[10px] w-[80%] " onChange={handleChange} type="tel" name="phoneNumber" value={userData.phoneNumber} placeholder="Phone number" />
-                <div className={`${formError.phoneNumber ? 'bg-blue p-[2px]' :''} text-center  text-white`}><p>{formError.phoneNumber}</p></div> 
-                <input className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6]  m-[10px] w-[80%] " onChange={handleChange} type="password" name="password" value={userData.password} placeholder="Password" />
-                <input className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6]  m-[10px] w-[80%] " onChange={handleChange} type="password" name="passwordConfirm" placeholder="Confirm Password"  />
-                <div className={`${formError.password ? 'bg-blue p-[2px]' :''} text-center  text-white`}><p>{formError.password}</p></div>
+                <input className="border-[1px] border-[#E7DDDD] p-[5px] rounded-lg active:border-[#2592F6] hover:border-[#2592F6]  m-[10px] w-[40%] " onChange={handleChange} type="text" name="firstName" value={userData.firstName} placeholder="First name" />
+                <input className="border-[1px] border-[#E7DDDD] p-[5px] rounded-lg active:border-[#2592F6] hover:border-[#2592F6]  m-[10px] w-[40%] " onChange={handleChange} type="text" name="lastName" value={userData.lastName} placeholder="Last name" />
+                <input className="border-[1px] border-[#E7DDDD] p-[5px] rounded-lg active:border-[#2592F6] hover:border-[#2592F6]  m-[10px] w-[80%] " onChange={handleChange} type="email" name="email" value={userData.email} placeholder="example@gmail.com" />
+                <input className="border-[1px] border-[#E7DDDD] p-[5px] rounded-lg active:border-[#2592F6] hover:border-[#2592F6]  m-[10px] w-[80%] " onChange={handleChange} type="tel" name="phoneNumber" value={userData.phoneNumber} placeholder="Phone number" />
+                <input className="border-[1px] border-[#E7DDDD] p-[5px] rounded-lg active:border-[#2592F6] hover:border-[#2592F6]  m-[10px] w-[80%] " onChange={handleChange} type="password" name="password" value={userData.password} placeholder="Password" />
+                <input className="border-[1px] border-[#E7DDDD] p-[5px] rounded-lg active:border-[#2592F6] hover:border-[#2592F6]  m-[10px] w-[80%] " onChange={handleChange} type="password" name="passwordConfirm" placeholder="Confirm Password"  />
                 <br/>
                 <input className="border-neutral-400 border-2 border-[#E7DDDD] p-[5px] " type="checkbox" required/> <label>I have read and accepted the terms and conditions.</label>
                 <br/>
-                <button className=" active:bg-white active:text-blue border-neutral-400 rounded-xl bg-blue mx-[5px] my-[15px] px-[50px] py-[5px] w-[95%] text-white" disabled={formLoading ? true : false} type="submit"><h1>{formLoading ? 'Loading...' : 'continue'}</h1></button>
+                <button className={`active:bg-white ${formError !== "" ? "" :"active:bg-white active:text-blue"} active:text-blue border-neutral-400 rounded-xl bg-blue mx-[5px] my-[15px] px-[50px] py-[5px] w-[95%] text-white`} disabled={formError !== ""} type="submit"><h1>{formLoading ? 'Loading...' : 'continue'}</h1></button>
             </form>
             <Link to="/"><p>Already have an account?<span className="text-blue">Login</span></p></Link>
         </section>

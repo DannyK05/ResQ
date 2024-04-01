@@ -5,11 +5,19 @@ import { useState } from "react";
 const Bot = () => {
     const [userReply, setUserReply] = useState('');
     const [dialogue, setDialogue] = useState([
-        { speaker: 'bot', message: 'How may I help you?' }
+        { speaker: 'bot', message: 'How may I help you?'}
     ]);
+    const [isDisabled, setDisabled] = useState(true);
+
+    const handleValidation = (e) =>{
+        const value = e.target.value.trim()
+        setDisabled(value === '');
+        handleChange(e)
+    }
 
     const handleChange = (e) => {
         setUserReply(e.target.value);
+        
     }
 
     const handleSubmit = (e) => {
@@ -17,6 +25,7 @@ const Bot = () => {
         setDialogue([...dialogue, { speaker: 'user', message: userReply }]);
         setUserReply('');
     }
+    
 
     return (
         <main>
@@ -34,18 +43,20 @@ const Bot = () => {
                     </div>
                 ))}
             </div>
-            <form onSubmit={handleSubmit} className="fixed flex align-center space-between w-[100%] bottom-0">
-                <textarea
-                    className="border-[1px] rounded-l border-[#E7DDDD] p-[5px] hover:border-[#2592F6] h-[40px]  mx-[5px] w-4/6 "
-                    onChange={handleChange}
-                    value={userReply}
-                    placeholder="Ask ResQ bot">
-                </textarea>
-                <button
-                    className="active:bg-white active:text-blue border-neutral-400 rounded-xl bg-blue m-[5px] px-[5px] py-[5px] h-[40px] w-2/6 text-white"
-                    type="submit">
-                    Send
-                </button>
+            <form onSubmit={handleSubmit} className="fixed w-full flex bottom-0 align-center justify-center">
+                <div className="flex align-center space-between w-[98%] p-2 border hover:border-[#2592F6] rounded-lg ">
+                    <textarea
+                        className="p-2 h-[40px] mr-2 w-4/6 "
+                        onChange={handleValidation}
+                        value={userReply}
+                        placeholder="Ask ResQ bot">
+                    </textarea>
+                    <button
+                        className={` border-neutral-400 ${isDisabled ? "active:bg-white active:text-blue" :"" } rounded-xl bg-blue p-2 w-2/6 text-white`}
+                        type="submit" disabled={isDisabled}>
+                        Send
+                    </button>
+                </div>
             </form>
         </main>
     );

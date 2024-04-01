@@ -5,14 +5,21 @@ import Carousel from "../components/carousel";
 import Permission from "../assets/imgs/Permission.png"
 import { useEffect, useState } from "react";
 const Home = () => {
-    const [visibility, setVisibility] = useState(true);
+    const [visibility, setVisibility] = useState(false);
 
     useEffect(() => {
-        navigator.geolocation.getCurrentPosition(
-            ()=>{
-                setVisibility(false);
-            }
-        )
+        // navigator.geolocation.getCurrentPosition(
+        //     error =>{
+        //         setVisibility(true)
+        //         console.log(error)
+        //     }
+        // )
+        if ("geolocation" in navigator) {
+            setVisibility(false)
+          } else {
+            setVisibility(true)
+          }
+          
             
     }, []);
 
@@ -34,6 +41,9 @@ const Home = () => {
                 </button>
             </div>
             <Carousel />
+            {/* <div className="border-y p-2 text-sm font-medium text-blue mt-6 bg-white">
+                <p>First aid tips</p>
+            </div> */}
         </HomeLayout>
     );
 }
