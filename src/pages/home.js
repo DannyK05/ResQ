@@ -29,7 +29,7 @@ const Home = () => {
     
     return (
         <HomeLayout>
-            <h1 className="ml-2">Welcome</h1>
+            <h1 className="ml-2 text-blue lg:text-xl">Welcome</h1>
             <Advice />
             <ActionBtn />
             <div className={`${visibility ? '' : 'hidden'} absolute z-10 top-[40%] bg-white p-4 w-[90%] ml-4 shadow shadow-black  rounded-[20px]`}>

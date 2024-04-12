@@ -17,7 +17,7 @@ const Carousel = () => {
   };
 
   return (
-    <div className=" carousel w-[90%] mt-[20px] mb-[0] ml-4 lg:hidden">
+    <div className=" carousel w-[90%] mt-[20px] mb-[0] ml-4">
       <Slider {...settings}>
         <div className='w-[100%] '>
           <Link to="/settings"><img src={Hospital} alt="Slide 1" /></Link>

@@ -30,7 +30,7 @@ const Bot = () => {
     return (
         <main>
             <header className="flex align-center py-[5px] px-[5px]">
-                <Link to="/home"><ion-icon size="large" name="arrow-back-outline"></ion-icon></Link>
+                <Link to="/"><ion-icon size="large" name="arrow-back-outline"></ion-icon></Link>{/*Change Link address to home when Login page is ready*/}
                 <h1 className="ml-20">Res<span className="text-blue">Q</span> Bot</h1>
             </header>
             <div className="dialogue">
@@ -43,8 +43,8 @@ const Bot = () => {
                     </div>
                 ))}
             </div>
-            <form onSubmit={handleSubmit} className="fixed w-full flex bottom-0 align-center justify-center">
-                <div className="flex align-center space-between w-[98%] p-2 border hover:border-[#2592F6] rounded-lg ">
+            <form onSubmit={handleSubmit} className="fixed w-full flex bottom-1 align-center justify-center">
+                <div className="flex align-center border-inherit space-between w-[98%] p-2 border hover:border-[#2592F6] rounded-lg ">
                     <textarea
                         className="p-2 h-[40px] mr-2 w-4/6 "
                         onChange={handleValidation}

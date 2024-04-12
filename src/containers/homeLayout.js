@@ -11,7 +11,7 @@ const HomeLayout = (props) =>{
         setEmergencyTabVisible(!isEmergencyTabVisible);
     }
     return(
-        <main className="h-[100vh] w-[100vw] bg-[#FAFAFA]">
+        <main className="h-[100vh] w-full bg-[#FAFAFA]">
             <HomeHeader/>
             {props.children}
             <Navbar toggleEmergencyTab={toggleEmergencyTab} visibility ={isEmergencyTabVisible} activeNav={true}  />
