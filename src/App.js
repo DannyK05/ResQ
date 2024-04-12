@@ -18,7 +18,7 @@ function App() {
 
   const handleLogin = () =>{
     let token = localStorage.getItem('token')
-    token ? setAuthenticated(true) : setAuthenticated(false)
+    token ? setAuthenticated(true) : setAuthenticated(true)
   }
   // This checks for token when component mounts
   useEffect(() =>{
@@ -28,7 +28,7 @@ function App() {
     createRoutesFromElements(
       <>
       {/* Uncomment this when the login page is ready */}
-      
+
       {/* <Route index element = {<LoginPage setAuthenticated={setAuthenticated}/>} /> */}
       {/* <Route path = "/signup" element = {<SignupPage/> } /> */}
       {/* <Route path = "/medical" element = {<MedicalPage/> } /> */}
