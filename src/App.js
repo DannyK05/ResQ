@@ -14,11 +14,11 @@ import Map from './pages/map';
 
 
 function App() {
-  const[authenticated, setAuthenticated] = useState(false)
+  const[authenticated, setAuthenticated] = useState(true)// change to false to use the authentication
 
   const handleLogin = () =>{
     let token = localStorage.getItem('token')
-    token ? setAuthenticated(true) : setAuthenticated(true)
+    token ? setAuthenticated(true) : setAuthenticated(false)
   }
   // This checks for token when component mounts
   useEffect(() =>{
@@ -27,10 +27,13 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
-      <Route index element = {<LoginPage setAuthenticated={setAuthenticated}/>} />
-      <Route path = "/signup" element = {<SignupPage/> } />
-      <Route path = "/medical" element = {<MedicalPage/> } />
-      <Route path = "/home" element = {authenticated ? <Home/> : <Navigate to="/"/>} />
+      {/* Uncomment this when the login page is ready */}
+      
+      {/* <Route index element = {<LoginPage setAuthenticated={setAuthenticated}/>} /> */}
+      {/* <Route path = "/signup" element = {<SignupPage/> } /> */}
+      {/* <Route path = "/medical" element = {<MedicalPage/> } /> */}
+      <Route index element = {<Home/>} />
+      {/* <Route path = "/home" element = {authenticated ? <Home/> : <Navigate to="/"/>} /> */} 
       <Route path = "/profile" element = { authenticated ? <Profile/> : <Navigate to="/"/>} />
       <Route path = "/settings" element = {authenticated ? <Settings/> : <Navigate to="/"/>} />
       <Route path = "/bot" element = { authenticated ? <Bot/> : <Navigate to="/"/>} />

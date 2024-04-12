@@ -167,7 +167,7 @@ const EmergencyTab = ({ isVisible }) => {
 
 
     return (
-        <section className={`bg-[#FAFAFA] z-0 fixed w-[100%]  py-2  flex flex-col align-center justify-between h-[40vh] bottom-[60px] ${isVisible ? 'block' : 'hidden'}`}>
+        <section className={`bg-[#fff] z-0 fixed w-full  py-2  flex flex-col align-center justify-between h-[40vh] bottom-[70px] ${isVisible ? 'block' : 'hidden'}`}>
             <div onClick={emergencySpecial} className="flex align-center justify-between pl-[45%] active:bg-white " >
                 <div className=" rounded-full border-[1px] border-blue active:border-[#6db6fa] p-4">
                         

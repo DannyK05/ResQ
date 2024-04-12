@@ -30,7 +30,7 @@ const Bot = () => {
     return (
         <main>
             <header className="flex align-center py-[5px] px-[5px]">
-                <Link to="/home"><ion-icon size="large" name="arrow-back-outline"></ion-icon></Link>
+                <Link to="/"><ion-icon size="large" name="arrow-back-outline"></ion-icon></Link>{/*Change Link address to home when Login page is ready*/}
                 <h1 className="ml-20">Res<span className="text-blue">Q</span> Bot</h1>
             </header>
             <div className="dialogue">
