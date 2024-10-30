@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 const EmergencyTab = ({ isVisible }) => {
   const [confirmStatus, setConfirmStatus] = useState(false);
@@ -8,10 +8,6 @@ const EmergencyTab = ({ isVisible }) => {
     longitude: "",
   });
   const [closestHospital, setClosestHospital] = useState(null);
-
-  useEffect(() => {
-    fetchUserLocation();
-  }, []);
 
   const fetchUserLocation = () => {
     if (navigator.geolocation) {
@@ -225,7 +221,10 @@ const EmergencyTab = ({ isVisible }) => {
             <p>No</p>
           </button>
           <button
-            onClick={callClosestHospital}
+            onClick={() => {
+              callClosestHospital();
+              fetchUserLocation();
+            }}
             className="active:bg-white active:text-blue border-neutral-400 rounded-xl bg-blue mx-[5px] my-[15px] px-[50px] py-[5px] w-[40%] text-white"
           >
             <p>Yes</p>

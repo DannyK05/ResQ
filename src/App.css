@@ -2,37 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
-
-h1,h2,h3{
-  font-family: 'Bruno Ace SC', sans-serif;
+h1,
+h2,
+h3 {
+  font-family: "Bruno Ace SC", sans-serif;
+  font-display: swap;
 }
-p{
-  font-family: 'Ubuntu', sans-serif;
+p {
+  font-family: "Ubuntu", sans-serif;
+  font-display: swap;
 }
 
 ion-icon {
-  color: #2592F6;
+  color: #2592f6;
 }
-ion-icon:active, ion-icon:hover{
+ion-icon:active,
+ion-icon:hover {
   color: #6db6fa;
 }
-ion-icon.notification{
+ion-icon.notification {
   font-size: 64px;
 }
-nav ion-icon{
+nav ion-icon {
   font-size: 48px;
 }
-header ion-icon{
+header ion-icon {
   font-size: 36px;
 }
-.action ion-icon{
+.action ion-icon {
   font-size: 48px;
 }
-.dialogue ion-icon{
+.dialogue ion-icon {
   font-size: 36px;
 }
-.carousel{
+.carousel {
   max-width: 100%;
-  
 }
-

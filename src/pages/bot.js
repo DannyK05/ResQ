@@ -29,7 +29,7 @@ const Bot = () => {
     <main className="lg:flex h-[100vh] p-2 lg:items-center lg:justify-center">
       <div className="w-full relative lg:rounded-lg lg:shadow-lg lg:w-2/5 h-full">
         <header className="flex align-center py-[5px] px-[5px]">
-          <Link to="/">
+          <Link to="/" aria-label="back-arrow">
             <ion-icon size="large" name="arrow-back-outline"></ion-icon>
           </Link>
           {/*Change Link address to home when Login page is ready*/}
