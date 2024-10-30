@@ -87,11 +87,15 @@ const Map = ({ apiKey }) => {
     <ActionLayout name="Map">
       <aside className="fixed bg-white z-10 bg-white p-2 top-0 w-1/3 lg:w-1/6 right-0 lg:p-4 ">
         <div className="flex items-center space-x-2">
-          <img className="w-[30%] lg:w-[10%]" src={User} alt="" />
+          <img className="w-[30%] lg:w-[10%]" src={User} alt="User Key" />
           <p>Your location</p>
         </div>
         <div className="flex items-center space-x-2 mt-2">
-          <img className="w-[30%] lg:w-[10%]" src={Hospital} />
+          <img
+            className="w-[30%] lg:w-[10%]"
+            src={Hospital}
+            alt="Hospital key"
+          />
           <p>Hospital location</p>
         </div>
       </aside>
