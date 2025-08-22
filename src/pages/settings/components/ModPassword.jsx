@@ -6,7 +6,7 @@ const ModPassword = ({ visibility, Close }) => {
     <section
       className={`${
         visibility ? "absolute" : "hidden"
-      } w-[90vw] bg-white py-[10px] px-[15px] rounded-[20px] z-10 shadow shadow-black top-[30%] left-[5vw]`}
+      } w-[90vw] bg-white py-2.5 px-[15px] rounded-[20px] z-10 shadow shadow-black top-[30%] left-[5vw]`}
     >
       <h1>
         Manage your password{" "}

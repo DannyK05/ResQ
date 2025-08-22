@@ -142,7 +142,7 @@ const LoginPage = ({ setAuthenticated }) => {
         <section
           className={`${
             resetFormVisibility ? "relative" : "hidden"
-          } w-[90vw] bg-white py-[10px] px-[15px] rounded-[20px] z-10 shadow shadow-black top-[30%] left-[5vw]`}
+          } w-[90vw] bg-white py-2.5 px-[15px] rounded-[20px] z-10 shadow shadow-black top-[30%] left-[5vw]`}
         >
           <h1>
             Manage your password{" "}
@@ -154,7 +154,7 @@ const LoginPage = ({ setAuthenticated }) => {
           </h1>
           <form>
             <input
-              className="m-[8px] p-[4px] w-[80%]  border-[1px] border-[#E7DDDD] rounded-[6px]"
+              className="m-2 p-1 w-4/5  border border-[#E7DDDD] rounded-[6px]"
               type="email"
               placeholder="Input your email"
             />

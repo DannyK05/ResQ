@@ -4,7 +4,7 @@ const SignLayout = (props) => {
   return (
     <main className="h-[100vh] lg:flex lg:items-center lg:justify-center lg:shadow-lg p-2">
       <div className="w-full lg:w-2/5 lg:rounded-lg">
-        <header className="flex align-center justify-center">
+        <header className="flex items-center justify-center">
           <Link to="/home">
             <h1 className="text-xl">
               Res<span className="text-blue">Q</span>

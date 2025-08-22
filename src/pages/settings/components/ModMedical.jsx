@@ -6,7 +6,7 @@ const ModMedical = ({ visibility, Close }) => {
     <section
       className={`${
         visibility ? "absolute" : "hidden"
-      } w-[100%] bg-white py-[10px] px-[15px] rounded-[20px] z-10 shadow shadow-black top-[2px]`}
+      } w-full bg-white py-2.5 px-[15px] rounded-[20px] z-10 shadow shadow-black top-[2px]`}
     >
       <h1>
         Manage your medical info{" "}
@@ -19,7 +19,7 @@ const ModMedical = ({ visibility, Close }) => {
           </h1>
           <label>Gender</label>
           <select
-            className="border-2 border-[#E7DDDD] p-[5px] hover:border-[#2592F6] m-[10px] w-[40%]"
+            className="border-2 border-[#E7DDDD] p-1 hover:border-[#2592F6] m-2.5 w-2/5"
             name="gender"
           >
             <option value="Male">Male</option>
@@ -27,7 +27,7 @@ const ModMedical = ({ visibility, Close }) => {
           </select>
           <label>Blood Type</label>
           <select
-            className="border-2 border-[#E7DDDD] p-[5px] hover:border-[#2592F6] m-[10px] w-[20%]"
+            className="border-2 border-[#E7DDDD] p-1 hover:border-[#2592F6] m-2.5 w-1/5"
             name="bloodtype"
           >
             <option value="A+"> A+</option>
@@ -77,7 +77,7 @@ const ModMedical = ({ visibility, Close }) => {
           <br />
           <label>Chronic medical history or conditions</label>
           <select
-            className="border-2 border-[#E7DDDD] p-[5px] hover:border-[#2592F6] m-[10px] w-[80%]"
+            className="border-2 border-[#E7DDDD] p-1 hover:border-[#2592F6] m-2.5 w-4/5"
             name="condition"
           >
             <option value="A+"> A+</option>

@@ -111,7 +111,7 @@ const SignupPage = () => {
         <h1>
           <span className="text-blue">Get</span> Started
         </h1>
-        <p className="w-[100%]">Input your details to create an account</p>
+        <p className="w-full">Input your details to create an account</p>
         <form onSubmit={handleSubmit}>
           <Input
             onChange={handleChange}

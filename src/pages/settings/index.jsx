@@ -32,9 +32,9 @@ const Settings = () => {
     <ActionLayout name="Settings">
       <div
         onClick={toggleMedicalVisibility}
-        className="border-b-[1px] active:bg-[#FAFAFA] flex items-center border-b-[#D9D9D9] p-[10px] text-black"
+        className="border-b active:bg-[#FAFAFA] flex items-center border-b-[#D9D9D9] p-2.5 text-black"
       >
-        <span className="mr-[3px] text-center">
+        <span className="mr-1 text-center">
           <ion-icon size="large" name="heart"></ion-icon>
         </span>
         <p>Manage your Medical Info</p>
@@ -42,9 +42,9 @@ const Settings = () => {
 
       <div
         onClick={toggleCentreVisibility}
-        className="border-b-[1px] active:bg-[#FAFAFA] flex items-center border-b-[#D9D9D9] p-[10px] text-black"
+        className="border-b active:bg-[#FAFAFA] flex items-center border-b-[#D9D9D9] p-2.5 text-black"
       >
-        <span className="mr-[3px] text-center">
+        <span className="mr-1 text-center">
           <ion-icon size="large" name="medkit"></ion-icon>
         </span>
         <p>Manage your Custom Health Centre </p>
@@ -52,9 +52,9 @@ const Settings = () => {
 
       <div
         onClick={toggleSpecialVisibility}
-        className="border-b-[1px] active:bg-[#FAFAFA] flex items-center border-b-[#D9D9D9] p-[10px] text-black"
+        className="border-b active:bg-[#FAFAFA] flex items-center border-b-[#D9D9D9] p-2.5 text-black"
       >
-        <span className="mr-[3px] text-center">
+        <span className="mr-1 text-center">
           <ion-icon size="large" name="people"></ion-icon>
         </span>
         <p>Manage Special Ones Contact Info </p>
@@ -62,9 +62,9 @@ const Settings = () => {
 
       <div
         onClick={togglePasswordVisibility}
-        className="border-b-[1px] active:bg-[#FAFAFA] flex items-center border-b-[#D9D9D9] p-[10px] text-black"
+        className="border-b active:bg-[#FAFAFA] flex items-center border-b-[#D9D9D9] p-2.5 text-black"
       >
-        <span className="mr-[3px] text-center">
+        <span className="mr-1 text-center">
           <ion-icon size="large" name="lock-closed"></ion-icon>
         </span>
         <p>Manage Password </p>
@@ -72,9 +72,9 @@ const Settings = () => {
       <Link to="/">
         <div
           onClick={logOut}
-          className="border-b-[1px] active:bg-[#FAFAFA] flex items-center border-b-[#D9D9D9] p-[10px] text-black"
+          className="border-b active:bg-[#FAFAFA] flex items-center border-b-[#D9D9D9] p-2.5 text-black"
         >
-          <span className="mr-[3px] text-center">
+          <span className="mr-1 text-center">
             <ion-icon size="large" name="log-out-outline"></ion-icon>
           </span>
           <p>Logout </p>

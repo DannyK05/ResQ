@@ -49,7 +49,7 @@ const MedicalPage = () => {
             </h1>
             <label>Gender</label>
             <select
-              className="border-2 border-[#E7DDDD] p-2 hover:border-[#2592F6] m-[10px] w-[40%]"
+              className="border-2 border-[#E7DDDD] p-2 hover:border-[#2592F6] m-2.5 w-2/5"
               onChange={handleChange}
               name="gender"
               value={medData.gender}
@@ -59,7 +59,7 @@ const MedicalPage = () => {
             </select>
             <label>Blood Type</label>
             <select
-              className="border-2 border-[#E7DDDD] p-1 hover:border-[#2592F6] m-[10px] w-[20%]"
+              className="border-2 border-[#E7DDDD] p-1 hover:border-[#2592F6] m-2.5 w-1/5"
               onChange={handleChange}
               name="bloodtype"
               value={medData.bloodtype}
@@ -129,7 +129,7 @@ const MedicalPage = () => {
             <br />
             <label>Chronic medical history or conditions</label>
             <select
-              className="border-2 border-[#E7DDDD] p-[5px] hover:border-[#2592F6] m-[10px] w-[80%]"
+              className="border-2 border-[#E7DDDD] p-1 hover:border-[#2592F6] m-2.5 w-4/5"
               name="condition"
               onChange={handleChange}
               value={medData.condition}

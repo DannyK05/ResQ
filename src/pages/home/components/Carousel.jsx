@@ -16,20 +16,20 @@ const Carousel = () => {
   };
 
   return (
-    <div className=" carousel w-[90%] mt-[20px] mb-[0] ml-4">
+    <div className=" carousel w-4/5 mt-5 mb-0 ml-4">
       <Slider {...settings}>
-        <div className="w-[100%] ">
+        <div className="w-full ">
           <Link to="/settings">
             <img src={Hospital} alt="Slide 1" />
           </Link>
         </div>
-        <div className="w-[100%] ">
+        <div className="w-full ">
           <Link to="/settings">
             {" "}
             <img src={Bot} alt="Slide 2" />
           </Link>
         </div>
-        <div className="w-[100%] ">
+        <div className="w-full ">
           <Link to="/settings">
             <img src={Family} alt="Slide 3" />
           </Link>

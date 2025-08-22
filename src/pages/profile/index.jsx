@@ -2,6 +2,8 @@ import axios from "axios";
 import EmergencyTab from "../home/components/Emergency";
 import Navbar from "../../components/ui/Navbar";
 import { useEffect, useState } from "react";
+import Input from "../../components/ui/Input";
+import Button from "../../components/ui/Button";
 
 const Profile = () => {
   const [userData, setUserData] = useState({
@@ -40,14 +42,14 @@ const Profile = () => {
   return (
     <main className="lg:flex lg:items-center lg:justify-center h-[100vh] w-[100vw] p-2">
       <div className="w-full h-full lg:shadow-lg lg:rounded-lg lg:w-2/5">
-        <header className="flex justify-center align-center py-[5px] px-[5px]">
+        <header className="flex justify-center items-center mx-1 px-[5px]">
           <h1>Profile</h1>
         </header>
         <section className="mt-[10px]">
           <h1>Update your Info</h1>
           <form>
-            <input
-              className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6] rounded-[8px]  m-[10px] w-[40%] "
+            <Input
+              className="w-2/5"
               type="text"
               name="firstname"
               onChange={handleChange}
@@ -55,8 +57,8 @@ const Profile = () => {
               value={userData.firstname}
               required
             />
-            <input
-              className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6] rounded-[8px]  m-[10px] w-[40%] "
+            <Input
+              className="w-2/5"
               type="text"
               name="lastname"
               onChange={handleChange}
@@ -64,8 +66,8 @@ const Profile = () => {
               value={userData.lastname}
               required
             />
-            <input
-              className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6] rounded-[8px]  m-[10px] w-[80%] "
+            <Input
+              className="w-4/5"
               type="email"
               name="email"
               onChange={handleChange}
@@ -73,8 +75,8 @@ const Profile = () => {
               value={userData.email}
               required
             />
-            <input
-              className="border-[1px] border-[#E7DDDD] p-[5px] hover:border-[#2592F6] rounded-[8px]  m-[10px] w-[80%] "
+            <Input
+              className="w-4/5"
               type="tel"
               name="phonenumber"
               onChange={handleChange}
@@ -83,12 +85,9 @@ const Profile = () => {
               required
             />
             <br />
-            <button
-              className=" form__button border-neutral-400 active:bg-white active:text-blue rounded-xl bg-blue mx-[5px] my-[15px] px-[50px] py-[5px] w-[95%] text-white"
-              type="submit"
-            >
+            <Button type="submit">
               <h1>Update Info</h1>
-            </button>
+            </Button>
           </form>
         </section>
         <Navbar

@@ -30,10 +30,10 @@ const Home = () => {
     <HomeLayout>
       <h1 className="ml-2 text-blue lg:text-xl">Welcome</h1>
       <Advice />
-      <section className=" action px-[8px] mt-[30px] w-[100%] flex justify-between align-center">
+      <section className=" action px-2 mt-[30px] w-full flex justify-between items-center">
         <Link to="/settings" aria-label="settings">
           <button
-            className=" active:p-[6px] rounded-[100%] shadow shadow-black p-[4px]"
+            className=" active:p-[6px] rounded-full shadow shadow-black p-1"
             name="Settings"
           >
             <ion-icon name="settings-outline"></ion-icon>
@@ -41,7 +41,7 @@ const Home = () => {
         </Link>
         <Link to="/map" aria-label="map">
           <button
-            className=" active:p-[6px] rounded-[100%] shadow shadow-black p-[4px]"
+            className=" active:p-[6px] rounded-full shadow shadow-black p-1"
             name="Map button"
           >
             <ion-icon name="map-outline"></ion-icon>
@@ -49,7 +49,7 @@ const Home = () => {
         </Link>
         <Link to="/bot" aria-label="bot">
           <button
-            className=" active:p-[6px] rounded-[100%] shadow shadow-black p-[4px]"
+            className=" active:p-[6px] rounded-full shadow shadow-black p-1"
             name="Bot"
           >
             <img alt="Bot button" src={Bot} />
@@ -59,10 +59,10 @@ const Home = () => {
       <div
         className={`${
           visibility ? "" : "hidden"
-        } absolute z-10 top-[40%] bg-white p-4 w-[90%] ml-4 shadow shadow-black  rounded-[20px]`}
+        } absolute z-10 top-[40%] bg-white p-4 w-4/5 ml-4 shadow shadow-black rounded-[20px]`}
       >
         <img
-          className="w-3/4 mx-4 my-2"
+          className="w-3/4 mx-1 my-2"
           src={Permission}
           alt="Turn on location"
         />
@@ -72,7 +72,7 @@ const Home = () => {
           onClick={() => {
             handleButtonClick();
           }}
-          className="active:bg-blue active:text-white border-blue rounded-xl bg-white border-1 border-blue w-full shadow shadow-black my-2  px-[20px] py-[10px]  text-blue"
+          className="active:bg-blue active:text-white border-blue rounded-xl bg-white border border-blue w-full shadow shadow-black my-2 px-5 py-2.5 text-blue"
         >
           Ok
         </button>

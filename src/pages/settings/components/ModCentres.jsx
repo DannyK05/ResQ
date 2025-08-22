@@ -99,7 +99,7 @@ const ModCentres = ({ visibility, Close }) => {
     <section
       className={`${
         visibility ? "absolute" : "hidden"
-      } w-[90vw] bg-white py-[10px] px-[15px] rounded-[20px] z-10 shadow shadow-black top-[30%] left-[5vw]`}
+      } w-[90vw] bg-white py-2.5 px-[15px] rounded-[20px] z-10 shadow shadow-black top-[30%] left-[5vw]`}
     >
       <header className="bg-blue">
         <span className="text-white text-center">
@@ -120,7 +120,7 @@ const ModCentres = ({ visibility, Close }) => {
       )}
       <button
         onClick={toggleFormVisibility}
-        className=" relative bottom-[5px] left-[10px]]border-neutral-400 rounded-[100%]  text-white"
+        className=" relative bottom-[5px] left-[10px] border-neutral-400 rounded-full text-white"
       >
         <ion-icon
           size="large"
@@ -136,7 +136,7 @@ const ModCentres = ({ visibility, Close }) => {
           You can add only two health centres
         </p>
         <input
-          className="m-[8px] p-[4px] w-[80%]  border-[1px] border-[#E7DDDD] rounded-[6px]"
+          className="m-2 p-1 w-4/5  border border-[#E7DDDD] rounded-[6px]"
           onChange={handleChange}
           name="centrename"
           value={centreData.centrename}
@@ -151,7 +151,7 @@ const ModCentres = ({ visibility, Close }) => {
           <p>{formError.name}</p>
         </div>
         <input
-          className="m-[8px] p-[4px] w-[80%]  border-[1px] border-[#E7DDDD] rounded-[6px]"
+          className="m-2 p-1 w-4/5  border border-[#E7DDDD] rounded-[6px]"
           onChange={handleChange}
           name="centrenumber"
           value={centreData.centrenumber}
@@ -166,7 +166,7 @@ const ModCentres = ({ visibility, Close }) => {
           <p>{formError.number}</p>
         </div>
         <input
-          className="m-[8px] p-[4px] w-[80%]  border-[1px] border-[#E7DDDD] rounded-[6px]"
+          className="m-2 p-1 w-4/5  border border-[#E7DDDD] rounded-[6px]"
           onChange={handleChange}
           name="centreemail"
           value={centreData.centreemail}
@@ -181,7 +181,7 @@ const ModCentres = ({ visibility, Close }) => {
           <p>{formError.email}</p>
         </div>
         <button
-          className=" active:bg-white active:text-blue border-neutral-400 rounded-xl bg-blue mx-[5px] my-[15px] px-[50px] py-[5px] w-[95%] text-white"
+          className=" active:bg-white active:text-blue border-neutral-400 rounded-xl bg-blue mx-1 my-[15px] px-[50px] mx-1 w-[95%] text-white"
           type="submit"
         >
           <h1>Update</h1>

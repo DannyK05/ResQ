@@ -3,7 +3,7 @@ const Input = ({ className, type = "text", ...props }) => {
     <input
       {...props}
       type={type}
-      className={`${className} border-[1px] border-[#E7DDDD] p-[5px] rounded-lg active:border-[#2592F6] hover:border-[#2592F6]  m-[10px] w-[80%] `}
+      className={`${className} border border-[#E7DDDD] p-1 rounded-lg active:border-[#2592F6] hover:border-[#2592F6] m-2.5 w-4/5 `}
     />
   );
 };

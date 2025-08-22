@@ -174,34 +174,34 @@ const EmergencyTab = ({ isVisible }) => {
 
   return (
     <section
-      className={`bg-[#fff] z-0 fixed w-full lg:w-2/5  py-2  flex flex-col align-center justify-between h-[40vh] bottom-[70px] ${
+      className={`bg-[#fff] z-0 fixed w-full lg:w-2/5  py-2  flex flex-col items-center justify-between h-[40vh] bottom-[70px] ${
         isVisible ? "block" : "hidden"
       }`}
     >
       <div
         onClick={emergencySpecial}
-        className="flex align-center justify-between lg:pl-[49%] pl-[45%] active:bg-white "
+        className="flex items-center justify-between lg:pl-[49%] pl-[45%] active:bg-white "
       >
-        <div className=" rounded-full border-[1px] border-blue active:border-[#6db6fa] p-4"></div>
-        <p className="text-[12px] w-[40%]">Alert special ones</p>
+        <div className=" rounded-full border border-blue active:border-[#6db6fa] p-4"></div>
+        <p className="text-[12px] w-2/5">Alert special ones</p>
       </div>
 
       <div
         onClick={emergencyCustomCentres}
-        className="flex align-center justify-between lg:pl-[49%] pl-[45%] active:bg-white"
+        className="flex items-center justify-between lg:pl-[49%] pl-[45%] active:bg-white"
       >
         <div className=" rounded-full bg-blue active:bg-[#6db6fa] p-4"></div>
-        <p className="text-[12px] w-[40%]">Alert custom health centre</p>
+        <p className="text-[12px] w-2/5">Alert custom health centre</p>
       </div>
 
       <div
         onClick={() => setConfirmStatus(!confirmStatus)}
-        className="flex align-center justify-between lg:pl-[49%] pl-[45%] active:bg-white"
+        className="flex items-center justify-between lg:pl-[49%] pl-[45%] active:bg-white"
       >
-        <div className=" rounded-full border-[1px] border-blue p-1">
+        <div className=" rounded-full border border-blue p-1">
           <div className=" rounded-full active:bg-[#6db6fa] bg-blue p-4"></div>
         </div>
-        <p className="text-[12px] w-[40%]">Alert nearby health centres</p>
+        <p className="text-[12px] w-2/5">Alert nearby health centres</p>
       </div>
 
       <div
@@ -213,9 +213,9 @@ const EmergencyTab = ({ isVisible }) => {
         <p className="text-blue text-xs">
           Give permission to use your location
         </p>
-        <div className="flex flex-row align-center justify-between">
+        <div className="flex flex-row items-center justify-between">
           <button
-            className="active:bg-blue active:text-white border-blue rounded-xl bg-white mx-[5px] my-[15px] px-[50px] py-[5px] w-[40%] text-blue"
+            className="active:bg-blue active:text-white border-blue rounded-xl bg-white mx-1 my-[15px] px-[50px] mx-1 w-2/5 text-blue"
             onClick={() => setConfirmStatus(false)}
           >
             <p>No</p>
@@ -225,7 +225,7 @@ const EmergencyTab = ({ isVisible }) => {
               callClosestHospital();
               fetchUserLocation();
             }}
-            className="active:bg-white active:text-blue border-neutral-400 rounded-xl bg-blue mx-[5px] my-[15px] px-[50px] py-[5px] w-[40%] text-white"
+            className="active:bg-white active:text-blue border-neutral-400 rounded-xl bg-blue mx-1 my-[15px] px-[50px] mx-1 w-2/5 text-white"
           >
             <p>Yes</p>
           </button>

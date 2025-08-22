@@ -28,7 +28,7 @@ const Bot = () => {
   return (
     <main className="lg:flex h-[100vh] p-2 lg:items-center lg:justify-center">
       <div className="w-full relative lg:rounded-lg lg:shadow-lg lg:w-2/5 h-full">
-        <header className="flex align-center py-[5px] px-[5px]">
+        <header className="flex items-center mx-1 px-[5px]">
           <Link to="/" aria-label="back-arrow">
             <ion-icon size="large" name="arrow-back-outline"></ion-icon>
           </Link>
@@ -43,7 +43,7 @@ const Bot = () => {
               key={index}
               className={`flex ${
                 item.speaker === "bot" ? "flex-row" : "flex-row-reverse"
-              }  justify-between align-center my-5 px-[20px] ${
+              }  justify-between items-center my-5 px-5 ${
                 item.speaker === "bot" ? "bot-message" : "user-message"
               }`}
             >
@@ -57,7 +57,7 @@ const Bot = () => {
                   item.speaker === "bot"
                     ? "bg-blue text-white"
                     : "bg-white text-blue"
-                } p-[5px] w-5/6 shadow shadow-black rounded-[6px]`}
+                } p-1 w-5/6 shadow shadow-black rounded-[6px]`}
               >
                 <p>{item.message}</p>
               </span>
@@ -66,9 +66,9 @@ const Bot = () => {
         </div>
         <form
           onSubmit={handleSubmit}
-          className="absolute w-full flex bottom-1 align-center justify-center"
+          className="absolute w-full flex bottom-1 items-center justify-center"
         >
-          <div className="flex align-center border-inherit space-between w-full p-2 border hover:border-[#2592F6] rounded-lg ">
+          <div className="flex items-center border-inherit justify-between w-full p-2 border hover:border-[#2592F6] rounded-lg ">
             <textarea
               className="p-2 h-[40px] mr-2 w-4/6 "
               onChange={handleValidation}

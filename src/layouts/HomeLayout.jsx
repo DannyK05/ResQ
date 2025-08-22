@@ -12,7 +12,7 @@ const HomeLayout = (props) => {
   return (
     <main className="lg:flex lg:items-center lg:justify-center h-[100vh] w-full p-2 bg-[#FAFAFA]">
       <div className="w-full relative lg:shadow-lg lg:w-2/5 lg:rounded-lg">
-        <header className="flex justify-between align-center border-b border-inherit w-full p-2 bg-white  mb-4">
+        <header className="flex justify-between items-center border-b border-inherit w-full p-2 bg-white  mb-4">
           <Link to="/">
             {" "}
             <h1 className="text-xl">

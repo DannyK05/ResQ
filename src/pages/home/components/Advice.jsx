@@ -21,12 +21,12 @@ const Advice = () => {
   }, []); // Empty dependency array ensures the effect runs only once after initial render
 
   return (
-    <div className="home__advicebubble rounded-[20px] shadow shadow-black w-[90%] p-[5px] ml-2 my-[10px]">
+    <div className="home__advicebubble rounded-[20px] shadow shadow-black w-4/5 p-1 ml-2 my-2.5">
       <h1>
         Res<span className="text-blue">Q</span> says
       </h1>
-      <div className="w-[100%] h-[120px] advicebubble">
-        <p className="w-[100%] text-blue">{currentAdvice}</p>
+      <div className="w-full h-[120px] advicebubble">
+        <p className="w-full text-blue">{currentAdvice}</p>
       </div>
     </div>
   );
