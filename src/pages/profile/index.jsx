@@ -1,7 +1,6 @@
 import axios from "axios";
-import EmergencyTab from "../components/emergency";
-import HomeHeader from "../components/homeheader";
-import Navbar from "../components/nav";
+import EmergencyTab from "../home/components/Emergency";
+import Navbar from "../../components/ui/Navbar";
 import { useEffect, useState } from "react";
 
 const Profile = () => {
@@ -41,7 +40,6 @@ const Profile = () => {
   return (
     <main className="lg:flex lg:items-center lg:justify-center h-[100vh] w-[100vw] p-2">
       <div className="w-full h-full lg:shadow-lg lg:rounded-lg lg:w-2/5">
-        <HomeHeader />
         <header className="flex justify-center align-center py-[5px] px-[5px]">
           <h1>Profile</h1>
         </header>

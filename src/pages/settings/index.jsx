@@ -1,8 +1,8 @@
-import ActionLayout from "../containers/actionLayout";
-import ModPassword from "../components/modpassword";
-import ModMedical from "../components/modmedical";
-import ModCentres from "../components/modcentres";
-import ModSpecial from "../components/modspecial";
+import ActionLayout from "../../layouts/ActionLayout";
+import ModPassword from "./components/ModPassword";
+import ModMedical from "./components/ModMedical";
+import ModCentres from "./components/ModCentres";
+import ModSpecial from "./components/ModSpecial";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 const Settings = () => {

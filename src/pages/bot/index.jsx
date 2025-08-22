@@ -1,4 +1,4 @@
-import ResQBot from "../assets/icons/MessageBot.svg";
+import ResQBot from "../../assets/icons/MessageBot.svg";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 

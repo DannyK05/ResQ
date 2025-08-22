@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
-import Home from "../src/pages/home";
+import Home from "./pages/home";
 // import SignupPage from './pages/signup';
 // import LoginPage from './pages/login';
 // import MedicalPage from './pages/medical';
 import Profile from "./pages/profile";
 import Settings from "./pages/settings";
 import Bot from "./pages/bot";
-import Notification from "./components/notification";
+import Notification from "./pages/notification";
 import {
   createBrowserRouter,
   RouterProvider,

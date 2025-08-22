@@ -1,3 +1,6 @@
+import Button from "../../../components/ui/Button";
+import Input from "../../../components/ui/Input";
+
 const ModMedical = ({ visibility, Close }) => {
   return (
     <section
@@ -70,11 +73,7 @@ const ModMedical = ({ visibility, Close }) => {
           <label>No</label>
           <br />
           <label>If yes please specify</label>
-          <input
-            className="border-2 border-[#E7DDDD] p-[5px] hover:border-[#2592F6] m-[10px] w-[80%]"
-            name="allergen"
-            type="text"
-          />
+          <Input name="allergen" type="text" />
           <br />
           <label>Chronic medical history or conditions</label>
           <select
@@ -95,25 +94,16 @@ const ModMedical = ({ visibility, Close }) => {
           <h1>
             <span className="text-blue">Health</span> Insurance
           </h1>
-          <input
-            className="border-2 border-[#E7DDDD] p-[5px] hover:border-[#2592F6] m-[10px] w-[80%]"
+          <Input
             name="healthinsurance"
             type="text"
             placeholder="Health Insurance Provider"
           />
-          <input
-            className="border-2 border-[#E7DDDD] p-[5px] hover:border-[#2592F6] m-[10px] w-[80%]"
-            name="policynumber"
-            type="text"
-            placeholder="Policy Number"
-          />
+          <Input name="policynumber" type="text" placeholder="Policy Number" />
         </div>
-        <button
-          className=" active:bg-white active:text-blue border-neutral-400 rounded-xl bg-blue mx-[5px] my-[15px] px-[50px] py-[5px] w-[95%] text-white"
-          type="submit"
-        >
+        <Button type="submit">
           <h1>Update</h1>
-        </button>
+        </Button>
       </form>
     </section>
   );

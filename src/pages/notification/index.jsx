@@ -1,4 +1,4 @@
-import ActionLayout from "../containers/actionLayout";
+import ActionLayout from "../../layouts/ActionLayout";
 
 const Notification = () => {
   return (

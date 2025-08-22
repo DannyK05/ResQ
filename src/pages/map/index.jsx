@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import GoogleMapReact from "google-map-react";
 import axios from "axios";
-import ActionLayout from "../containers/actionLayout";
-import Hospital from "../assets/icons/HospitalMarker.jpg";
-import User from "../assets/icons/UserMarker.jpg";
+import ActionLayout from "../../layouts/ActionLayout";
+import Hospital from "../../assets/icons/HospitalMarker.jpg";
+import User from "../../assets/icons/UserMarker.jpg";
 
 const Map = ({ apiKey }) => {
   const [nearestHospital, setNearestHospital] = useState(null);

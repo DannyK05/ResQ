@@ -1,21 +1,22 @@
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
-
-const ModCentres = ({ visibility, Close }) => {
-  const [centreFormVisibility, setFormVisibility] = useState(false);
+import Input from "../../../components/ui/Input";
+import Button from "../../../components/ui/Button";
+const ModSpecial = ({ visibility, Close }) => {
+  const [specialFormVisibility, setFormVisibility] = useState(false);
   const toggleFormVisibility = () => {
-    setFormVisibility(!centreFormVisibility);
+    setFormVisibility(!specialFormVisibility);
   };
-  // To store the dat of the centre person
-  const [centreData, setCentre] = useState({
-    centrename: "",
-    centreemail: "",
-    centrenumber: "",
+  // To store the dat of the special person
+  const [specialData, setSpecial] = useState({
+    specialname: "",
+    specialemail: "",
+    specialnumber: "",
   });
   // To store input
   const handleChange = (e) => {
     e.preventDefault();
-    setCentre({ ...centreData, [e.target.name]: e.target.value });
+    setSpecial({ ...specialData, [e.target.name]: e.target.value });
   };
   // To store the error message
   const [formError, setError] = useState({
@@ -26,19 +27,19 @@ const ModCentres = ({ visibility, Close }) => {
   });
 
   //Form validation
-  const formValidation = (centreData) => {
+  const formValidation = (specialData) => {
     const error = {};
     let valid = true;
-    if (centreData.centrename === "") {
-      error.name = "Please input health center name";
+    if (specialData.specialname === "") {
+      error.name = "Please input name";
       valid = false;
     }
-    if (centreData.centrenumber === "") {
-      error.number = "Please input contact number";
+    if (specialData.specialnumber === "") {
+      error.number = "Please input number";
       valid = false;
     }
-    if (centreData.centreemail === "") {
-      error.email = "Please input contact email";
+    if (specialData.specialemail === "") {
+      error.email = "Please input email";
       valid = false;
     }
     setError(error);
@@ -47,9 +48,9 @@ const ModCentres = ({ visibility, Close }) => {
   // Form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (formValidation(centreData)) {
+    if (formValidation(specialData)) {
       try {
-        const response = await axios.post("", centreData);
+        const response = await axios.post("", specialData);
         console.log("Form submitted", response);
         setError({ ...formError, form: "Form submitted successfully" });
       } catch (error) {
@@ -73,9 +74,9 @@ const ModCentres = ({ visibility, Close }) => {
       }, 2000);
     }
   };
-  // Fetch already present centre ones
+  // Fetch already present special ones
   let available = false;
-  const [availableCentre, setAvailable] = useState({
+  const [availablePerson, setPerson] = useState({
     name: "",
     number: "",
     email: "",
@@ -83,10 +84,10 @@ const ModCentres = ({ visibility, Close }) => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get("");
+        const response = await axios.get("api");
         const data = await response.json;
-        setAvailable({ ...availableCentre, ...data });
-        console.log("Fetch centre successful", data);
+        setPerson({ ...availablePerson, ...data });
+        console.log("Fetch special successful", data);
         available = true;
       } catch (error) {
         console.log(error.message);
@@ -106,17 +107,17 @@ const ModCentres = ({ visibility, Close }) => {
           <p>{formError.form}</p>
         </span>
       </header>
-      <h2>
-        Manage your health centres{" "}
+      <h1>
+        Manage your special person info{" "}
         <ion-icon onClick={Close} size="large" name="close-circle"></ion-icon>
-      </h2>
+      </h1>
       {available ? (
         <div>
-          <h1>{availableCentre.name}</h1>
-          <p>{availableCentre.number}</p>
+          <h1>{availablePerson.name}</h1>
+          <p>{availablePerson.number}</p>
         </div>
       ) : (
-        <p>No health centres was added</p>
+        <p>No special person was added</p>
       )}
       <button
         onClick={toggleFormVisibility}
@@ -124,24 +125,22 @@ const ModCentres = ({ visibility, Close }) => {
       >
         <ion-icon
           size="large"
-          name={`${centreFormVisibility ? "close-circle" : "add-circle"}`}
+          name={`${specialFormVisibility ? "close-circle" : "add-circle"}`}
         ></ion-icon>
       </button>
       <form
         onSubmit={handleSubmit}
-        className={`${centreFormVisibility ? "relative" : "hidden"}`}
+        className={`${specialFormVisibility ? "block" : "hidden"}`}
       >
-        <h1> Add health centres </h1>
+        <h1> Add your special personnel</h1>
         <p className="bg-blue p-[2px] text-white">
-          You can add only two health centres
+          You can add only two special person
         </p>
-        <input
-          className="m-[8px] p-[4px] w-[80%]  border-[1px] border-[#E7DDDD] rounded-[6px]"
+        <Input
           onChange={handleChange}
-          name="centrename"
-          value={centreData.centrename}
-          type="text"
-          placeholder="Hospital name"
+          name="specialname"
+          value={specialData.specialname}
+          placeholder="Person's name"
         />
         <div
           className={`${
@@ -150,44 +149,39 @@ const ModCentres = ({ visibility, Close }) => {
         >
           <p>{formError.name}</p>
         </div>
-        <input
-          className="m-[8px] p-[4px] w-[80%]  border-[1px] border-[#E7DDDD] rounded-[6px]"
-          onChange={handleChange}
-          name="centrenumber"
-          value={centreData.centrenumber}
+        <Input
           type="tel"
-          placeholder="Contact number"
-        />
-        <div
-          className={`${
-            formError.email ? "bg-blue p-[2px]" : ""
-          } text-center  text-white`}
-        >
-          <p>{formError.number}</p>
-        </div>
-        <input
-          className="m-[8px] p-[4px] w-[80%]  border-[1px] border-[#E7DDDD] rounded-[6px]"
           onChange={handleChange}
-          name="centreemail"
-          value={centreData.centreemail}
-          type="email"
-          placeholder="Contact mail"
+          name="specialnumber"
+          value={specialData.specialnumber}
+          placeholder="Person's number"
         />
         <div
           className={`${
             formError.number ? "bg-blue p-[2px]" : ""
           } text-center  text-white`}
         >
+          <p>{formError.number}</p>
+        </div>
+        <Input
+          type="email"
+          onChange={handleChange}
+          name="specialemail"
+          value={specialData.specialemail}
+          placeholder="Person's mail"
+        />
+        <div
+          className={`${
+            formError.email ? "bg-blue p-[2px]" : ""
+          } text-center  text-white`}
+        >
           <p>{formError.email}</p>
         </div>
-        <button
-          className=" active:bg-white active:text-blue border-neutral-400 rounded-xl bg-blue mx-[5px] my-[15px] px-[50px] py-[5px] w-[95%] text-white"
-          type="submit"
-        >
+        <Button type="submit">
           <h1>Update</h1>
-        </button>
+        </Button>
       </form>
     </section>
   );
 };
-export default ModCentres;
+export default ModSpecial;

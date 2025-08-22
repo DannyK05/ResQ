@@ -1,5 +1,5 @@
-import MedicalAdvice from "../data/medicalAdvice";
-import React, { useState, useEffect } from "react";
+import MedicalAdvice from "../../../data/medicalAdvice";
+import { useState, useEffect } from "react";
 
 const Advice = () => {
   const [currentAdvice, setCurrentAdvice] = useState("Have a beautiful day");
