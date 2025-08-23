@@ -12,6 +12,7 @@ const ModMedical = ({ visibility, Close }) => {
         Manage your medical info{" "}
         <ion-icon onClick={Close} size="large" name="close-circle"></ion-icon>
       </h1>
+
       <form className="overflow-scroll">
         <div>
           <h1>
@@ -90,17 +91,21 @@ const ModMedical = ({ visibility, Close }) => {
             <option value="AB-">AB+</option>
           </select>
         </div>
+
         <div>
           <h1>
             <span className="text-blue">Health</span> Insurance
           </h1>
+
           <Input
             name="healthinsurance"
             type="text"
             placeholder="Health Insurance Provider"
           />
+
           <Input name="policynumber" type="text" placeholder="Policy Number" />
         </div>
+
         <Button type="submit">
           <h1>Update</h1>
         </Button>

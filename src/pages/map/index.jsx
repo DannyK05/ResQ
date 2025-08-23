@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
-import GoogleMapReact from "google-map-react";
 import axios from "axios";
-import ActionLayout from "../../layouts/ActionLayout";
+import GoogleMapReact from "google-map-react";
+
 import Hospital from "../../assets/icons/HospitalMarker.jpg";
 import User from "../../assets/icons/UserMarker.jpg";
+
+import ActionLayout from "../../components/layouts/ActionLayout";
 
 const Map = ({ apiKey }) => {
   const [nearestHospital, setNearestHospital] = useState(null);
@@ -129,6 +131,7 @@ const Map = ({ apiKey }) => {
 const Marker = ({ type }) => (
   <div style={{ color: "red" }}>
     {type === "user" && <img className="w-4" src={User} alt="User Marker" />}
+
     {type === "hospital" && (
       <img className="w-4" src={Hospital} alt="Hospital Marker" />
     )}

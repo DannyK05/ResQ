@@ -1,9 +1,10 @@
-import axios from "axios";
-import EmergencyTab from "../home/components/Emergency";
-import Navbar from "../../components/ui/Navbar";
 import { useEffect, useState } from "react";
+import axios from "axios";
+
+import Navbar from "../../components/ui/Navbar";
 import Input from "../../components/ui/Input";
 import Button from "../../components/ui/Button";
+import EmergencyTab from "../home/components/Emergency";
 
 const Profile = () => {
   const [userData, setUserData] = useState({
@@ -45,8 +46,10 @@ const Profile = () => {
         <header className="flex justify-center items-center mx-1 px-[5px]">
           <h1>Profile</h1>
         </header>
+
         <section className="mt-[10px]">
           <h1>Update your Info</h1>
+
           <form>
             <Input
               className="w-2/5"
@@ -57,6 +60,7 @@ const Profile = () => {
               value={userData.firstname}
               required
             />
+
             <Input
               className="w-2/5"
               type="text"
@@ -66,6 +70,7 @@ const Profile = () => {
               value={userData.lastname}
               required
             />
+
             <Input
               className="w-4/5"
               type="email"
@@ -75,6 +80,7 @@ const Profile = () => {
               value={userData.email}
               required
             />
+
             <Input
               className="w-4/5"
               type="tel"
@@ -84,17 +90,21 @@ const Profile = () => {
               value={userData.phonenumber}
               required
             />
+
             <br />
+
             <Button type="submit">
               <h1>Update Info</h1>
             </Button>
           </form>
         </section>
+
         <Navbar
           toggleEmergencyTab={toggleEmergencyTab}
           visibility={isEmergencyTabVisible}
           activeNav={false}
         />
+
         <EmergencyTab isVisible={isEmergencyTabVisible} />
       </div>
     </main>

@@ -103,17 +103,20 @@ const ModSpecial = ({ visibility, Close }) => {
       } w-[90vw] bg-white py-2.5 px-[15px] rounded-[20px] z-10 shadow shadow-black top-[30%] left-[5vw]`}
     >
       <header className="bg-blue">
-        <span className="text-white text-center">
-          <p>{formError.form}</p>
-        </span>
+        <p className="text-white text-center">
+          <span>{formError.form}</span>
+        </p>
       </header>
+
       <h1>
         Manage your special person info{" "}
         <ion-icon onClick={Close} size="large" name="close-circle"></ion-icon>
       </h1>
+
       {available ? (
         <div>
           <h1>{availablePerson.name}</h1>
+
           <p>{availablePerson.number}</p>
         </div>
       ) : (
@@ -128,20 +131,24 @@ const ModSpecial = ({ visibility, Close }) => {
           name={`${specialFormVisibility ? "close-circle" : "add-circle"}`}
         ></ion-icon>
       </button>
+
       <form
         onSubmit={handleSubmit}
         className={`${specialFormVisibility ? "block" : "hidden"}`}
       >
         <h1> Add your special personnel</h1>
+
         <p className="bg-blue p-[2px] text-white">
           You can add only two special person
         </p>
+
         <Input
           onChange={handleChange}
           name="specialname"
           value={specialData.specialname}
           placeholder="Person's name"
         />
+
         <div
           className={`${
             formError.name ? "bg-blue p-[2px]" : ""
@@ -149,6 +156,7 @@ const ModSpecial = ({ visibility, Close }) => {
         >
           <p>{formError.name}</p>
         </div>
+
         <Input
           type="tel"
           onChange={handleChange}
@@ -156,6 +164,7 @@ const ModSpecial = ({ visibility, Close }) => {
           value={specialData.specialnumber}
           placeholder="Person's number"
         />
+
         <div
           className={`${
             formError.number ? "bg-blue p-[2px]" : ""
@@ -163,6 +172,7 @@ const ModSpecial = ({ visibility, Close }) => {
         >
           <p>{formError.number}</p>
         </div>
+
         <Input
           type="email"
           onChange={handleChange}
@@ -170,6 +180,7 @@ const ModSpecial = ({ visibility, Close }) => {
           value={specialData.specialemail}
           placeholder="Person's mail"
         />
+
         <div
           className={`${
             formError.email ? "bg-blue p-[2px]" : ""
@@ -177,6 +188,7 @@ const ModSpecial = ({ visibility, Close }) => {
         >
           <p>{formError.email}</p>
         </div>
+
         <Button type="submit">
           <h1>Update</h1>
         </Button>

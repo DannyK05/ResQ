@@ -1,5 +1,5 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 const ModCentres = ({ visibility, Close }) => {
   const [centreFormVisibility, setFormVisibility] = useState(false);
@@ -102,14 +102,16 @@ const ModCentres = ({ visibility, Close }) => {
       } w-[90vw] bg-white py-2.5 px-[15px] rounded-[20px] z-10 shadow shadow-black top-[30%] left-[5vw]`}
     >
       <header className="bg-blue">
-        <span className="text-white text-center">
-          <p>{formError.form}</p>
-        </span>
+        <p className="text-white text-center">
+          <span>{formError.form}</span>
+        </p>
       </header>
+
       <h2>
         Manage your health centres{" "}
         <ion-icon onClick={Close} size="large" name="close-circle"></ion-icon>
       </h2>
+
       {available ? (
         <div>
           <h1>{availableCentre.name}</h1>
@@ -118,6 +120,7 @@ const ModCentres = ({ visibility, Close }) => {
       ) : (
         <p>No health centres was added</p>
       )}
+
       <button
         onClick={toggleFormVisibility}
         className=" relative bottom-[5px] left-[10px] border-neutral-400 rounded-full text-white"
@@ -127,14 +130,17 @@ const ModCentres = ({ visibility, Close }) => {
           name={`${centreFormVisibility ? "close-circle" : "add-circle"}`}
         ></ion-icon>
       </button>
+
       <form
         onSubmit={handleSubmit}
         className={`${centreFormVisibility ? "relative" : "hidden"}`}
       >
         <h1> Add health centres </h1>
+
         <p className="bg-blue p-[2px] text-white">
           You can add only two health centres
         </p>
+
         <input
           className="m-2 p-1 w-4/5  border border-[#E7DDDD] rounded-[6px]"
           onChange={handleChange}
@@ -143,6 +149,7 @@ const ModCentres = ({ visibility, Close }) => {
           type="text"
           placeholder="Hospital name"
         />
+
         <div
           className={`${
             formError.name ? "bg-blue p-[2px]" : ""
@@ -150,6 +157,7 @@ const ModCentres = ({ visibility, Close }) => {
         >
           <p>{formError.name}</p>
         </div>
+
         <input
           className="m-2 p-1 w-4/5  border border-[#E7DDDD] rounded-[6px]"
           onChange={handleChange}
@@ -158,6 +166,7 @@ const ModCentres = ({ visibility, Close }) => {
           type="tel"
           placeholder="Contact number"
         />
+
         <div
           className={`${
             formError.email ? "bg-blue p-[2px]" : ""
@@ -165,6 +174,7 @@ const ModCentres = ({ visibility, Close }) => {
         >
           <p>{formError.number}</p>
         </div>
+
         <input
           className="m-2 p-1 w-4/5  border border-[#E7DDDD] rounded-[6px]"
           onChange={handleChange}
@@ -173,6 +183,7 @@ const ModCentres = ({ visibility, Close }) => {
           type="email"
           placeholder="Contact mail"
         />
+
         <div
           className={`${
             formError.number ? "bg-blue p-[2px]" : ""
@@ -180,6 +191,7 @@ const ModCentres = ({ visibility, Close }) => {
         >
           <p>{formError.email}</p>
         </div>
+
         <button
           className=" active:bg-white active:text-blue border-neutral-400 rounded-xl bg-blue mx-1 my-[15px] px-[50px] mx-1 w-[95%] text-white"
           type="submit"

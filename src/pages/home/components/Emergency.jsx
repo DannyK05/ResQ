@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const EmergencyTab = ({ isVisible }) => {
   const [confirmStatus, setConfirmStatus] = useState(false);
@@ -201,6 +201,7 @@ const EmergencyTab = ({ isVisible }) => {
         <div className=" rounded-full border border-blue p-1">
           <div className=" rounded-full active:bg-[#6db6fa] bg-blue p-4"></div>
         </div>
+
         <p className="text-[12px] w-2/5">Alert nearby health centres</p>
       </div>
 
@@ -210,9 +211,11 @@ const EmergencyTab = ({ isVisible }) => {
         } top-[20%] left-[0] p-[40px] rounded-[20px]`}
       >
         <h1>Alert nearby health centres?</h1>
+
         <p className="text-blue text-xs">
           Give permission to use your location
         </p>
+
         <div className="flex flex-row items-center justify-between">
           <button
             className="active:bg-blue active:text-white border-blue rounded-xl bg-white mx-1 my-[15px] px-[50px] mx-1 w-2/5 text-blue"
@@ -220,6 +223,7 @@ const EmergencyTab = ({ isVisible }) => {
           >
             <p>No</p>
           </button>
+
           <button
             onClick={() => {
               callClosestHospital();
@@ -231,6 +235,7 @@ const EmergencyTab = ({ isVisible }) => {
           </button>
         </div>
       </div>
+
       <footer className="text-white bg-blue text-center">{message}</footer>
     </section>
   );

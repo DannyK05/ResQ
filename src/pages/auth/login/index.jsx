@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+
+import SignLayout from "../layouts/signLayout";
+
 import Input from "./ui/Input";
 import Button from "./ui/Button";
-import SignLayout from "../layouts/signLayout";
 
 const LoginPage = ({ setAuthenticated }) => {
   const [logData, setData] = useState({
@@ -102,10 +104,13 @@ const LoginPage = ({ setAuthenticated }) => {
             <p>{formError}</p>
           </span>
         </header>
+
         <h1>
           <span className="text-blue">Welcome</span> Back
         </h1>
+
         <p>Login to your account</p>
+
         <form onSubmit={handleLocationAndSubmit}>
           <Input
             onChange={handleChange}
@@ -114,6 +119,7 @@ const LoginPage = ({ setAuthenticated }) => {
             type="email"
             placeholder="example@gmail.com"
           />
+
           <Input
             onChange={handleChange}
             name="password"
@@ -121,6 +127,7 @@ const LoginPage = ({ setAuthenticated }) => {
             type="password"
             placeholder="Password"
           />
+
           <Button
             className={
               formError !== "" ? "" : "active:bg-blue active:text-white"
@@ -131,14 +138,17 @@ const LoginPage = ({ setAuthenticated }) => {
             <h1>{formLoading ? "Loading..." : "Login"}</h1>
           </Button>
         </form>
+
         <Link to="/signup">
           <p>
             Don't have an account? <span className="text-blue">SignUp</span>
           </p>
         </Link>
+
         <p onClick={toggleResetForm} className="text-blue">
           Forget Password?
         </p>
+
         <section
           className={`${
             resetFormVisibility ? "relative" : "hidden"
@@ -152,12 +162,14 @@ const LoginPage = ({ setAuthenticated }) => {
               name="close-circle"
             ></ion-icon>
           </h1>
+
           <form>
             <input
               className="m-2 p-1 w-4/5  border border-[#E7DDDD] rounded-[6px]"
               type="email"
               placeholder="Input your email"
             />
+
             <Button type="submit">
               <h1>Reset Password</h1>
             </Button>

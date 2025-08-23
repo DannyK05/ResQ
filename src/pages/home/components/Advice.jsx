@@ -1,5 +1,6 @@
-import MedicalAdvice from "../../../data/medicalAdvice";
 import { useState, useEffect } from "react";
+
+import MedicalAdvice from "../../../data/medicalAdvice";
 
 const Advice = () => {
   const [currentAdvice, setCurrentAdvice] = useState("Have a beautiful day");
@@ -25,6 +26,7 @@ const Advice = () => {
       <h1>
         Res<span className="text-blue">Q</span> says
       </h1>
+
       <div className="w-full h-[120px] advicebubble">
         <p className="w-full text-blue">{currentAdvice}</p>
       </div>

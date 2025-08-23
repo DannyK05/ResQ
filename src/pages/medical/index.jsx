@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+
+import SignLayout from "../layouts/signLayout";
+
 import Button from "./ui/Button";
 import Input from "./ui/Input";
-import SignLayout from "../layouts/signLayout";
 
 const MedicalPage = () => {
   const [medData, setData] = useState({
@@ -47,7 +49,9 @@ const MedicalPage = () => {
             <h1>
               <span className="text-blue">Personal</span> Medical Info
             </h1>
+
             <label>Gender</label>
+
             <select
               className="border-2 border-[#E7DDDD] p-2 hover:border-[#2592F6] m-2.5 w-2/5"
               onChange={handleChange}
@@ -55,9 +59,12 @@ const MedicalPage = () => {
               value={medData.gender}
             >
               <option value="Male">Male</option>
+
               <option value="Female"> Female</option>
             </select>
+
             <label>Blood Type</label>
+
             <select
               className="border-2 border-[#E7DDDD] p-1 hover:border-[#2592F6] m-2.5 w-1/5"
               onChange={handleChange}
@@ -73,8 +80,11 @@ const MedicalPage = () => {
               <option value="AB+"> AB-</option>
               <option value="AB-">AB+</option>
             </select>
+
             <br />
+
             <label for="disability">Do you have any disability</label>
+
             <input
               name="disability"
               className="ml-[8px]"
@@ -82,8 +92,10 @@ const MedicalPage = () => {
               onChange={handleChange}
               checked={medData.disability === "Yes"}
               value="Yes"
-            />{" "}
+            />
+
             <label>Yes</label>
+
             <input
               name="disability"
               className="ml-[8px]"
@@ -92,6 +104,7 @@ const MedicalPage = () => {
               checked={medData.disability === "No"}
               value="No"
             />
+
             <label>No</label>
           </div>
 
@@ -99,7 +112,9 @@ const MedicalPage = () => {
             <h1>
               <span className="text-blue">Medical</span> History
             </h1>
+
             <label>Do you have any allergy</label>
+
             <input
               name="allergy"
               className="ml-[8px]"
@@ -107,8 +122,10 @@ const MedicalPage = () => {
               value="Yes"
               onChange={handleChange}
               checked={medData.allergy === "Yes"}
-            />{" "}
+            />
+
             <label>Yes</label>
+
             <input
               name="allergy"
               className="ml-[8px]"
@@ -117,16 +134,22 @@ const MedicalPage = () => {
               onChange={handleChange}
               checked={medData.allergy === "No"}
             />
+
             <label>No</label>
+
             <br />
+
             <label>If yes please specify</label>
+
             <Input
               name="allergen"
               onChange={handleChange}
               value={medData.allergen}
               type="text"
             />
+
             <br />
+
             <label>Chronic medical history or conditions</label>
             <select
               className="border-2 border-[#E7DDDD] p-1 hover:border-[#2592F6] m-2.5 w-4/5"
@@ -144,10 +167,12 @@ const MedicalPage = () => {
               <option value="AB-">AB+</option>
             </select>
           </div>
+
           <div>
             <h1>
               <span className="text-blue">Health</span> Insurance
             </h1>
+
             <Input
               name="healthinsurance"
               onChange={handleChange}
@@ -155,6 +180,7 @@ const MedicalPage = () => {
               type="text"
               placeholder="Health Insurance Provider"
             />
+
             <Input
               name="policynumber"
               onChange={handleChange}
@@ -163,6 +189,7 @@ const MedicalPage = () => {
               placeholder="Policy Number"
             />
           </div>
+
           <Button type="submit">
             <h1>Finish</h1>
           </Button>

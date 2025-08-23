@@ -1,4 +1,4 @@
-import ActionLayout from "../../layouts/ActionLayout";
+import ActionLayout from "../../components/layouts/ActionLayout";
 import ModPassword from "./components/ModPassword";
 import ModMedical from "./components/ModMedical";
 import ModCentres from "./components/ModCentres";
@@ -37,6 +37,7 @@ const Settings = () => {
         <span className="mr-1 text-center">
           <ion-icon size="large" name="heart"></ion-icon>
         </span>
+
         <p>Manage your Medical Info</p>
       </div>
 
@@ -47,6 +48,7 @@ const Settings = () => {
         <span className="mr-1 text-center">
           <ion-icon size="large" name="medkit"></ion-icon>
         </span>
+
         <p>Manage your Custom Health Centre </p>
       </div>
 
@@ -57,6 +59,7 @@ const Settings = () => {
         <span className="mr-1 text-center">
           <ion-icon size="large" name="people"></ion-icon>
         </span>
+
         <p>Manage Special Ones Contact Info </p>
       </div>
 
@@ -67,8 +70,10 @@ const Settings = () => {
         <span className="mr-1 text-center">
           <ion-icon size="large" name="lock-closed"></ion-icon>
         </span>
+
         <p>Manage Password </p>
       </div>
+
       <Link to="/">
         <div
           onClick={logOut}
@@ -77,18 +82,23 @@ const Settings = () => {
           <span className="mr-1 text-center">
             <ion-icon size="large" name="log-out-outline"></ion-icon>
           </span>
+
           <p>Logout </p>
         </div>
       </Link>
+
       <ModPassword
         visibility={isPasswordVisible}
         Close={togglePasswordVisibility}
       />
+
       <ModCentres visibility={isCentreVisible} Close={toggleCentreVisibility} />
+
       <ModMedical
         visibility={isMedicalVisible}
         Close={toggleMedicalVisibility}
       />
+
       <ModSpecial
         visibility={isSpecialVisible}
         Close={toggleSpecialVisibility}

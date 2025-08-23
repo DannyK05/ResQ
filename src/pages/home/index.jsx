@@ -1,10 +1,13 @@
-import Bot from "../../assets/imgs/Robot.png";
-import Advice from "./components/Advice";
-import HomeLayout from "../../layouts/HomeLayout";
-import Carousel from "./components/Carousel";
-import Permission from "../../assets/imgs/Permission.png";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Permission from "../../assets/imgs/Permission.png";
+
+import Bot from "../../assets/icons/MessageBot.svg";
+
+import HomeLayout from "../../components/layouts/HomeLayout";
+import Advice from "./components/Advice";
+import Carousel from "./components/Carousel";
+
 const Home = () => {
   const [visibility, setVisibility] = useState(false);
 
@@ -29,7 +32,9 @@ const Home = () => {
   return (
     <HomeLayout>
       <h1 className="ml-2 text-blue lg:text-xl">Welcome</h1>
+
       <Advice />
+
       <section className=" action px-2 mt-[30px] w-full flex justify-between items-center">
         <Link to="/settings" aria-label="settings">
           <button
@@ -39,6 +44,7 @@ const Home = () => {
             <ion-icon name="settings-outline"></ion-icon>
           </button>
         </Link>
+
         <Link to="/map" aria-label="map">
           <button
             className=" active:p-[6px] rounded-full shadow shadow-black p-1"
@@ -47,6 +53,7 @@ const Home = () => {
             <ion-icon name="map-outline"></ion-icon>
           </button>
         </Link>
+
         <Link to="/bot" aria-label="bot">
           <button
             className=" active:p-[6px] rounded-full shadow shadow-black p-1"
@@ -56,6 +63,7 @@ const Home = () => {
           </button>
         </Link>
       </section>
+
       <div
         className={`${
           visibility ? "" : "hidden"
@@ -66,8 +74,11 @@ const Home = () => {
           src={Permission}
           alt="Turn on location"
         />
+
         <h1 className="text-blue">Turn on permission and reload</h1>
+
         <p>Your location info helps us function better</p>
+
         <button
           onClick={() => {
             handleButtonClick();
@@ -77,6 +88,7 @@ const Home = () => {
           Ok
         </button>
       </div>
+
       <Carousel />
       {/* <div className="border-y p-2 text-sm font-medium text-blue mt-6 bg-white">
                 <p>First aid tips</p>

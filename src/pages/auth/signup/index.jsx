@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+
+import SignLayout from "../layouts/signLayout";
+
 import Input from "./ui/Input";
 import Checkbox from "./ui/Checkbox";
 import Button from "./ui/Button";
-import SignLayout from "../layouts/signLayout";
 
 const SignupPage = () => {
   //This for storing the data inputted
@@ -108,10 +110,13 @@ const SignupPage = () => {
         >
           <span className="text-white">{formError}</span>
         </header>
+
         <h1>
           <span className="text-blue">Get</span> Started
         </h1>
+
         <p className="w-full">Input your details to create an account</p>
+
         <form onSubmit={handleSubmit}>
           <Input
             onChange={handleChange}
@@ -120,6 +125,7 @@ const SignupPage = () => {
             value={userData.firstName}
             placeholder="First name"
           />
+
           <Input
             onChange={handleChange}
             type="text"
@@ -127,6 +133,7 @@ const SignupPage = () => {
             value={userData.lastName}
             placeholder="Last name"
           />
+
           <Input
             onChange={handleChange}
             type="email"
@@ -134,6 +141,7 @@ const SignupPage = () => {
             value={userData.email}
             placeholder="example@gmail.com"
           />
+
           <Input
             onChange={handleChange}
             type="tel"
@@ -141,6 +149,7 @@ const SignupPage = () => {
             value={userData.phoneNumber}
             placeholder="Phone number"
           />
+
           <Input
             onChange={handleChange}
             type="password"
@@ -148,16 +157,23 @@ const SignupPage = () => {
             value={userData.password}
             placeholder="Password"
           />
+
           <Input
             onChange={handleChange}
             type="password"
             name="passwordConfirm"
             placeholder="Confirm Password"
           />
+
           <br />
-          <Checkbox required />{" "}
-          <label>I have read and accepted the terms and conditions.</label>
+
+          <label>
+            <Checkbox required />I have read and accepted the terms and
+            conditions.
+          </label>
+
           <br />
+
           <Button
             className={
               formError !== "" ? "" : "active:bg-white active:text-blue"
@@ -168,6 +184,7 @@ const SignupPage = () => {
             <h1>{formLoading ? "Loading..." : "continue"}</h1>
           </Button>
         </form>
+
         <Link to="/">
           <p>
             Already have an account?<span className="text-blue">Login</span>

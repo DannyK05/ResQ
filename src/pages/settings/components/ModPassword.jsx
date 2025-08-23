@@ -12,10 +12,14 @@ const ModPassword = ({ visibility, Close }) => {
         Manage your password{" "}
         <ion-icon onClick={Close} size="large" name="close-circle"></ion-icon>
       </h1>
+
       <form>
         <Input type="password" placeholder="Input old password" />
+
         <Input type="password" placeholder="Input new password" />
+
         <Input type="password" placeholder="Confirm new password" />
+
         <Button type="submit">
           <h1>Update</h1>
         </Button>

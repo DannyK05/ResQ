@@ -1,6 +1,7 @@
-import ResQBot from "../../assets/icons/MessageBot.svg";
-import { Link } from "react-router-dom";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+
+import ResQBot from "../../assets/icons/MessageBot.svg";
 
 const Bot = () => {
   const [userReply, setUserReply] = useState("");
@@ -32,6 +33,7 @@ const Bot = () => {
           <Link to="/" aria-label="back-arrow">
             <ion-icon size="large" name="arrow-back-outline"></ion-icon>
           </Link>
+
           {/*Change Link address to home when Login page is ready*/}
           <h1 className="ml-20">
             Res<span className="text-blue">Q</span> Bot
@@ -52,18 +54,20 @@ const Bot = () => {
               ) : (
                 <ion-icon name="person"></ion-icon>
               )}
-              <span
+
+              <p
                 className={`${
                   item.speaker === "bot"
                     ? "bg-blue text-white"
                     : "bg-white text-blue"
                 } p-1 w-5/6 shadow shadow-black rounded-[6px]`}
               >
-                <p>{item.message}</p>
-              </span>
+                <span>{item.message}</span>
+              </p>
             </div>
           ))}
         </div>
+
         <form
           onSubmit={handleSubmit}
           className="absolute w-full flex bottom-1 items-center justify-center"
@@ -75,6 +79,7 @@ const Bot = () => {
               value={userReply}
               placeholder="Ask ResQ bot"
             ></textarea>
+
             <button
               className={` border-neutral-400 ${
                 isDisabled ? "active:bg-white active:text-blue" : ""
