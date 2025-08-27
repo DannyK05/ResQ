@@ -155,7 +155,7 @@ const LoginPage = ({ setAuthenticated }) => {
           } w-[90vw] bg-white py-2.5 px-[15px] rounded-[20px] z-10 shadow shadow-black top-[30%] left-[5vw]`}
         >
           <h1>
-            Manage your password{" "}
+            Manage your password
             <ion-icon
               onClick={toggleResetForm}
               size="large"

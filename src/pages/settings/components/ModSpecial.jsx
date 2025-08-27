@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+
 import Input from "../../../components/ui/Input";
 import Button from "../../../components/ui/Button";
+import PopupLayout from "../../../components/layouts/PopupLayout";
 const ModSpecial = ({ visibility, Close }) => {
   const [specialFormVisibility, setFormVisibility] = useState(false);
   const toggleFormVisibility = () => {
@@ -97,21 +99,16 @@ const ModSpecial = ({ visibility, Close }) => {
   }, []);
 
   return (
-    <section
-      className={`${
-        visibility ? "absolute" : "hidden"
-      } w-[90vw] bg-white py-2.5 px-[15px] rounded-[20px] z-10 shadow shadow-black top-[30%] left-[5vw]`}
+    <PopupLayout
+      title="Manage your special person info"
+      visibility={visibility}
+      close={Close}
     >
       <header className="bg-blue">
         <p className="text-white text-center">
           <span>{formError.form}</span>
         </p>
       </header>
-
-      <h1>
-        Manage your special person info{" "}
-        <ion-icon onClick={Close} size="large" name="close-circle"></ion-icon>
-      </h1>
 
       {available ? (
         <div>
@@ -193,7 +190,7 @@ const ModSpecial = ({ visibility, Close }) => {
           <h1>Update</h1>
         </Button>
       </form>
-    </section>
+    </PopupLayout>
   );
 };
 export default ModSpecial;

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import ResQBot from "../../assets/icons/MessageBot.svg";
+import ResQBot from "../../assets/icons/message-bot.svg";
 
 const Bot = () => {
   const [userReply, setUserReply] = useState("");

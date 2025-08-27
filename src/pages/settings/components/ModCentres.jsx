@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import PopupLayout from "../../../components/layouts/PopupLayout";
 
 const ModCentres = ({ visibility, Close }) => {
   const [centreFormVisibility, setFormVisibility] = useState(false);
@@ -96,21 +97,16 @@ const ModCentres = ({ visibility, Close }) => {
   }, []);
 
   return (
-    <section
-      className={`${
-        visibility ? "absolute" : "hidden"
-      } w-[90vw] bg-white py-2.5 px-[15px] rounded-[20px] z-10 shadow shadow-black top-[30%] left-[5vw]`}
+    <PopupLayout
+      title="Manage your health centres"
+      visibility={visibility}
+      close={Close}
     >
       <header className="bg-blue">
         <p className="text-white text-center">
           <span>{formError.form}</span>
         </p>
       </header>
-
-      <h2>
-        Manage your health centres{" "}
-        <ion-icon onClick={Close} size="large" name="close-circle"></ion-icon>
-      </h2>
 
       {available ? (
         <div>
@@ -199,7 +195,7 @@ const ModCentres = ({ visibility, Close }) => {
           <h1>Update</h1>
         </button>
       </form>
-    </section>
+    </PopupLayout>
   );
 };
 export default ModCentres;

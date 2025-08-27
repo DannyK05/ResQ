@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Permission from "../../assets/imgs/Permission.png";
 
-import Bot from "../../assets/icons/MessageBot.svg";
+import Bot from "../../assets/icons/message-bot.svg";
 
 import HomeLayout from "../../components/layouts/HomeLayout";
 import Advice from "./components/Advice";
@@ -31,14 +31,14 @@ const Home = () => {
 
   return (
     <HomeLayout>
-      <h1 className="ml-2 text-blue lg:text-xl">Welcome</h1>
+      <h1 className="ml-2 text-blue text-lg lg:text-xl">Welcome</h1>
 
-      <Advice />
+      <Advice className="w-full" />
 
       <section className=" action px-2 mt-[30px] w-full flex justify-between items-center">
         <Link to="/settings" aria-label="settings">
           <button
-            className=" active:p-[6px] rounded-full shadow shadow-black p-1"
+            className=" active:p-[6px] rounded-full shadow-md border border-[#fafa] px-2 py-1"
             name="Settings"
           >
             <ion-icon name="settings-outline"></ion-icon>
@@ -47,7 +47,7 @@ const Home = () => {
 
         <Link to="/map" aria-label="map">
           <button
-            className=" active:p-[6px] rounded-full shadow shadow-black p-1"
+            className=" active:p-[6px] rounded-full shadow-md border border-[#fafa] px-2 py-1"
             name="Map button"
           >
             <ion-icon name="map-outline"></ion-icon>
@@ -56,7 +56,7 @@ const Home = () => {
 
         <Link to="/bot" aria-label="bot">
           <button
-            className=" active:p-[6px] rounded-full shadow shadow-black p-1"
+            className=" active:p-[6px] rounded-full shadow-md border border-[#fafa] px-2 py-1"
             name="Bot"
           >
             <img alt="Bot button" src={Bot} />
@@ -67,7 +67,7 @@ const Home = () => {
       <div
         className={`${
           visibility ? "" : "hidden"
-        } absolute z-10 top-[40%] bg-white p-4 w-4/5 ml-4 shadow shadow-black rounded-[20px]`}
+        } absolute z-10 top-[40%] bg-white p-4 w-4/5 ml-4 shadow-lg border rounded-[20px]`}
       >
         <img
           className="w-3/4 mx-1 my-2"

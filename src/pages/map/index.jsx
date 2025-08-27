@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import GoogleMapReact from "google-map-react";
 
-import Hospital from "../../assets/icons/HospitalMarker.jpg";
-import User from "../../assets/icons/UserMarker.jpg";
+import Hospital from "../../assets/icons/hospital-marker.png";
+import User from "../../assets/icons/user-marker.png";
 
 import ActionLayout from "../../components/layouts/ActionLayout";
 
@@ -88,16 +88,12 @@ const Map = ({ apiKey }) => {
   return (
     <ActionLayout name="Map">
       <aside className="fixed bg-white z-10 bg-white p-2 top-0 w-1/3 lg:w-1/6 right-0 lg:p-4 ">
-        <div className="flex items-center space-x-2">
-          <img className="w-[30%] lg:w-[10%]" src={User} alt="User Key" />
+        <div className="flex items-center text-sm space-x-2">
+          <img className="w-1/5 lg:w-[10%]" src={User} alt="User Key" />
           <p>Your location</p>
         </div>
-        <div className="flex items-center space-x-2 mt-2">
-          <img
-            className="w-[30%] lg:w-[10%]"
-            src={Hospital}
-            alt="Hospital key"
-          />
+        <div className="flex items-center text-sm space-x-2 mt-2">
+          <img className="w-1/5 lg:w-[10%]" src={Hospital} alt="Hospital key" />
           <p>Hospital location</p>
         </div>
       </aside>

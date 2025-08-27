@@ -1,21 +1,17 @@
+import PopupLayout from "../../../components/layouts/PopupLayout";
 import Button from "../../../components/ui/Button";
 import Input from "../../../components/ui/Input";
 
 const ModMedical = ({ visibility, Close }) => {
   return (
-    <section
-      className={`${
-        visibility ? "absolute" : "hidden"
-      } w-full bg-white py-2.5 px-[15px] rounded-[20px] z-10 shadow shadow-black top-[2px]`}
+    <PopupLayout
+      title="Manage your medical info"
+      visibility={visibility}
+      close={Close}
     >
-      <h1>
-        Manage your medical info{" "}
-        <ion-icon onClick={Close} size="large" name="close-circle"></ion-icon>
-      </h1>
-
-      <form className="overflow-scroll">
-        <div>
-          <h1>
+      <form className="overflow-y-auto overflow-x-hidden">
+        <div className="mt-2">
+          <h1 className="mb-1">
             <span className="text-blue">Personal</span> Medical Info
           </h1>
           <label>Gender</label>
@@ -47,7 +43,7 @@ const ModMedical = ({ visibility, Close }) => {
             className="ml-[8px]"
             type="radio"
             value="true"
-          />{" "}
+          />
           <label>Yes</label>
           <input
             name="disability"
@@ -58,17 +54,12 @@ const ModMedical = ({ visibility, Close }) => {
           <label>No</label>
         </div>
 
-        <div>
-          <h1>
+        <div className="mt-4">
+          <h1 className="my-1">
             <span className="text-blue">Medical</span> History
           </h1>
           <label>Do you have any allergy</label>
-          <input
-            name="allergy"
-            className="ml-[8px]"
-            type="radio"
-            value="Yes"
-          />{" "}
+          <input name="allergy" className="ml-[8px]" type="radio" value="Yes" />
           <label>Yes</label>
           <input name="allergy" className="ml-[8px]" type="radio" value="No" />
           <label>No</label>
@@ -92,8 +83,8 @@ const ModMedical = ({ visibility, Close }) => {
           </select>
         </div>
 
-        <div>
-          <h1>
+        <div className="mt-4">
+          <h1 className="my-1">
             <span className="text-blue">Health</span> Insurance
           </h1>
 
@@ -110,7 +101,7 @@ const ModMedical = ({ visibility, Close }) => {
           <h1>Update</h1>
         </Button>
       </form>
-    </section>
+    </PopupLayout>
   );
 };
 

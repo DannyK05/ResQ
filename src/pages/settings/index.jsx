@@ -1,10 +1,12 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
 import ActionLayout from "../../components/layouts/ActionLayout";
 import ModPassword from "./components/ModPassword";
 import ModMedical from "./components/ModMedical";
 import ModCentres from "./components/ModCentres";
 import ModSpecial from "./components/ModSpecial";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+
 const Settings = () => {
   const [isPasswordVisible, setPasswordVisibility] = useState(false);
   const [isMedicalVisible, setMedicalVisibility] = useState(false);
@@ -18,12 +20,15 @@ const Settings = () => {
   const togglePasswordVisibility = () => {
     setPasswordVisibility(!isPasswordVisible); // Toggle the visibility state of the password
   };
+
   const toggleMedicalVisibility = () => {
     setMedicalVisibility(!isMedicalVisible); // Toggle the visibility state of the medical
   };
+
   const toggleCentreVisibility = () => {
     setCentreVisibility(!isCentreVisible); // Toggle the visibility state of the centres
   };
+
   const toggleSpecialVisibility = () => {
     setSpecialVisibility(!isSpecialVisible); // Toggle the visibility state of the special
   };
@@ -32,7 +37,7 @@ const Settings = () => {
     <ActionLayout name="Settings">
       <div
         onClick={toggleMedicalVisibility}
-        className="border-b active:bg-[#FAFAFA] flex items-center border-b-[#D9D9D9] p-2.5 text-black"
+        className="border-b active:bg-[#FAFAFA] cursor-pointer flex items-center border-b-[#D9D9D9] p-2.5 text-black"
       >
         <span className="mr-1 text-center">
           <ion-icon size="large" name="heart"></ion-icon>
@@ -43,7 +48,7 @@ const Settings = () => {
 
       <div
         onClick={toggleCentreVisibility}
-        className="border-b active:bg-[#FAFAFA] flex items-center border-b-[#D9D9D9] p-2.5 text-black"
+        className="border-b active:bg-[#FAFAFA] cursor-pointer flex items-center border-b-[#D9D9D9] p-2.5 text-black"
       >
         <span className="mr-1 text-center">
           <ion-icon size="large" name="medkit"></ion-icon>
@@ -54,7 +59,7 @@ const Settings = () => {
 
       <div
         onClick={toggleSpecialVisibility}
-        className="border-b active:bg-[#FAFAFA] flex items-center border-b-[#D9D9D9] p-2.5 text-black"
+        className="border-b active:bg-[#FAFAFA] cursor-pointer flex items-center border-b-[#D9D9D9] p-2.5 text-black"
       >
         <span className="mr-1 text-center">
           <ion-icon size="large" name="people"></ion-icon>
@@ -65,7 +70,7 @@ const Settings = () => {
 
       <div
         onClick={togglePasswordVisibility}
-        className="border-b active:bg-[#FAFAFA] flex items-center border-b-[#D9D9D9] p-2.5 text-black"
+        className="border-b active:bg-[#FAFAFA] cursor-pointer flex items-center border-b-[#D9D9D9] p-2.5 text-black"
       >
         <span className="mr-1 text-center">
           <ion-icon size="large" name="lock-closed"></ion-icon>
@@ -77,7 +82,7 @@ const Settings = () => {
       <Link to="/">
         <div
           onClick={logOut}
-          className="border-b active:bg-[#FAFAFA] flex items-center border-b-[#D9D9D9] p-2.5 text-black"
+          className="border-b active:bg-[#FAFAFA] cursor-pointer flex items-center border-b-[#D9D9D9] p-2.5 text-black"
         >
           <span className="mr-1 text-center">
             <ion-icon size="large" name="log-out-outline"></ion-icon>

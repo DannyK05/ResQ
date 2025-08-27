@@ -12,12 +12,12 @@ const Carousel = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true, // Enable autoplay
-    autoplaySpeed: 5000, // changes every 5 seconds
+    autoplay: true,
+    autoplaySpeed: 5000,
   };
 
   return (
-    <div className=" carousel w-4/5 mt-5 mb-0 ml-4">
+    <div className=" carousel w-4/5 mt-5 mb-0 ml-4 ">
       <Slider {...settings}>
         <div className="w-full ">
           <Link to="/settings">
@@ -27,7 +27,6 @@ const Carousel = () => {
 
         <div className="w-full ">
           <Link to="/settings">
-            {" "}
             <img src={Bot} alt="Slide 2" />
           </Link>
         </div>

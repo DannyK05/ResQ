@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
 
-const Navbar = ({ toggleEmergencyTab, visibility, activeNav }) => {
+const Navbar = ({ className, toggleEmergencyTab, visibility, activeNav }) => {
   return (
-    <nav className="fixed w-full lg:w-2/5 z-10 bg-white shadow-xl bottom-0 px-2 py-3">
+    <nav
+      className={`${
+        className !== undefined ? className : ""
+      }  bg-white shadow-xl bottom-0 fixed lg:static px-2 py-3`}
+    >
       <ul className="flex w-full justify-between items-center ">
-        {" "}
         <li>
           <Link to="/" aria-label="Home">
             <ion-icon name={activeNav ? "home" : "home-outline"}></ion-icon>

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import MedicalAdvice from "../../../data/medicalAdvice";
 
-const Advice = () => {
+const Advice = ({ className }) => {
   const [currentAdvice, setCurrentAdvice] = useState("Have a beautiful day");
 
   useEffect(() => {
@@ -22,12 +22,16 @@ const Advice = () => {
   }, []); // Empty dependency array ensures the effect runs only once after initial render
 
   return (
-    <div className="home__advicebubble rounded-[20px] shadow shadow-black w-4/5 p-1 ml-2 my-2.5">
+    <div
+      className={`${
+        className !== undefined ? className : ""
+      }  home__advicebubble rounded-md shadow-md border border-[#fafa] p-2 my-2.5`}
+    >
       <h1>
         Res<span className="text-blue">Q</span> says
       </h1>
 
-      <div className="w-full h-[120px] advicebubble">
+      <div className="w-full h-24 advicebubble">
         <p className="w-full text-blue">{currentAdvice}</p>
       </div>
     </div>
